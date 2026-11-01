@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#f6f1e7">
+<title>Ваш детский сад — демо</title>
+<meta name="description" content="Сайт для частного детского сада: подбор группы по возрасту, день ребёнка, меню, запись на экскурсию в WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&family=Caveat:wght@500;600;700&family=Golos+Text:wght@400;500;600&display=swap">
+<style>
+/* Concept: «Рисунок мелками». A calm, expensive editorial page on warm paper; a child's wax-crayon drawing
+   draws itself over the typography as you scroll. Every section answers a parent's real fear. Light theme by design. */
+:root{
+  color-scheme:light;
+  --paper:#f6f1e7; --paper2:#efe7d7; --card:#fbf8f2; --ink:#1d2340; --ink2:#3a3f5c; --muted:#6e6b77; --line:rgba(29,35,64,.12); --line2:rgba(29,35,64,.24);
+  --red:#e0523c; --sun:#f0b22e; --sky:#3f86d6; --leaf:#43a565; --vio:#8566cc; --brown:#9a6234;
+  --display:"Literata","Lora",Georgia,"Times New Roman",serif;
+  --hand:"Caveat","Segoe Print","Comic Sans MS",cursive;
+  --body:"Golos Text","Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html,body{background:var(--paper);color:var(--ink)}
+body{margin:0;font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--paper)}
+[hidden]{display:none!important}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--sky);outline-offset:4px}
+.gut{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.inner{max-width:1160px;margin:0 auto}
+.paper{position:fixed;inset:0;z-index:66;pointer-events:none;opacity:.32;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .5 0 0 0 0 .42 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.k{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin:0 0 16px;font-weight:600}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:-.015em}
+h2{font-size:clamp(38px,7vw,86px);line-height:1.02;margin:0 0 20px;text-wrap:balance}
+h2 em,h1 em{font-style:italic}
+.lead{color:var(--muted);max-width:31em;margin:0 0 42px;font-size:17px}
+.hand{font-family:var(--hand);font-weight:600}
+section{padding-block:clamp(84px,12vw,150px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:500 15px var(--body);padding:16px 24px;border-radius:999px;text-decoration:none;border:1.5px solid var(--ink);background:transparent;cursor:pointer;transition:background .3s,color .3s,transform .3s}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--red);border-color:var(--red)}
+.btn[aria-disabled="true"]{opacity:.4;pointer-events:none}
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.2,.7,.1,1),transform 1s cubic-bezier(.2,.7,.1,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+.cray{filter:url(#cr)}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:60;padding-block:14px;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(246,241,231,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--line)}
+.nav .inner{display:flex;align-items:center;gap:20px}
+.brand{font-family:var(--display);font-size:19px;text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:9px}
+.brand i{width:12px;height:12px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 3px rgba(240,178,46,.25)}
+.nav .links{margin-left:auto;display:flex;align-items:center;gap:24px;font-size:14px;font-weight:500}
+.nav .links a{text-decoration:none;opacity:.75}.nav .links a:hover{opacity:1}
+.nav .bk{opacity:1!important;border:1.5px solid var(--ink);border-radius:999px;padding:8px 15px}
+@media (max-width:860px){.nav .links a:not(.bk){display:none}.nav .bk{font-size:13px;padding:7px 13px}}
+
+/* hero */
+.hero{position:relative;height:300vh}
+.stage{position:sticky;top:0;height:100svh;min-height:600px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;padding-top:calc(env(safe-area-inset-top,0px) + 86px)}
+.htext{position:relative;z-index:2}
+.htext h1{font-size:clamp(42px,10.6vw,112px);line-height:1;text-wrap:balance;max-width:11em}
+.htext h1 em{position:relative;white-space:nowrap}
+.htext .sub{color:var(--ink2);font-size:16.5px;margin:18px 0 22px;max-width:28em}
+.htext .cta{display:flex;gap:10px;flex-wrap:wrap}
+.htext .cta .btn{padding:14px 20px;font-size:14.5px}
+#over{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;overflow:visible}
+.draw{position:relative;min-height:0}
+.draw svg{position:absolute;left:50%;bottom:calc(40px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);height:100%;max-height:520px;width:auto;max-width:100%;overflow:visible}
+.sign{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));font-family:var(--hand);font-size:21px;color:var(--ink2);transform:rotate(-4deg);opacity:0;transition:opacity .6s}
+.sign.on{opacity:1}
+.hint{position:absolute;left:max(20px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500;transition:opacity .4s}
+@media (min-width:900px){
+  .stage{grid-template-columns:1.05fr 1fr;grid-template-rows:1fr;align-items:center;padding-top:60px}
+  .draw{height:78vh}
+  .draw svg{bottom:auto;top:50%;transform:translate(-50%,-50%)}
+}
+
+/* fears */
+.fears{list-style:none;margin:0;padding:0;counter-reset:f}
+.fears li{display:grid;grid-template-columns:1fr;gap:10px;padding:30px 0;border-top:1px solid var(--line)}
+.fears li:last-child{border-bottom:1px solid var(--line)}
+@media (min-width:820px){.fears li{grid-template-columns:1fr 1.15fr;gap:40px;padding:38px 0}}
+.fears q{font-family:var(--display);font-style:italic;font-size:clamp(28px,4.6vw,46px);line-height:1.1;quotes:"«" "»"}
+.fears q::before{content:open-quote}.fears q::after{content:close-quote}
+.fears p{margin:0;color:var(--ink2);font-size:17px}
+.fears p b{font-weight:600;color:var(--ink);background:linear-gradient(transparent 62%,rgba(240,178,46,.45) 62%,rgba(240,178,46,.45) 92%,transparent 92%)}
+
+/* age picker */
+.age{display:grid;gap:26px}
+@media (min-width:900px){.age{grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}}
+.age>*{min-width:0}
+.ruler{position:relative;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:16px 16px 22px}
+.ruler svg{display:block;width:100%;height:auto}
+.ruler .big{position:static;margin:6px 8px 4px;font-family:var(--hand);font-size:clamp(46px,11vw,64px);line-height:1;color:var(--red);font-weight:700}
+.ruler .big small{display:block;font-size:.42em;color:var(--muted);font-weight:600}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin:6px 0 0;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--sun),var(--red))}
+input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--sun),var(--red))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:34px;height:34px;border-radius:50%;background:var(--paper);border:3px solid var(--ink);margin-top:-14px;box-shadow:0 4px 14px rgba(29,35,64,.2)}
+input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--paper);border:3px solid var(--ink)}
+.ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);padding:0 6px}
+.grp .gname{font-family:var(--display);font-size:clamp(34px,5.6vw,56px);line-height:1.05;margin:0 0 6px}
+.grp .gmeta{color:var(--muted);margin:0 0 22px}
+.grp ul{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.grp ul li{padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14.5px}
+.grp .facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:22px}
+.grp .facts div{background:var(--card);padding:16px 18px}
+.grp .facts b{display:block;font-family:var(--display);font-weight:400;font-size:30px;line-height:1.1}
+.grp .facts span{font-size:13px;color:var(--muted)}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:999px;padding:3px;margin-bottom:16px}
+.seg button{border:0;background:none;border-radius:999px;padding:10px 16px;font-size:14px;cursor:pointer;font-weight:500}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.pricebox{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pricebox b{font-family:var(--display);font-weight:400;font-size:clamp(40px,7vw,58px);line-height:1}
+.pricebox span{color:var(--muted)}
+.grp .note{font-size:14px;color:var(--muted);margin:10px 0 24px}
+
+/* day */
+.dayline{position:relative;list-style:none;margin:0;padding:0 0 0 64px;max-width:780px}
+.dayline::before{content:"";position:absolute;left:23px;top:8px;bottom:8px;width:2px;background:repeating-linear-gradient(var(--line2) 0 6px,transparent 6px 12px)}
+.dayline li{position:relative;padding:0 0 34px}
+.dayline .ic{position:absolute;left:-64px;top:-6px;width:48px;height:48px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:grid;place-items:center}
+.dayline .ic svg{width:34px;height:34px;overflow:visible}
+.dayline time{font-family:var(--hand);font-size:26px;font-weight:700;color:var(--red);line-height:1}
+.dayline b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(23px,3.4vw,30px);line-height:1.2;margin:2px 0 4px}
+.dayline span{color:var(--muted);font-size:15.5px}
+
+/* menu */
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:22px;padding-bottom:2px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;border:1.5px solid var(--line2);background:transparent;border-radius:999px;padding:10px 18px;font-size:14.5px;cursor:pointer;font-weight:500}
+.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.menu{display:grid;grid-template-columns:1fr;gap:12px;list-style:none;margin:0;padding:0}
+@media (min-width:760px){.menu{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:759px){.menu{gap:0;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden}.menu li{border:0;border-radius:0;border-bottom:1px solid var(--line);padding:16px 20px}.menu li:last-child{border-bottom:0}}
+.menu li{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px}
+.menu li span{font-family:var(--hand);font-size:22px;font-weight:700;line-height:1}
+.menu li b{display:block;font-weight:500;margin-top:6px;font-size:16px;line-height:1.35}
+.menu li i{font-style:normal;color:var(--muted);font-size:13px}
+
+/* team */
+.team{display:grid;gap:14px}
+@media (min-width:820px){.team{grid-template-columns:repeat(3,1fr);gap:20px}}
+.tm{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;display:flex;gap:18px;align-items:center}
+@media (min-width:820px){.tm{flex-direction:column;align-items:flex-start}}
+.tm .av{flex:none;width:78px;height:78px;position:relative;display:grid;place-items:center;font-family:var(--hand);font-size:34px;font-weight:700}
+.tm .av svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.tm b{display:block;font-family:var(--display);font-weight:400;font-size:24px;line-height:1.15}
+.tm span{display:block;color:var(--muted);font-size:14.5px;margin-top:4px}
+
+/* visit */
+.visit{display:grid;gap:22px}
+@media (min-width:960px){.visit{grid-template-columns:1.2fr .9fr;gap:40px;align-items:start}}
+.visit>*{min-width:0}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:22px}
+.lbl{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;font-weight:600}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chips.wrap{flex-wrap:wrap;overflow:visible}
+.chip{flex:none;border:1.5px solid var(--line2);background:transparent;border-radius:16px;padding:10px 15px;font-size:14.5px;cursor:pointer;line-height:1.25;text-align:center;transition:background .2s,color .2s,border-color .2s}
+.chip small{display:block;font-size:12px;opacity:.65}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.blk{margin-top:24px}
+input[type=text]{width:100%;background:transparent;border:0;border-bottom:1.5px solid var(--line2);padding:12px 0;font:inherit;font-size:17px;color:var(--ink);border-radius:0}
+input[type=text]:focus{outline:none;border-color:var(--ink)}
+input::placeholder{color:rgba(29,35,64,.38)}
+.ticket{position:relative;background:var(--ink);color:var(--paper);border-radius:26px;padding:24px;overflow:hidden}
+.ticket .lbl{color:rgba(246,241,231,.6)}
+.ticket .r{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed rgba(246,241,231,.2);font-size:15px}
+.ticket .r span{opacity:.65}
+.ticket .r b{font-weight:500;text-align:right}
+.ticket .gift{margin:20px 0;font-family:var(--hand);font-size:27px;line-height:1.15;color:var(--sun);transform:rotate(-2deg)}
+.ticket .btn{width:100%;background:var(--sun);border-color:var(--sun);color:var(--ink)}
+.ticket .btn:hover{background:var(--paper);border-color:var(--paper)}
+.ticket .fine{font-size:13px;opacity:.6;text-align:center;margin:12px 0 0}
+
+/* where */
+.where{display:grid;gap:22px}
+@media (min-width:900px){.where{grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}}
+.where>*{min-width:0}
+.map{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);background:var(--card);aspect-ratio:4/3.2}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.winfo>div{display:flex;justify-content:space-between;gap:18px;padding:15px 0;border-bottom:1px solid var(--line)}
+.winfo>div span{color:var(--muted);font-size:14px}
+.winfo>div b{font-weight:500;text-align:right;font-size:15px}
+.maps{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.maps .btn{padding:12px 18px;font-size:14px}
+
+/* faq */
+.faq{border-top:1px solid var(--line);max-width:860px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font-family:var(--display);font-size:clamp(21px,3vw,28px);line-height:1.25}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:30px;height:30px;border:1.5px solid var(--line2);border-radius:50%;position:relative;transition:transform .35s}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1.5px;background:var(--ink);transform:translate(-50%,-50%)}
+.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq details[open] summary i{transform:rotate(45deg)}
+.faq details p{margin:0 0 24px;color:var(--ink2);max-width:40em}
+
+/* pitch */
+.pitch{background:var(--ink);color:var(--paper)}
+.pitch .k{color:var(--sun)}
+.pitch-grid{display:grid;gap:40px}
+@media (min-width:940px){.pitch-grid{grid-template-columns:1fr 1fr;gap:60px}}
+.pitch .note{color:rgba(246,241,231,.7);font-size:17px;max-width:28em;margin:0 0 16px}
+.pitch .note b{color:var(--paper);font-weight:500}
+.pitch ul{list-style:none;margin:0;padding:0;border-top:1px solid rgba(246,241,231,.15)}
+.pitch li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(246,241,231,.15)}
+.pitch li em{font-style:normal;color:var(--sun);font-weight:600}
+.pitch li b{display:block;font-weight:500}
+.pitch li span{color:rgba(246,241,231,.65);font-size:14.5px}
+
+/* footer */
+.foot{padding-block:70px calc(110px + env(safe-area-inset-bottom,0px));overflow:hidden}
+.giant{position:relative;font-family:var(--display);font-style:italic;font-size:clamp(70px,22vw,260px);line-height:.9;margin:0;letter-spacing:-.03em;white-space:nowrap}
+.giant svg{position:absolute;left:-2%;top:72%;width:104%;height:46%;overflow:visible;pointer-events:none}
+.demo{color:var(--muted);font-size:13px;margin:22px 0 0}
+
+/* mobile bar */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:58;padding:12px max(16px,env(safe-area-inset-left,0px)) calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(rgba(246,241,231,0),rgba(246,241,231,.95) 40%);transform:translateY(110%);transition:transform .45s cubic-bezier(.2,.7,.1,1)}
+.mbar.show{transform:none}
+.mbar .btn{width:100%}
+@media (min-width:860px){.mbar{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="cr" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="4" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2.6" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="1" seed="11" result="g"/>
+    <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.4 0 0 0 2.05" result="m"/>
+    <feComposite in="d" in2="m" operator="in"/>
+  </filter>
+</defs></svg>
+<div class="paper" aria-hidden="true"></div>
+
+<nav class="nav gut" id="nav" aria-label="Меню"><div class="inner">
+  <a class="brand" href="#top"><i></i>Ваш детский сад</a>
+  <div class="links">
+    <a href="#age">Группы</a><a href="#day">День</a><a href="#menu">Меню</a>
+    <a class="bk" href="#visit">Экскурсия</a>
+  </div>
+</div></nav>
+
+<main id="top">
+<section class="hero" id="hero" style="padding:0" aria-label="Главный экран">
+  <div class="stage gut">
+    <div class="htext">
+      <p class="k">Частный детский сад · Алматы</p>
+      <h1>Здесь его <em id="love">любят,</em> пока вы на работе</h1>
+      <p class="sub">Группы до 15 детей, свой повар, фото дня каждый вечер в WhatsApp.</p>
+      <div class="cta"><a class="btn solid" href="#visit">Записаться на экскурсию</a><a class="btn" href="#age">Подобрать группу</a></div>
+    </div>
+    <div class="draw"><svg id="pic" viewBox="0 0 400 380" aria-hidden="true"><g class="cray" id="picG" fill="none" stroke-linecap="round" stroke-linejoin="round"></g></svg></div>
+    <svg id="over" aria-hidden="true"><g class="cray" id="overG" fill="none" stroke-linecap="round" stroke-linejoin="round"></g></svg>
+    <p class="sign" id="sign">рисунок Алихана, 4 года</p>
+    <p class="hint" id="hint">Листайте ↓</p>
+  </div>
+</section>
+
+<section class="gut" id="fears"><div class="inner">
+  <p class="k rv">Честно о главном</p>
+  <h2 class="rv">Мы знаем, о чём <em>вы переживаете</em></h2>
+  <p class="lead rv">Каждая мама думает об этом, когда первый раз отдаёт ребёнка в сад. Вот что мы делаем, чтобы вам было спокойно.</p>
+  <ul class="fears">
+    <li class="rv"><q>Он будет плакать</q><p>Мягкая адаптация 2 недели: <b>первые дни вы можете быть в группе рядом</b>, потом оставляем на 2 часа, потом до обеда. Без слёз «через силу».</p></li>
+    <li class="rv"><q>Его там накормят?</q><p>Свой повар и кухня прямо в саду, <b>пять приёмов пищи</b>, без полуфабрикатов. Меню на неделю ниже, аллергии учитываем.</p></li>
+    <li class="rv"><q>А это безопасно?</q><p>Камеры в группах и на площадке, охрана на входе. <b>Отдаём ребёнка только тем, кто в вашем списке</b>, и по фото.</p></li>
+    <li class="rv"><q>Чем он занят весь день?</q><p>Каждый вечер воспитатель присылает в WhatsApp <b>фото и пару слов о дне</b>: что ел, как спал, чем занимался.</p></li>
+  </ul>
+</div></section>
+
+<section class="gut" id="age" style="padding-top:0"><div class="inner">
+  <p class="k rv">Группы</p>
+  <h2 class="rv">Сколько лет <em>вашему ребёнку?</em></h2>
+  <p class="lead rv">Подвиньте ползунок, и увидите его группу, программу и цену.</p>
+  <div class="age">
+    <div class="ruler rv">
+      <div class="big" id="ageBig">3 года<small id="ageCm">≈ 96 см</small></div>
+      <svg viewBox="0 24 320 272" aria-hidden="true"><g id="rulerG"></g><g class="cray" id="kidG" fill="none" stroke-linecap="round" stroke-linejoin="round"></g></svg>
+      <label class="sr" for="ageR" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Возраст ребёнка</label>
+      <input type="range" id="ageR" min="1.5" max="6" step="0.5" value="3">
+      <div class="ticks" aria-hidden="true"><span>1,5</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6 лет</span></div>
+    </div>
+    <div class="grp rv" aria-live="polite">
+      <p class="gname" id="gName"></p>
+      <p class="gmeta" id="gMeta"></p>
+      <ul id="gProg"></ul>
+      <div class="facts"><div><b id="gKids"></b><span>детей в группе</span></div><div><b id="gTeach"></b><span>взрослых на группу</span></div></div>
+      <div class="seg" role="group" aria-label="График"><button type="button" id="fullB" aria-pressed="true">Полный день</button><button type="button" id="halfB" aria-pressed="false">Полдня</button></div>
+      <div class="pricebox"><b id="gPrice"></b><span id="gPer">в месяц · 8:00–19:00</span></div>
+      <p class="note">Питание, занятия и кружки уже включены в стоимость.</p>
+      <a class="btn solid" href="#visit">Прийти на экскурсию</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="gut" id="day" style="padding-top:0"><div class="inner">
+  <p class="k rv">Режим</p>
+  <h2 class="rv">Один день <em>в саду</em></h2>
+  <p class="lead rv">Ребёнок знает, что будет дальше, и поэтому спокоен. Вот как проходит день в средней группе.</p>
+  <ol class="dayline" id="dayline"></ol>
+</div></section>
+
+<section class="gut" id="menu" style="padding-top:0"><div class="inner">
+  <p class="k rv">Меню</p>
+  <h2 class="rv">Что он ест <em>на этой неделе</em></h2>
+  <p class="lead rv">Готовим сами каждое утро. Меню согласовано с диетологом, при аллергии готовим отдельно.</p>
+  <div class="tabs rv" role="tablist" id="tabs"></div>
+  <ul class="menu rv" id="menuList"></ul>
+</div></section>
+
+<section class="gut" id="team" style="padding-top:0"><div class="inner">
+  <p class="k rv">Команда</p>
+  <h2 class="rv">Кто будет <em>рядом с ним</em></h2>
+  <p class="lead rv">Все педагоги с профильным образованием, медкнижками и проверкой. Многие работают у нас дольше пяти лет.</p>
+  <div class="team" id="teamList"></div>
+</div></section>
+
+<section class="gut" id="visit" style="padding-top:0"><div class="inner">
+  <p class="k rv">Экскурсия</p>
+  <h2 class="rv">Приходите <em>посмотреть сами</em></h2>
+  <p class="lead rv">Покажем группы, спальни, кухню и площадку. Можно с ребёнком: пусть сам решит, нравится ли ему.</p>
+  <div class="visit">
+    <div class="panel rv">
+      <span class="lbl">День</span><div class="chips" id="cDay" role="group" aria-label="День"></div>
+      <div class="blk"><span class="lbl">Время</span><div class="chips wrap" id="cTime" role="group" aria-label="Время"></div></div>
+      <div class="blk"><span class="lbl">Возраст ребёнка</span><div class="chips" id="cAge" role="group" aria-label="Возраст"></div></div>
+      <div class="blk"><label class="lbl" for="nm">Ваше имя</label><input id="nm" type="text" placeholder="Как к вам обращаться" autocomplete="given-name"></div>
+    </div>
+    <div class="ticket rv" aria-live="polite">
+      <span class="lbl">Ваша экскурсия</span>
+      <div class="r"><span>Когда</span><b id="tWhen">—</b></div>
+      <div class="r"><span>Группа</span><b id="tGroup"></b></div>
+      <div class="r"><span>Длится</span><b>около 40 минут</b></div>
+      <p class="gift">+ первый пробный день в группе бесплатно</p>
+      <a class="btn" id="send" target="_blank" rel="noopener" aria-disabled="true">Записаться в WhatsApp</a>
+      <p class="fine" id="tFine">Выберите день и время</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="gut" id="where" style="padding-top:0"><div class="inner">
+  <p class="k rv">Адрес</p>
+  <h2 class="rv">Рядом <em>с домом</em></h2>
+  <div class="where">
+    <div class="map rv" aria-label="Схема проезда">
+      <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="400" height="320" fill="#fbf8f2"/>
+        <g stroke="rgba(29,35,64,.08)" stroke-width="1"><path d="M0 40H400M0 92H400M0 150H400M0 206H400M0 262H400M40 0V320M110 0V320M180 0V320M262 0V320M330 0V320"/></g>
+        <g stroke="rgba(29,35,64,.18)" stroke-width="9" fill="none"><path d="M0 120H400"/><path d="M220 0V320"/></g>
+        <path d="M250 150h70v60h-70z" fill="rgba(67,165,101,.16)"/>
+        <g font-family="Golos Text,Inter,system-ui,sans-serif" font-size="10" letter-spacing="1.6" font-weight="600" fill="rgba(29,35,64,.4)"><text x="14" y="112">ПР. АБАЯ</text><text x="230" y="300" transform="rotate(-90 230 300)">УЛ. РОЗЫБАКИЕВА</text><text x="262" y="186" fill="rgba(67,165,101,.75)">СКВЕР</text></g>
+        <g class="cray" fill="none" stroke-linecap="round"><path d="M150 176 c-14 -22 -36 -6 -20 14 l20 20 l20 -20 c16 -20 -6 -36 -20 -14z" stroke="#e0523c" stroke-width="5"/><path d="M138 186 l26 -6 M136 194 l28 -4" stroke="#e0523c" stroke-width="4" opacity=".7"/></g>
+        <g transform="translate(176 150)"><rect width="128" height="30" rx="10" fill="#1d2340"/><text x="13" y="20" fill="#f6f1e7" font-family="Golos Text,Inter,system-ui,sans-serif" font-size="12.5" font-weight="500">Ваш детский сад</text></g>
+      </svg>
+    </div>
+    <div class="rv">
+      <div class="winfo">
+        <div><span>Адрес</span><b>Алматы, ул. Примерная 1</b></div>
+        <div><span>График</span><b>Пн–Пт, 8:00–19:00</b></div>
+        <div><span>Парковка</span><b>Своя, у входа</b></div>
+        <div><span>WhatsApp</span><b>+7 700 000 00 00</b></div>
+      </div>
+      <div class="maps" id="maps"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="gut" id="faq" style="padding-top:0"><div class="inner">
+  <p class="k rv">Вопросы</p>
+  <h2 class="rv">Обычно <em>спрашивают</em></h2>
+  <div class="faq rv">
+    <details><summary>Какие документы нужны?<i></i></summary><p>Свидетельство о рождении, медицинская карта по форме 026 и прививочный паспорт. Если чего-то нет, подскажем, где быстро сделать.</p></details>
+    <details><summary>Если ребёнок заболел, будет перерасчёт?<i></i></summary><p>Да. Если пропуск больше 5 дней со справкой, переносим оплату за пропущенные дни на следующий месяц.</p></details>
+    <details><summary>Можно смотреть камеры из дома?<i></i></summary><p>Да, даём доступ к камерам группы и площадки с телефона. Только родителям этой группы.</p></details>
+    <details><summary>У вас есть лицензия?<i></i></summary><p>Да, сад работает по лицензии, документы покажем на экскурсии. Номер лицензии указан внизу сайта.</p></details>
+    <details><summary>Учите казахский и английский?<i></i></summary><p>Да. Казахский каждый день в игре и песнях, английский с носителем языка дважды в неделю, со средней группы.</p></details>
+  </div>
+</div></section>
+
+<section class="pitch gut" id="pitch"><div class="inner pitch-grid">
+  <div class="rv">
+    <p class="k">Для владельца</p>
+    <h2>Это может быть сайт <em>вашего сада</em></h2>
+    <p class="note">Подставим ваши фото, группы, цены, меню и адрес. <b>Запуск за 1 день</b>, правки в первый месяц бесплатно.</p>
+    <p class="note">Ответьте на сообщение, в котором пришла эта ссылка, и обсудим детали за 10 минут.</p>
+  </div>
+  <ul class="rv">
+    <li><em>✓</em><div><b>Запись на экскурсию в WhatsApp</b><span>Мама выбирает день и время, вам приходит готовая заявка с возрастом ребёнка.</span></div></li>
+    <li><em>✓</em><div><b>Подбор группы по возрасту</b><span>Родитель сразу видит группу, программу и цену, меньше одинаковых вопросов.</span></div></li>
+    <li><em>✓</em><div><b>Ответы на страхи родителей</b><span>Адаптация, питание, безопасность. То, из-за чего мамы откладывают решение.</span></div></li>
+    <li><em>✓</em><div><b>Режим дня и меню</b><span>Показывает, что у вас всё продумано, и вызывает доверие.</span></div></li>
+    <li><em>✓</em><div><b>Пробный день как повод прийти</b><span>Мягкий первый шаг, который превращает просмотр сайта в визит.</span></div></li>
+  </ul>
+</div></section>
+</main>
+
+<footer class="foot gut"><div class="inner">
+  <p class="giant" aria-hidden="true">Ваш сад<svg viewBox="0 0 600 60" preserveAspectRatio="none"><path class="cray" d="M6 40 C 120 18, 250 52, 380 28 S 560 26, 594 34" fill="none" stroke="#f0b22e" stroke-width="9" stroke-linecap="round"/></svg></p>
+  <p class="demo">Демо-сайт. Название, фото, цены, лицензия и контакты заменяются на ваши. Лицензия № 00000 от 01.01.2020.</p>
+</div></footer>
+<div class="mbar" id="mbar"><a class="btn solid" href="#visit">Записаться на экскурсию</a></div>
+
+<script>
+(()=>{
+const PHONE="77000000000";
+const ADDRESS="Алматы, ул. Примерная 1";
+const $=id=>document.getElementById(id);
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fmt=n=>Math.round(n).toLocaleString("ru-RU").replace(/\s/g," ")+" ₸";
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+const NS="http://www.w3.org/2000/svg";
+function rng(s){return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const C={red:"#e0523c",sun:"#f0b22e",sky:"#3f86d6",leaf:"#43a565",vio:"#8566cc",brown:"#9a6234",ink:"#1d2340"};
+
+/* ---------- a child's hand: wobbly lines through points ---------- */
+function hand(pts,j,seed,closed){
+  const r=rng(seed);const q=pts.map(p=>[p[0]+(r()-.5)*j,p[1]+(r()-.5)*j]);
+  if(closed)q.push([q[0][0]+(r()-.5)*j*1.5,q[0][1]+(r()-.5)*j*1.5]);
+  let d=`M${q[0][0].toFixed(1)} ${q[0][1].toFixed(1)}`;
+  for(let i=1;i<q.length-1;i++){const mx=(q[i][0]+q[i+1][0])/2,my=(q[i][1]+q[i+1][1])/2;d+=` Q${q[i][0].toFixed(1)} ${q[i][1].toFixed(1)} ${mx.toFixed(1)} ${my.toFixed(1)}`}
+  const l=q[q.length-1];d+=` L${l[0].toFixed(1)} ${l[1].toFixed(1)}`;return d;
+}
+function poly(pts,j,seed){const q=[];for(let i=0;i<pts.length-1;i++){const a=pts[i],b=pts[i+1],n=Math.max(2,Math.round(Math.hypot(b[0]-a[0],b[1]-a[1])/14));for(let k=0;k<n;k++)q.push([a[0]+(b[0]-a[0])*k/n,a[1]+(b[1]-a[1])*k/n]);q.push([b[0],b[1]])}return hand(q,j,seed)}
+const line=(a,b,j,s)=>{const n=6,p=[];for(let i=0;i<=n;i++)p.push([a[0]+(b[0]-a[0])*i/n,a[1]+(b[1]-a[1])*i/n]);return hand(p,j,s)};
+function circ(cx,cy,rx,ry,j,s,turns=1.08,start=-1.9){const n=Math.round(22*turns),p=[];for(let i=0;i<=n;i++){const a=start+i/n*Math.PI*2*turns;p.push([cx+Math.cos(a)*rx,cy+Math.sin(a)*ry])}return hand(p,j,s)}
+function scribble(x0,y0,x1,y1,rows,j,s,slant=0){const p=[];for(let i=0;i<=rows;i++){const y=y0+(y1-y0)*i/rows;p.push(i%2?[x1,y+slant]:[x0,y-slant])}return hand(p,j,s)}
+function blobFill(cx,cy,rx,ry,rows,j,s){const p=[];for(let i=0;i<=rows;i++){const t=-1+2*i/rows,y=cy+t*ry,w=rx*Math.sqrt(Math.max(0,1-t*t))*.92;p.push(i%2?[cx+w,y]:[cx-w,y])}return hand(p,j,s)}
+
+/* ---------- the drawing ---------- */
+const G=$("picG");
+function add(g,d,col,w,a,b,op){const p=document.createElementNS(NS,"path");p.setAttribute("d",d);p.setAttribute("stroke",col);p.setAttribute("stroke-width",w);if(op)p.setAttribute("opacity",op);g.appendChild(p);return{el:p,a,b,len:0}}
+const S=[];
+const grass=[];for(let x=8;x<=392;x+=13){grass.push([x,346],[x+6.5,330+((x*7)%9)])}
+S.push(add(G,hand(grass,2.5,1),C.leaf,4.5,.02,.12));
+S.push(add(G,scribble(16,352,384,366,7,3,2,2),C.leaf,6,.08,.14,.22));
+/* house */
+S.push(add(G,poly([[60,212],[58,342],[192,344],[190,212],[62,214]],2.4,3),C.red,6,.12,.22));
+S.push(add(G,poly([[44,216],[126,148],[208,214],[46,218]],2.4,4),C.vio,6,.2,.27));
+S.push(add(G,scribble(84,200,168,206,6,2,5,-10),C.vio,8,.25,.3,.3));
+S.push(add(G,poly([[160,176],[160,146],[178,146],[178,190]],1.4,6),C.brown,5,.27,.3));
+S.push(add(G,poly([[108,344],[108,284],[142,284],[142,344]],1.6,7),C.brown,5,.3,.34));
+S.push(add(G,circ(133,316,3,3,.5,8,1),C.ink,4,.33,.34));
+S.push(add(G,poly([[74,236],[102,236],[102,264],[74,264],[75,237]],1.3,9),C.sky,5,.34,.37));
+S.push(add(G,line([88,236],[88,264],2,10)+line([74,250],[102,250],2,11).replace("M"," M"),C.sky,4,.36,.38));
+S.push(add(G,poly([[150,236],[178,236],[178,262],[150,262],[151,237]],1.3,12),C.sky,5,.37,.4));
+S.push(add(G,scribble(152,238,176,260,4,2,13,1),C.sun,8,.39,.41,.5));
+/* tree */
+S.push(add(G,poly([[344,346],[340,284],[350,284],[352,346]],1.2,14),C.brown,6,.41,.45));
+S.push(add(G,circ(346,250,40,40,5,15,1.12),C.leaf,6,.44,.5));
+S.push(add(G,blobFill(346,250,36,34,10,4,16),C.leaf,8,.48,.54,.4));
+[[330,236],[362,260],[340,268]].forEach((a,i)=>S.push(add(G,circ(a[0],a[1],4,4,.8,30+i,1),C.red,5,.53+i*.01,.545+i*.01)));
+/* sun */
+S.push(add(G,circ(330,58,30,30,3,17,1.1),C.sun,6,.56,.61));
+S.push(add(G,blobFill(330,58,25,25,9,3,18),C.sun,8,.59,.63,.55));
+for(let i=0;i<9;i++){const an=i/9*Math.PI*2+.2,r1=40,r2=56+(i%2)*8;S.push(add(G,line([330+Math.cos(an)*r1,58+Math.sin(an)*r1],[330+Math.cos(an)*r2,58+Math.sin(an)*r2],2,40+i),C.sun,5,.62+i*.006,.64+i*.006))}
+/* cloud */
+S.push(add(G,hand([[48,92],[52,72],[72,68],[82,52],[106,50],[118,64],[138,62],[146,80],[136,94],[48,94]],3,19,true),C.sky,5,.68,.73));
+/* mum */
+S.push(add(G,circ(252,214,15,16,2,20,1.1),C.ink,5,.73,.76));
+S.push(add(G,poly([[252,232],[230,298],[274,298],[253,233]],1.6,21),C.red,6,.75,.79));
+S.push(add(G,scribble(240,262,264,294,6,2,22,0),C.red,7,.78,.81,.4));
+S.push(add(G,line([244,298],[240,338],2,23)+line([260,298],[264,338],2,24).replace("M"," M"),C.ink,5,.8,.82));
+S.push(add(G,line([240,252],[222,276],2,25),C.ink,5,.81,.83));
+S.push(add(G,hand([[246,204],[238,196],[244,186],[256,186],[264,196],[266,206]],2,26),C.brown,5,.82,.84));
+/* kid */
+S.push(add(G,circ(298,262,11,11,1.5,27,1.1),C.ink,5,.84,.86));
+S.push(add(G,poly([[298,274],[286,312],[310,312],[299,275]],1.3,28),C.sky,6,.85,.88));
+S.push(add(G,line([292,312],[290,338],1.5,29)+line([304,312],[306,338],1.5,31).replace("M"," M"),C.ink,5,.87,.89));
+/* holding hands + heart */
+S.push(add(G,hand([[262,256],[276,276],[290,286]],2,32),C.ink,5,.89,.91));
+S.push(add(G,hand([[276,166],[262,150],[268,138],[278,144],[284,134],[294,142],[290,156],[276,166]],2.5,33),C.red,6,.9,.93));
+S.push(add(G,scribble(268,144,288,156,4,2,34,2),C.red,7,.92,.94,.6));
+/* annotation around the word «любят» */
+const OV=$("overG"), over=$("over"), love=$("love");
+const ring=add(OV,"M0 0",C.red,3.6,.94,1);
+S.push(ring);
+function placeRing(){
+  const st=document.querySelector(".stage").getBoundingClientRect(), r=love.getBoundingClientRect();
+  const cx=r.left-st.left+r.width/2-2, cy=r.top-st.top+r.height*.58, rx=r.width/2+9, ry=r.height*.42;
+  ring.el.setAttribute("d",circ(cx,cy,rx,ry,2.2,50,1.12,-2.5));
+  measure();
+}
+function measure(){S.forEach(s=>{s.len=s.el.getTotalLength()+2;s.el.style.strokeDasharray=s.len+" "+s.len})}
+const hero=$("hero");
+function prog(){const r=hero.getBoundingClientRect(),t=hero.offsetHeight-innerHeight;return clamp(-r.top/t,0,1)}
+let raf=0;
+function draw(){raf=0;const p=reduce?1:prog();
+  for(const s of S){const u=clamp((p*1.04-s.a)/(s.b-s.a),0,1);s.el.style.strokeDashoffset=(s.len*(1-u)).toFixed(1);s.el.style.visibility=u>0?"visible":"hidden"}
+  $("sign").classList.toggle("on",p>.97); $("hint").style.opacity=p>.03?0:1;
+}
+const kick=()=>{if(!raf)raf=requestAnimationFrame(draw)};
+/* ---------- age picker ---------- */
+const GROUPS=[
+ {from:1.5,to:2.5,name:"Ясельки",meta:"с 1,5 до 2,5 лет",kids:10,teach:"3",prog:["Мягкая адаптация с мамой","Сенсорика","Музыка и пальчиковые игры","Первые слова"]},
+ {from:2.5,to:3.5,name:"Младшая группа",meta:"с 2,5 до 3,5 лет",kids:12,teach:"2 + няня",prog:["Развитие речи","Лепка и рисование","Казахский в игре","Музыка","Самостоятельность"]},
+ {from:3.5,to:4.5,name:"Средняя группа",meta:"с 3,5 до 4,5 лет",kids:14,teach:"2 + няня",prog:["Английский с носителем","Логика","Танцы","Казахский","Окружающий мир"]},
+ {from:4.5,to:5.5,name:"Старшая группа",meta:"с 4,5 до 5,5 лет",kids:15,teach:"2 + няня",prog:["Чтение по слогам","Математика","Шахматы","Английский","Театр"]},
+ {from:5.5,to:7,name:"Подготовка к школе",meta:"с 5,5 до 6+ лет",kids:15,teach:"2 + психолог",prog:["Подготовка к школе","Письмо и чтение","Робототехника","Английский","Логопед"]}
+];
+const CM={1.5:82,2:87,2.5:92,3:96,3.5:100,4:103,4.5:107,5:110,5.5:113,6:116};
+const st={age:3,full:true,day:null,time:null,ageV:null};
+const grpOf=a=>GROUPS.find(g=>a>=g.from&&a<g.to)||GROUPS[GROUPS.length-1];
+const yrs=a=>{const w=Math.floor(a);const half=a%1?",5":"";return (w+half)+" "+(a%1?"года":(w===1?"год":w<5?"года":"лет"))};
+/* ruler marks */
+const RG=$("rulerG"), KG=$("kidG");
+const yOf=cm=>288-cm*2.05;
+(()=>{let h="";h+=`<path d="M118 288 V 34" stroke="rgba(29,35,64,.25)" stroke-width="2"/>`;
+  for(let cm=10;cm<=120;cm+=5){const y=yOf(cm),big=cm%10===0;h+=`<path d="M118 ${y} h${big?16:9}" stroke="rgba(29,35,64,.35)" stroke-width="1.5"/>`;if(big)h+=`<text x="${139}" y="${y+4}" font-family="Golos Text,Inter,sans-serif" font-size="10" fill="rgba(29,35,64,.45)">${cm}</text>`}
+  h+=`<path d="M60 288 H 300" stroke="rgba(29,35,64,.3)" stroke-width="2"/>`;RG.innerHTML=h})();
+function drawKid(){
+  const cm=CM[st.age], top=yOf(cm), H=288-top, x=232, r=H*.13, s=Math.round(st.age*10);
+  const head=top+r, neck=head+r, hip=top+H*.6, foot=287;
+  const g=grpOf(st.age), col=[C.sky,C.red,C.leaf,C.vio,C.sun][GROUPS.indexOf(g)];
+  KG.innerHTML=[
+    `<path d="${circ(x,head,r,r*1.05,1.2,s,1.1)}" stroke="${C.ink}" stroke-width="4.5"/>`,
+    `<path d="${hand([[x,neck],[x-r*1.5,hip],[x+r*1.5,hip],[x,neck]],1.6,s+1)}" stroke="${col}" stroke-width="5.5"/>`,
+    `<path d="${scribble(x-r*.9,neck+r*.8,x+r*.9,hip-3,5,1.2,s+2,0)}" stroke="${col}" stroke-width="6" opacity=".45"/>`,
+    `<path d="${line([x-r*.55,hip],[x-r*.7,foot],1,s+3)} ${line([x+r*.55,hip],[x+r*.7,foot],1,s+4).replace("M","M")}" stroke="${C.ink}" stroke-width="4.5"/>`,
+    `<path d="${line([x-r*.6,neck+r*.7],[x-r*1.9,neck+r*2.2],1,s+5)} ${line([x+r*.6,neck+r*.7],[x+r*1.9,neck-r*.2],1,s+6)}" stroke="${C.ink}" stroke-width="4.5"/>`,
+    `<path d="${line([116,top],[176,top-2],1.2,s+7)}" stroke="${C.red}" stroke-width="5"/>`,
+    `<text x="62" y="${top+5}" font-family="Caveat,cursive" font-weight="700" font-size="20" fill="${C.red}" stroke="none">${String(st.age).replace(".",",")}</text>`
+  ].join("");
+}
+function updAge(){
+  const g=grpOf(st.age);
+  $("ageBig").firstChild.nodeValue=yrs(st.age); $("ageCm").textContent="≈ "+CM[st.age]+" см";
+  $("gName").textContent=g.name; $("gMeta").textContent=g.meta;
+  $("gProg").innerHTML=g.prog.map(x=>`<li>${x}</li>`).join("");
+  $("gKids").textContent="до "+g.kids; $("gTeach").textContent=g.teach;
+  $("gPrice").textContent=fmt(st.full?190000:130000); $("gPer").textContent=st.full?"в месяц · 8:00–19:00":"в месяц · 8:00–13:00";
+  $("fullB").setAttribute("aria-pressed",st.full); $("halfB").setAttribute("aria-pressed",!st.full);
+  drawKid();
+  if(st.ageV===null){renderAgeChips()} upTicket();
+}
+$("ageR").addEventListener("input",e=>{st.age=+e.target.value;updAge()});
+$("fullB").onclick=()=>{st.full=true;updAge()}; $("halfB").onclick=()=>{st.full=false;updAge()};
+
+/* ---------- the day ---------- */
+const IC={
+ sun:()=>circ(17,17,7,7,1,61,1.1)+" "+[0,1,2,3,4,5,6,7].map(i=>{const a=i/8*6.28;return line([17+Math.cos(a)*11,17+Math.sin(a)*11],[17+Math.cos(a)*16,17+Math.sin(a)*16],.8,62+i)}).join(" "),
+ plate:()=>circ(17,19,13,8,1,70,1.1)+" "+circ(17,19,6,3.5,.8,71,1)+" "+line([30,6],[30,16],.6,72),
+ book:()=>hand([[4,9],[17,12],[30,9],[30,27],[17,30],[4,27],[4,9]],1,73)+" "+line([17,12],[17,30],.6,74),
+ ball:()=>circ(17,17,13,13,1.2,75,1.1)+" "+hand([[6,10],[17,17],[28,10]],.8,76)+" "+hand([[6,25],[17,17],[28,25]],.8,77),
+ moon:()=>hand([[22,4],[10,8],[6,19],[13,29],[25,30],[31,24],[21,22],[16,14],[22,4]],1,78)+" "+line([28,7],[28,13],.5,79)+" "+line([25,10],[31,10],.5,80),
+ cup:()=>hand([[7,10],[9,29],[25,29],[27,10],[7,10]],1,81)+" "+circ(30,17,4,5,.6,82,.7,-1.3),
+ paint:()=>circ(17,17,14,11,1.2,83,1.1)+" "+circ(11,13,2.2,2.2,.3,84,1)+" "+circ(19,10,2.2,2.2,.3,85,1)+" "+circ(24,17,2.2,2.2,.3,86,1),
+ house:()=>hand([[5,16],[17,5],[29,16]],1,87)+" "+hand([[8,15],[8,30],[26,30],[26,15]],1,88)
+};
+const DAY=[
+ ["8:00","Встречаем и делаем зарядку","Воспитатель встречает каждого у двери, обнимает, если ребёнок хочет.","sun",C.sun],
+ ["8:30","Завтрак","Каша, омлет или сырники, тёплый чай.","plate",C.red],
+ ["9:15","Занятия","Речь, логика, английский. По 20 минут, в игре, без парт.","book",C.sky],
+ ["10:45","Прогулка","Своя закрытая площадка, в любую погоду кроме сильного мороза.","ball",C.leaf],
+ ["12:30","Обед","Суп, второе и компот. Добавку дают всегда.","plate",C.red],
+ ["13:00","Тихий час","Своя кровать, своё бельё. Воспитатель всё время рядом.","moon",C.vio],
+ ["15:30","Полдник","Выпечка от нашего повара, фрукты.","cup",C.sun],
+ ["16:00","Кружки","Танцы, лепка, шахматы, театр. Уже входят в стоимость.","paint",C.leaf],
+ ["18:30","Домой","Вы забираете ребёнка, а в WhatsApp уже фото его дня.","house",C.sky]
+];
+$("dayline").innerHTML=DAY.map((d,i)=>`<li class="rv"><span class="ic"><svg viewBox="0 0 34 34"><path class="cray" d="${IC[d[3]]()}" fill="none" stroke="${d[4]}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><time>${d[0]}</time><b>${d[1]}</b><span>${d[2]}</span></li>`).join("");
+
+/* ---------- menu ---------- */
+const MENU={
+ "Пн":[["Завтрак","Овсяная каша с яблоком","какао"],["Обед","Куриный суп с лапшой, гречка с котлетой","компот"],["Полдник","Сырники со сметаной","кефир"],["Ужин","Рыбная запеканка с овощами","чай"]],
+ "Вт":[["Завтрак","Омлет, хлеб с маслом","чай с молоком"],["Обед","Борщ, плов с говядиной","морс"],["Полдник","Булочка с изюмом","молоко"],["Ужин","Ленивые вареники","кисель"]],
+ "Ср":[["Завтрак","Рисовая каша с тыквой","какао"],["Обед","Суп-пюре из брокколи, тефтели с пюре","компот"],["Полдник","Творожная запеканка","кефир"],["Ужин","Овощное рагу с курицей","чай"]],
+ "Чт":[["Завтрак","Блины с джемом","чай с молоком"],["Обед","Сорпа с овощами, бешбармак детский","компот"],["Полдник","Печёное яблоко, печенье","молоко"],["Ужин","Макароны с сыром","кисель"]],
+ "Пт":[["Завтрак","Манная каша с ягодами","какао"],["Обед","Рассольник, рыбные котлеты с рисом","морс"],["Полдник","Пирожок с капустой","кефир"],["Ужин","Сырники и фрукты","чай"]]
+};
+const days=Object.keys(MENU), COL=[C.sun,C.red,C.leaf,C.sky];
+let md=Math.min(4,Math.max(0,(new Date().getDay()+6)%7));
+function renderMenu(){
+  $("tabs").innerHTML=days.map((d,i)=>`<button type="button" class="tab" role="tab" aria-selected="${i===md}" data-i="${i}">${["Понедельник","Вторник","Среда","Четверг","Пятница"][i]}</button>`).join("");
+  $("menuList").innerHTML=MENU[days[md]].map((m,i)=>`<li><span style="color:${COL[i]}">${m[0]}</span><b>${m[1]}</b><i>${m[2]}</i></li>`).join("");
+}
+$("tabs").addEventListener("click",e=>{const b=e.target.closest(".tab");if(!b)return;md=+b.dataset.i;renderMenu()});
+renderMenu();
+
+/* ---------- team ---------- */
+const TEAM=[["АС","Айгерим Сериковна","Заведующая, педагог-психолог, 14 лет в дошкольном образовании",C.red],["ЕВ","Елена Викторовна","Воспитатель средней группы, логопед, 9 лет с детьми",C.sky],["ДТ","Дина Тимуровна","Казахский язык и музыка, ведёт утренники и театр",C.leaf]];
+$("teamList").innerHTML=TEAM.map((t,i)=>`<div class="tm rv"><div class="av" style="color:${t[3]}"><svg viewBox="0 0 78 78"><path class="cray" d="${circ(39,39,33,33,3,90+i,1.15)}" fill="none" stroke="${t[3]}" stroke-width="4" stroke-linecap="round"/><path class="cray" d="${blobFill(39,39,28,28,9,2,95+i)}" fill="none" stroke="${t[3]}" stroke-width="7" stroke-linecap="round" opacity=".14"/></svg>${t[0]}</div><div><b>${t[1]}</b><span>${t[2]}</span></div></div>`).join("");
+
+/* ---------- visit ---------- */
+const MG=["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
+const DW=["вс","пн","вт","ср","чт","пт","сб"], DWF=["воскресенье","понедельник","вторник","среду","четверг","пятницу","субботу"];
+const today=new Date();today.setHours(0,0,0,0);
+const vdays=[];for(let d=new Date(today),n=0;vdays.length<6&&n<14;n++){d.setDate(d.getDate()+1);if(d.getDay()>0&&d.getDay()<6)vdays.push(new Date(d))}
+const TIMES=["10:00","11:30","15:00","17:30"];
+const AGES=[1.5,2,2.5,3,3.5,4,4.5,5,5.5,6];
+$("cDay").innerHTML=vdays.map((d,i)=>`<button type="button" class="chip" aria-pressed="false" data-i="${i}">${d.getDate()} ${MG[d.getMonth()].slice(0,3)}<small>${DW[d.getDay()]}</small></button>`).join("");
+$("cTime").innerHTML=TIMES.map((t,i)=>`<button type="button" class="chip" aria-pressed="false" data-i="${i}">${t}</button>`).join("");
+function renderAgeChips(){const c=$("cAge"),cur=st.ageV??st.age;c.innerHTML=AGES.map(a=>`<button type="button" class="chip" aria-pressed="${a===cur}" data-a="${a}">${String(a).replace(".",",")}<small>${a%1?"года":a>=5?"лет":"года"}</small></button>`).join("");const b=c.children[AGES.indexOf(cur)];if(b)c.scrollLeft=Math.max(0,b.offsetLeft-c.offsetLeft-c.clientWidth/2+b.offsetWidth/2)}
+$("cDay").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;st.day=+b.dataset.i;[...$("cDay").children].forEach((c,i)=>c.setAttribute("aria-pressed",i===st.day));upTicket()});
+$("cTime").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;st.time=+b.dataset.i;[...$("cTime").children].forEach((c,i)=>c.setAttribute("aria-pressed",i===st.time));upTicket()});
+$("cAge").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;st.ageV=+b.dataset.a;renderAgeChips();upTicket()});
+$("nm").addEventListener("input",upTicket);
+function upTicket(){
+  const a=st.ageV??st.age, g=grpOf(a);
+  $("tGroup").textContent=g.name;
+  const d=st.day!=null?vdays[st.day]:null, t=st.time!=null?TIMES[st.time]:null;
+  $("tWhen").textContent=d?`${DW[d.getDay()]}, ${d.getDate()} ${MG[d.getMonth()]}${t?", "+t:""}`:(t||"—");
+  const ok=!!(d&&t); $("send").setAttribute("aria-disabled",String(!ok));
+  $("tFine").textContent=ok?"Подтвердим в течение 15 минут":(d?"Выберите время":"Выберите день и время");
+  if(ok){const nm=$("nm").value.trim();$("send").href="https://wa.me/"+PHONE+"?text="+encodeURIComponent(`Здравствуйте! Хотим прийти на экскурсию в ${DWF[d.getDay()]}, ${d.getDate()} ${MG[d.getMonth()]}, в ${t}. Ребёнку ${yrs(a)} (${g.name.toLowerCase()}).${nm?" Меня зовут "+nm+".":""} Хотим также пробный день.`)}
+  else $("send").removeAttribute("href");
+}
+
+/* ---------- maps ---------- */
+const q=encodeURIComponent(ADDRESS);
+$("maps").innerHTML=[["2ГИС","https://2gis.kz/almaty/search/"+q],["Яндекс Карты","https://yandex.kz/maps/?text="+q],["Google Maps","https://www.google.com/maps/search/?api=1&query="+q]].map(m=>`<a class="btn" href="${m[1]}" target="_blank" rel="noopener">${m[0]}</a>`).join("");
+
+/* ---------- boot ---------- */
+updAge(); renderAgeChips(); upTicket();
+function size(){over.setAttribute("viewBox",`0 0 ${over.clientWidth} ${over.clientHeight}`);placeRing();draw()}
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(size);
+size();
+addEventListener("scroll",()=>{kick();$("nav").classList.toggle("solid",scrollY>40);const v=$("visit").getBoundingClientRect();$("mbar").classList.toggle("show",scrollY>hero.offsetHeight-innerHeight*.3&&!(v.top<innerHeight*.7&&v.bottom>innerHeight*.3))},{passive:true});
+let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(size,150)});
+const ro=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");ro.unobserve(en.target)}}),{rootMargin:"0px 0px -8% 0px"});
+document.querySelectorAll(".rv").forEach(el=>ro.observe(el));
+})();
+</script>
+</body>
+</html>
