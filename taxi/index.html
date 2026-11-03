@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#080A0D">
+<title>Ваш таксопарк в Алматы — подключение водителей и аренда авто для такси</title>
+<meta name="description" content="Подключение водителей к таксопарку в Алматы: аренда авто для такси от эконома до бизнеса, калькулятор дохода, заявка в WhatsApp за минуту.">
+<link rel="canonical" href="https://toktagalidanial58-sys.github.io/sites/taxi/index.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Твой авто. Твой доход. Твои правила.">
+<meta property="og:description" content="Таксопарк в Алматы: выбери автомобиль, оставь заявку и выходи на линию.">
+<meta property="og:url" content="https://toktagalidanial58-sys.github.io/sites/taxi/index.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080A0D'/%3E%3Cpath d='M14 40h36l-4-11c-1-3-3-5-6-5H24c-3 0-5 2-6 5z' fill='%23C7FF45'/%3E%3Ccircle cx='22' cy='42' r='5' fill='%23080A0D' stroke='%23C7FF45' stroke-width='3'/%3E%3Ccircle cx='42' cy='42' r='5' fill='%23080A0D' stroke='%23C7FF45' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Concept: «Ночная линия». The site lives in the hour a driver goes out on shift: a dark car on wet Almaty asphalt,
+   Kok-Tobe tower and the Alatau behind, a single strip of light running along the body. Lime is the colour of the
+   "online" status in a driver app — used only where money, action or status is. */
+:root{
+  color-scheme:dark;
+  --bg:#080A0D; --bg2:#0E1115; --card:#14171C; --card2:#1A1E24;
+  --fg:#F5F5F3; --muted:#8E949B; --dim:#5E646C; --line:rgba(245,245,243,.09); --line2:rgba(245,245,243,.18);
+  --lime:#C7FF45; --lime-ink:#0B0F04; --red:#FF5A4E;
+  --display:"Unbounded","Manrope",system-ui,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:18px; --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:80px}
+html,body{background:var(--bg);color:var(--fg)}
+body{margin:0;font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden}
+[hidden]{display:none!important}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:6px}
+img,svg{display:block;max-width:100%}
+.gut{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.inner{max-width:1240px;margin:0 auto}
+.k{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 22px}
+.k::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(32px,5.4vw,68px);line-height:1.02;text-transform:uppercase;text-wrap:balance}
+h2 em{font-style:normal;color:var(--lime)}
+.lead{color:var(--muted);font-size:clamp(16px,1.6vw,18px);max-width:34em;margin:22px 0 0}
+section{position:relative}
+.sec{padding-block:clamp(72px,10vw,130px)}
+.demo-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);border-radius:999px;padding:4px 10px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:0 28px;border-radius:999px;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;transition:transform .35s var(--ease),background .3s,color .3s,box-shadow .35s;white-space:nowrap;position:relative;overflow:hidden}
+.btn svg{width:18px;height:18px;transition:transform .35s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn:active{transform:scale(.97)}
+.btn-lime{background:var(--lime);color:var(--lime-ink);box-shadow:0 0 0 0 rgba(199,255,69,.0)}
+.btn-lime:hover{box-shadow:0 10px 40px -8px rgba(199,255,69,.55)}
+.btn-ghost{border:1px solid var(--line2);color:var(--fg);background:rgba(245,245,243,.03);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn-ghost:hover{border-color:var(--fg)}
+.btn[disabled]{opacity:.55;pointer-events:none}
+
+/* header */
+.hdr{position:fixed;inset:0 0 auto;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+.hdr.solid{background:rgba(8,10,13,.78);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-color:var(--line)}
+.hdr .row{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase}
+.logo i{width:30px;height:30px;border-radius:9px;background:var(--lime);display:grid;place-items:center}
+.logo i svg{width:20px;height:20px}
+.nav{display:flex;gap:30px;font-size:14px;font-weight:600;color:var(--muted)}
+.nav a{transition:color .25s;position:relative}
+.nav a:hover{color:var(--fg)}
+.hdr .btn{min-height:44px;padding:0 20px;font-size:12px}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line2);align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.burger span{display:block;width:18px;height:2px;background:var(--fg);border-radius:2px;transition:transform .35s var(--ease),opacity .2s}
+body.menu-open .burger span:first-child{transform:translateY(3.5px) rotate(45deg)}
+body.menu-open .burger span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.mmenu{position:fixed;inset:0;z-index:45;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:100px 28px 40px;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+body.menu-open .mmenu{opacity:1;visibility:visible}
+.mmenu a.ml{font-family:var(--display);font-weight:600;font-size:34px;text-transform:uppercase;padding:12px 0;border-bottom:1px solid var(--line);transform:translateY(20px);opacity:0;transition:transform .5s var(--ease),opacity .5s}
+body.menu-open .mmenu a.ml{transform:none;opacity:1}
+body.menu-open .mmenu a.ml:nth-child(2){transition-delay:.05s}
+body.menu-open .mmenu a.ml:nth-child(3){transition-delay:.1s}
+body.menu-open .mmenu a.ml:nth-child(4){transition-delay:.15s}
+body.menu-open .mmenu a.ml:nth-child(5){transition-delay:.2s}
+.mmenu .btn{margin-top:36px}
+@media (max-width:900px){.nav,.hdr .btn{display:none}.burger{display:flex}}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate}
+.scene{position:absolute;inset:0;z-index:-1;width:100%;height:100%;opacity:0;transition:opacity 1.8s ease}
+.loaded .scene{opacity:1}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(8,10,13,.92) 0%,rgba(8,10,13,.55) 38%,rgba(8,10,13,0) 62%),linear-gradient(0deg,var(--bg) 0%,rgba(8,10,13,0) 22%)}
+.hero-c{padding-top:130px;padding-bottom:clamp(60px,9vh,110px)}
+.hero h1{font-size:clamp(40px,6.3vw,92px);line-height:.96;text-transform:uppercase;letter-spacing:-.035em}
+.hero h1 .ln{display:block;overflow:hidden;padding:.12em 0 .04em;margin-top:-.12em}
+.hero h1 .ln span{display:inline-block;transform:translateY(110%);transition:transform 1.1s var(--ease)}
+.hero h1 .ln:nth-child(2) span{transition-delay:.12s}
+.hero h1 .ln:nth-child(3) span{transition-delay:.24s;color:var(--lime)}
+.loaded .hero h1 .ln span{transform:none}
+.hero .sub{color:#B9BEC4;font-size:clamp(16px,1.7vw,19px);max-width:30em;margin:28px 0 0;opacity:0;transform:translateY(14px);transition:opacity .9s .55s,transform .9s .55s var(--ease)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;opacity:0;transform:translateY(14px);transition:opacity .9s .75s,transform .9s .75s var(--ease)}
+.perks{list-style:none;padding:0;margin:44px 0 0;display:flex;flex-wrap:wrap;gap:10px 28px;opacity:0;transition:opacity .9s 1s}
+.perks li{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#C9CDD2}
+.perks li::before{content:"";width:18px;height:2px;background:var(--lime)}
+.loaded .hero .sub,.loaded .hero .cta{opacity:1;transform:none}
+.loaded .perks{opacity:1}
+.status{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;border-radius:999px;border:1px solid var(--line2);background:rgba(8,10,13,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:26px;opacity:0;transition:opacity .9s .2s}
+.loaded .status{opacity:1}
+.status b{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgba(199,255,69,.6);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(199,255,69,.6)}80%,100%{box-shadow:0 0 0 10px rgba(199,255,69,0)}}
+.scroll{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:36px;display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl}
+.scroll i{width:1px;height:60px;background:var(--line2);position:relative;overflow:hidden}
+.scroll i::after{content:"";position:absolute;left:0;top:-30%;width:1px;height:30%;background:var(--lime);animation:drip 2.2s infinite var(--ease)}
+@keyframes drip{to{top:110%}}
+@media (max-width:900px){
+  .hero{justify-content:flex-start}
+  .scene{position:relative;inset:auto;height:auto;aspect-ratio:1100/560;margin-top:64px;order:-1}
+  .hero::after{display:none}
+  .scene{-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 80%,transparent 100%)}
+  .hero-c{padding-top:8px;padding-bottom:40px}
+  .scroll{display:none}
+}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+
+/* section head */
+.sh{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;margin-bottom:clamp(40px,6vw,70px)}
+@media (max-width:760px){.sh{grid-template-columns:1fr}}
+
+/* CARS */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;align-items:center}
+.chip{min-height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line2);font-size:13px;font-weight:600;color:#C9CDD2;transition:background .25s,color .25s,border-color .25s}
+.chip:hover{border-color:var(--fg)}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.fsep{width:1px;height:26px;background:var(--line2);margin:0 6px}
+.toggle{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:#C9CDD2;min-height:42px;padding:0 6px;cursor:pointer;user-select:none}
+.toggle input{appearance:none;-webkit-appearance:none;width:38px;height:22px;border-radius:999px;background:var(--card2);border:1px solid var(--line2);position:relative;cursor:pointer;margin:0;transition:background .25s}
+.toggle input::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--muted);transition:transform .3s var(--ease),background .25s}
+.toggle input:checked{background:rgba(199,255,69,.2);border-color:var(--lime)}
+.toggle input:checked::after{transform:translateX(16px);background:var(--lime)}
+.grid-cars{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.car{position:relative;border-radius:var(--r);background:linear-gradient(180deg,var(--card) 0%,var(--bg2) 100%);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;transition:border-color .35s,transform .5s var(--ease);overflow:hidden;cursor:pointer;text-align:left;width:100%}
+.car::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 200px at var(--mx,50%) var(--my,30%),rgba(199,255,69,.08),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none}
+.car:hover{border-color:var(--line2);transform:translateY(-4px)}
+.car:hover::before{opacity:1}
+.car .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cls{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+.av{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--muted)}
+.av::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--muted)}
+.av.on{color:#D6DADF}.av.on::before{background:var(--lime);box-shadow:0 0 8px var(--lime)}
+.car .pic{position:relative;margin:26px -6px 14px;aspect-ratio:1000/400}
+.car .pic svg{width:100%;height:100%;overflow:visible;transition:transform .7s var(--ease)}
+.car:hover .pic svg{transform:translateX(8px)}
+.car .pic::after{content:"";position:absolute;left:8%;right:8%;bottom:4%;height:10%;background:radial-gradient(closest-side,rgba(0,0,0,.7),transparent);z-index:-1}
+.car h3{font-size:20px;line-height:1.15;text-transform:none;letter-spacing:-.01em}
+.car .yr{color:var(--muted);font-size:14px;margin-top:4px}
+.specs{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 18px;padding:0;list-style:none}
+.specs li{font-size:12px;font-weight:600;color:#C9CDD2;padding:5px 10px;border-radius:8px;background:rgba(245,245,243,.05)}
+.car .bot{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid var(--line)}
+.price small{display:block;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.price b{font-family:var(--display);font-size:22px;font-weight:600;letter-spacing:-.02em}
+.price b span{font-family:var(--body);font-size:13px;color:var(--muted);font-weight:500;letter-spacing:0}
+.pick{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--lime-ink);background:var(--lime);border-radius:999px;padding:11px 16px;white-space:nowrap}
+.empty{grid-column:1/-1;padding:60px 20px;text-align:center;color:var(--muted);border:1px dashed var(--line2);border-radius:var(--r)}
+.note{font-size:13px;color:var(--dim);margin-top:22px}
+
+/* modal */
+dialog{border:0;padding:0;background:transparent;color:var(--fg);max-width:none;max-height:none;width:100%;height:100%}
+dialog::backdrop{background:rgba(4,5,7,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+dialog[open]{display:flex;align-items:center;justify-content:center;padding:20px}
+.sheet{width:min(920px,100%);max-height:calc(100dvh - 40px);overflow:auto;background:var(--card);border:1px solid var(--line2);border-radius:24px;position:relative;animation:pop .45s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.98)}}
+.x{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;background:rgba(245,245,243,.06);display:grid;place-items:center;z-index:2;transition:background .2s}
+.x:hover{background:rgba(245,245,243,.14)}
+.x svg{width:18px;height:18px}
+.m-hero{padding:34px 34px 0;background:radial-gradient(700px 260px at 60% 100%,rgba(199,255,69,.09),transparent 70%)}
+.m-hero svg.carsvg{width:100%;height:auto;margin-top:18px}
+.m-body{display:grid;grid-template-columns:1.15fr 1fr;gap:34px;padding:28px 34px 34px}
+.m-body h3{font-size:28px;letter-spacing:-.02em}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin-top:16px}
+.tbl td{padding:11px 0;border-bottom:1px solid var(--line)}
+.tbl td:first-child{color:var(--muted)}
+.tbl td:last-child{text-align:right;font-weight:600}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.slot{aspect-ratio:4/3;border-radius:12px;border:1px dashed var(--line2);display:grid;place-items:center;text-align:center;font-size:11px;color:var(--dim);padding:6px;line-height:1.3}
+.m-act{position:sticky;bottom:0;padding:18px 34px 26px;background:linear-gradient(180deg,rgba(20,23,28,0),var(--card) 40%)}
+.m-act .btn{width:100%}
+@media (max-width:760px){
+  dialog[open]{align-items:flex-end;padding:0}
+  .sheet{border-radius:24px 24px 0 0;max-height:92dvh;animation:up .45s var(--ease)}
+  @keyframes up{from{transform:translateY(40px);opacity:0}}
+  .m-body{grid-template-columns:1fr;padding:22px 20px calc(24px + env(safe-area-inset-bottom,0px))}
+  .m-hero{padding:26px 20px 0}
+  .m-body{padding-bottom:4px}
+  .m-act{padding:14px 20px calc(16px + env(safe-area-inset-bottom,0px))}
+}
+
+/* CALCULATOR */
+.calc{display:grid;grid-template-columns:1.1fr 1fr;gap:16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3vw,36px)}
+.fld{padding:16px 0;border-bottom:1px solid var(--line)}
+.fld:first-of-type{padding-top:0}
+.fld:last-of-type{border-bottom:0;padding-bottom:0}
+.fld .lab{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.fld label{font-size:14px;font-weight:600;color:#C9CDD2}
+.fld output{font-family:var(--display);font-size:17px;font-weight:600;letter-spacing:-.01em;white-space:nowrap}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;margin:0;cursor:pointer;--p:50%}
+input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:4px;background:linear-gradient(90deg,var(--lime) var(--p),rgba(245,245,243,.12) var(--p))}
+input[type=range]::-moz-range-track{height:4px;border-radius:4px;background:rgba(245,245,243,.12)}
+input[type=range]::-moz-range-progress{height:4px;border-radius:4px;background:var(--lime)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--fg);border:5px solid var(--bg);margin-top:-10px;box-shadow:0 0 0 1px var(--line2);transition:transform .2s}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--fg);border:5px solid var(--bg);box-shadow:0 0 0 1px var(--line2)}
+input[type=range]:active::-webkit-slider-thumb{transform:scale(1.15)}
+.res{display:flex;flex-direction:column;background:linear-gradient(160deg,#171B13 0%,var(--card) 55%);border-color:rgba(199,255,69,.18)}
+.res .k{margin-bottom:12px}
+.big{font-family:var(--display);font-weight:600;font-size:clamp(40px,6vw,64px);line-height:1;letter-spacing:-.04em;color:var(--lime);font-variant-numeric:tabular-nums}
+.big.neg{color:var(--red)}
+.per{color:var(--muted);font-size:14px;margin-top:10px}
+.bar{display:flex;height:12px;border-radius:12px;overflow:hidden;margin:30px 0 22px;background:rgba(245,245,243,.06);gap:2px}
+.bar i{display:block;height:100%;transition:flex-grow .5s var(--ease);flex-basis:0}
+.bd{list-style:none;margin:0;padding:0;font-size:14px}
+.bd li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.bd li:last-child{border-bottom:0;font-weight:700}
+.bd span{display:flex;align-items:center;gap:10px;color:#C9CDD2}
+.bd span i{width:9px;height:9px;border-radius:3px}
+.bd b{font-weight:600;font-variant-numeric:tabular-nums}
+.disc{font-size:12.5px;color:var(--dim);margin:auto 0 0;padding-top:22px;line-height:1.5}
+@media (max-width:900px){.calc{grid-template-columns:1fr}}
+
+/* STEPS */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative}
+.steps::before,.steps::after{content:"";position:absolute;left:0;right:0;top:34px;height:1px;background:var(--line2)}
+.steps::after{background:var(--lime);transform-origin:left;transform:scaleX(var(--prog,0));transition:transform 1.4s var(--ease);box-shadow:0 0 12px var(--lime)}
+.step{position:relative;padding-top:72px}
+.step .dot{position:absolute;top:24px;left:0;width:21px;height:21px;border-radius:50%;background:var(--bg);border:1px solid var(--line2);display:grid;place-items:center;transition:border-color .5s,background .5s;z-index:1}
+.step .dot::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--dim);transition:background .5s}
+.step.on .dot{border-color:var(--lime)}
+.step.on .dot::after{background:var(--lime);box-shadow:0 0 8px var(--lime)}
+.step .n{font-family:var(--display);font-size:56px;font-weight:600;line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1px var(--line2);transition:-webkit-text-stroke-color .6s}
+.step.on .n{-webkit-text-stroke-color:var(--lime)}
+.step h3{font-size:18px;line-height:1.25;margin:22px 0 10px;letter-spacing:-.01em}
+.step p{margin:0;color:var(--muted);font-size:15px}
+@media (max-width:900px){
+  .steps{grid-template-columns:1fr;gap:0}
+  .steps::before,.steps::after{left:10px;right:auto;top:0;bottom:0;width:1px;height:auto}
+  .steps::after{transform-origin:top;transform:scaleY(var(--prog,0))}
+  .step{padding:0 0 44px 54px}
+  .step .dot{top:4px}
+  .step .n{font-size:40px}
+  .step h3{margin-top:12px}
+}
+
+/* BENEFITS bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;min-height:300px;overflow:hidden;position:relative}
+.tile .art{flex:1;display:flex;align-items:center;justify-content:center;min-height:130px;margin-bottom:22px}
+.tile .art svg{width:100%;max-width:300px;height:auto;overflow:visible}
+.t1 .art svg,.t4 .art svg{max-width:520px}
+.tile h3{font-size:19px;line-height:1.25;letter-spacing:-.01em}
+.tile p{color:var(--muted);font-size:15px;margin:10px 0 0}
+.t1{grid-column:span 4}.t2{grid-column:span 2}.t3{grid-column:span 2}.t4{grid-column:span 4}.t5{grid-column:span 3}.t6{grid-column:span 3}
+.t1{background:radial-gradient(600px 300px at 80% 20%,rgba(199,255,69,.07),transparent 60%),var(--card)}
+@media (max-width:900px){.bento{grid-template-columns:1fr}.t1,.t2,.t3,.t4,.t5,.t6{grid-column:auto}.tile{min-height:0}}
+
+/* GALLERY */
+.gal{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(120px,14vw,190px);gap:12px}
+.g{position:relative;border-radius:18px;overflow:hidden;cursor:zoom-in;background:var(--card);border:1px solid var(--line)}
+.g svg{width:100%;height:100%;transition:transform 1.1s var(--ease)}
+.g:hover svg{transform:scale(1.05)}
+.g figcaption{position:absolute;left:14px;bottom:12px;font-size:12px;font-weight:600;color:#D6DADF;letter-spacing:.04em}
+.g1{grid-column:span 7;grid-row:span 2}.g2{grid-column:span 5;grid-row:span 1}.g3{grid-column:span 5;grid-row:span 1}
+.g4{grid-column:span 4;grid-row:span 2}.g5{grid-column:span 4;grid-row:span 2}.g6{grid-column:span 4;grid-row:span 2}
+@media (max-width:760px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}.g1{grid-column:span 2}.g2,.g3,.g4,.g5,.g6{grid-column:span 1;grid-row:span 1}.g1{grid-row:span 2}}
+.lb .sheet{width:min(1180px,100%);background:#050608;padding:0;overflow:hidden}
+.lb figure{margin:0;position:relative}
+.lb figure svg{width:100%;height:auto;max-height:calc(100dvh - 140px)}
+.lb .cap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;font-size:14px;color:var(--muted)}
+.lb .nav2{display:flex;gap:8px}
+.lb .nav2 button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center}
+.lb .nav2 button:hover{border-color:var(--fg)}
+.lb .nav2 svg{width:18px;height:18px}
+@media (max-width:760px){.lb[open]{align-items:center;padding:12px}.lb .sheet{border-radius:18px;animation:pop .45s var(--ease)}}
+
+/* REVIEWS */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev{aspect-ratio:9/14;border-radius:22px;border:1px dashed var(--line2);background:linear-gradient(180deg,rgba(245,245,243,.02),rgba(245,245,243,0));display:flex;flex-direction:column;justify-content:space-between;padding:22px;position:relative;overflow:hidden}
+.rev .play{width:64px;height:64px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;align-self:center;margin-top:auto;margin-bottom:auto}
+.rev .play svg{width:20px;height:20px;margin-left:3px;fill:var(--dim)}
+.rev .who{display:flex;align-items:center;gap:12px}
+.rev .ava{width:40px;height:40px;border-radius:50%;background:rgba(245,245,243,.06);border:1px dashed var(--line2)}
+.rev .ln1{height:9px;width:110px;border-radius:5px;background:rgba(245,245,243,.08)}
+.rev .ln2{height:8px;width:70px;border-radius:5px;background:rgba(245,245,243,.05);margin-top:8px}
+.rev .ph{font-size:12px;color:var(--dim);text-align:center;margin-top:14px}
+@media (max-width:760px){.revs{grid-template-columns:1fr 1fr}.rev:nth-child(3){display:none}}
+
+/* FAQ */
+.faq{max-width:900px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;font-size:clamp(17px,2vw,21px);font-weight:600;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line2);position:relative;transition:transform .4s var(--ease),background .3s,border-color .3s}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--fg);transform:translate(-50%,-50%)}
+.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .4s var(--ease)}
+.faq details[open] summary i{background:var(--lime);border-color:var(--lime)}
+.faq details[open] summary i::before,.faq details[open] summary i::after{background:var(--lime-ink)}
+.faq details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+.faq .ans{overflow:hidden}
+.faq .ans p{margin:0 0 26px;color:var(--muted);max-width:44em}
+
+/* FORM */
+.join{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:start}
+.form{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3vw,40px)}
+.f{margin-bottom:20px}
+.f>label,.f .lbl{display:block;font-size:13px;font-weight:600;color:#C9CDD2;margin-bottom:9px}
+.inp{width:100%;min-height:54px;border-radius:14px;border:1px solid var(--line2);background:var(--bg2);padding:0 18px;font-size:16px;transition:border-color .25s,box-shadow .25s}
+textarea.inp{padding:14px 18px;min-height:96px;resize:vertical}
+.inp::placeholder{color:var(--dim)}
+.inp:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 4px rgba(199,255,69,.12)}
+.f.err .inp{border-color:var(--red)}
+.f .msg{display:none;font-size:13px;color:var(--red);margin-top:7px}
+.f.err .msg{display:block}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:12px;border:1px solid var(--line2);font-size:14px;font-weight:600;color:#C9CDD2;cursor:pointer;transition:all .2s}
+.seg input:checked+span{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.seg input:focus-visible+span{outline:2px solid var(--lime);outline-offset:3px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:600px){.row2{grid-template-columns:1fr}}
+.f>.consent,.consent{display:flex;margin:0;gap:12px;align-items:flex-start;font-size:13px;color:var(--muted);cursor:pointer;line-height:1.5}
+.consent input{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;border-radius:7px;border:1px solid var(--line2);background:var(--bg2);margin:0;display:grid;place-items:center;cursor:pointer}
+.consent input:checked{background:var(--lime);border-color:var(--lime)}
+.consent input:checked::after{content:"";width:10px;height:6px;border-left:2px solid var(--lime-ink);border-bottom:2px solid var(--lime-ink);transform:translateY(-1px) rotate(-45deg)}
+.f.err .consent input{border-color:var(--red)}
+.form .btn{width:100%;margin-top:8px}
+.fhint{font-size:12.5px;color:var(--dim);margin-top:14px;text-align:center}
+.contacts{list-style:none;margin:40px 0 0;padding:0;border-top:1px solid var(--line)}
+.contacts li{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);font-size:15px}
+.contacts li span{color:var(--muted)}
+.contacts li b{font-weight:600;text-align:right}
+@media (max-width:900px){.join{grid-template-columns:1fr}}
+.pv{white-space:pre-wrap;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:18px;font-size:14px;line-height:1.6;color:#D6DADF;margin:18px 0 0}
+.ok-sheet{width:min(560px,100%);padding:34px}
+.ok-sheet h3{font-size:24px;letter-spacing:-.02em;padding-right:40px}
+.ok-sheet p{color:var(--muted);margin:10px 0 0;font-size:15px}
+.ok-sheet .btn{width:100%;margin-top:22px}
+@media (max-width:760px){.ok-sheet{padding:28px 20px calc(24px + env(safe-area-inset-bottom,0px))}}
+
+/* MAP */
+.loc{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.mapbox{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:var(--bg2);min-height:380px}
+.mapbox svg{position:absolute;inset:0;width:100%;height:100%}
+.mapbox .ph{position:absolute;left:24px;right:24px;bottom:22px;display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted);background:rgba(8,10,13,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.mapbox .ph svg{position:static;width:20px;height:20px;flex:none}
+.locinfo .contacts{margin-top:0;border-top:0}
+.locinfo .btn{width:100%;margin-top:22px}
+@media (max-width:900px){.loc{grid-template-columns:1fr}.mapbox{min-height:260px}}
+
+/* footer, floating */
+footer{border-top:1px solid var(--line);padding-block:44px calc(110px + env(safe-area-inset-bottom,0px));color:var(--dim);font-size:13px}
+footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+.fab{position:fixed;right:max(22px,env(safe-area-inset-right,0px));bottom:max(22px,env(safe-area-inset-bottom,0px));z-index:40;width:62px;height:62px;border-radius:50%;background:var(--lime);display:grid;place-items:center;box-shadow:0 12px 40px -8px rgba(199,255,69,.5);transition:transform .35s var(--ease),opacity .35s;transform:scale(.6);opacity:0}
+.fab.show{transform:none;opacity:1}
+.fab:hover{transform:scale(1.07)}
+.fab svg{width:28px;height:28px}
+.mbar{display:none}
+@media (max-width:760px){
+  .fab{display:none}
+  .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(8,10,13,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .45s var(--ease)}
+  .mbar.show{transform:none}
+  .mbar .btn{flex:1;min-height:52px}
+  .mbar .wa{flex:none;width:52px;min-height:52px;padding:0;border-radius:50%}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- One sedan, side profile, facing left. Local box 0..1000 × 0..370, wheels touch y=365. -->
+    <symbol id="sedan" viewBox="0 40 1000 340">
+      <path class="body" fill="currentColor" d="M40 240C36 222 40 204 58 194L118 180C200 168 280 160 340 152C382 132 420 108 458 96C520 86 600 84 662 90C722 100 772 124 806 142C852 147 902 151 936 157C954 164 962 182 960 202L958 244C957 262 948 276 930 278L853 278A70 70 0 0 0 727 278L279 278A70 70 0 0 0 153 278L76 278C52 278 42 262 40 240Z"/>
+      <path fill="#05070A" opacity=".82" d="M360 152C394 132 426 114 462 104C522 95 600 94 650 99C698 108 738 124 768 140Z"/>
+      <rect x="552" y="96" width="9" height="52" fill="currentColor"/>
+      <path fill="none" stroke="#000" stroke-opacity=".45" stroke-width="2" d="M364 156L362 262M560 150L560 270M768 144L770 252"/>
+      <path fill="none" stroke="#fff" stroke-opacity=".10" stroke-width="2" d="M118 206C380 196 700 194 954 200"/>
+      <path class="hl" fill="#E8F6FF" d="M50 214C52 204 60 198 72 195L126 186C118 196 104 206 84 212Z"/>
+      <path class="tl" fill="#FF3B30" d="M944 166C952 170 956 178 957 188L928 190C930 180 934 172 944 166Z"/>
+      <g class="wheel">
+        <circle cx="216" cy="309" r="56" fill="#07090B"/><circle cx="216" cy="309" r="37" fill="#171B20" stroke="#2C3239" stroke-width="2"/>
+        <path stroke="#2C3239" stroke-width="5" d="M216 274V344M181 309H251M191 284L241 334M241 284L191 334"/><circle cx="216" cy="309" r="9" fill="#2C3239"/>
+      </g>
+      <g class="wheel">
+        <circle cx="790" cy="309" r="56" fill="#07090B"/><circle cx="790" cy="309" r="37" fill="#171B20" stroke="#2C3239" stroke-width="2"/>
+        <path stroke="#2C3239" stroke-width="5" d="M790 274V344M755 309H825M765 284L815 334M815 284L765 334"/><circle cx="790" cy="309" r="9" fill="#2C3239"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="hdr gut" id="hdr">
+  <div class="inner row">
+    <a href="#top" class="logo" aria-label="На главную"><i><svg viewBox="0 0 24 24" fill="none"><path d="M3 15h18l-1.6-4.6C18.9 9 18 8.4 16.8 8.4H7.2C6 8.4 5.1 9 4.6 10.4z" fill="#0B0F04"/><circle cx="7.5" cy="15.5" r="2.2" fill="#C7FF45" stroke="#0B0F04" stroke-width="1.6"/><circle cx="16.5" cy="15.5" r="2.2" fill="#C7FF45" stroke="#0B0F04" stroke-width="1.6"/></svg></i><span data-cfg="short">Ваш парк</span></a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#cars">Автомобили</a><a href="#income">Доход</a><a href="#start">Как начать</a><a href="#faq">Вопросы</a><a href="#contacts">Контакты</a>
+    </nav>
+    <a href="#join" class="btn btn-lime">Подключиться</a>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mmenu"><span></span><span></span></button>
+  </div>
+</header>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <a class="ml" href="#cars">Автомобили</a><a class="ml" href="#income">Доход</a><a class="ml" href="#start">Как начать</a><a class="ml" href="#faq">Вопросы</a><a class="ml" href="#contacts">Контакты</a>
+  <a href="#join" class="btn btn-lime">Подключиться к парку</a>
+</div>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero" aria-labelledby="h1">
+  <svg class="scene" id="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05070A"/><stop offset=".55" stop-color="#0A0E13"/><stop offset=".78" stop-color="#121A17"/><stop offset="1" stop-color="#0A0D10"/></linearGradient>
+      <radialGradient id="glow" cx=".62" cy=".78" r=".5"><stop offset="0" stop-color="#2B3A1C" stop-opacity=".55"/><stop offset="1" stop-color="#0A0E13" stop-opacity="0"/></radialGradient>
+      <linearGradient id="road" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0D1013"/><stop offset="1" stop-color="#050607"/></linearGradient>
+      <linearGradient id="paint" x1="0" y1="0" x2="0" y2="1"><stop offset=".08" stop-color="#2E353E"/><stop offset=".3" stop-color="#161A1F"/><stop offset=".62" stop-color="#0E1114"/><stop offset="1" stop-color="#06080A"/></linearGradient>
+      <linearGradient id="sweep" gradientUnits="userSpaceOnUse" x1="-400" y1="0" x2="-100" y2="0">
+        <stop offset="0" stop-color="#C7FF45" stop-opacity="0"/><stop offset=".5" stop-color="#F3FFD6" stop-opacity="1"/><stop offset="1" stop-color="#C7FF45" stop-opacity="0"/>
+        <animateTransform id="sw" attributeName="gradientTransform" type="translate" from="0 0" to="1500 0" dur="3.2s" begin="1.2s;sw.end+3.5s"/>
+      </linearGradient>
+      <linearGradient id="glintG" gradientUnits="userSpaceOnUse" x1="1700" y1="0" x2="2100" y2="0">
+        <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="-1700 0" dur="3.2s" begin="1.2s;sw.end+3.5s"/>
+      </linearGradient>
+      <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EAF6FF" stop-opacity=".38"/><stop offset="1" stop-color="#EAF6FF" stop-opacity="0"/></linearGradient>
+      <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".32"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <mask id="refl"><rect x="0" y="835" width="1600" height="200" fill="url(#fade)"/></mask>
+      <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
+      <filter id="blur20"><feGaussianBlur stdDeviation="20"/></filter>
+      <clipPath id="bodyClip"><path transform="translate(1560 470) scale(-1 1)" d="M40 240C36 222 40 204 58 194L118 180C200 168 280 160 340 152C382 132 420 108 458 96C520 86 600 84 662 90C722 100 772 124 806 142C852 147 902 151 936 157C954 164 962 182 960 202L958 244C957 262 948 276 930 278L853 278A70 70 0 0 0 727 278L279 278A70 70 0 0 0 153 278L76 278C52 278 42 262 40 240Z"/></clipPath>
+    </defs>
+    <rect width="1600" height="900" fill="url(#sky)"/>
+    <rect width="1600" height="900" fill="url(#glow)"/>
+    <g id="stars" opacity=".7"></g>
+    <!-- far ridge: Zailiysky Alatau -->
+    <g class="px" data-d="6">
+      <path fill="#0E1318" d="M0 520L90 470L170 488L260 420L330 446L420 372L470 392L540 330L610 368L690 312L760 352L850 300L930 344L1010 290L1090 336L1170 296L1250 344L1340 306L1420 352L1500 318L1600 360V700H0Z"/>
+      <path fill="#1C232B" opacity=".9" d="M540 330L566 350L552 352L578 372L540 362L520 344ZM690 312L712 330L700 332L730 352L690 342L672 328ZM850 300L874 320L860 322L890 344L850 332L830 318ZM1010 290L1036 312L1022 314L1052 336L1010 322L992 308ZM1170 296L1194 316L1180 318L1206 338L1170 326L1152 312ZM1340 306L1362 324L1350 326L1376 346L1340 334L1322 320Z"/>
+    </g>
+    <g class="px" data-d="10">
+      <path fill="#0B0F13" d="M0 590L120 560L240 576L360 532L470 556L600 520L720 548L840 512L980 546L1100 520L1240 552L1380 526L1500 552L1600 540V700H0Z"/>
+    </g>
+    <!-- city -->
+    <g class="px" data-d="16">
+      <path fill="#090C0F" d="M150 690L210 640L290 612L380 626L450 660L470 690Z"/>
+      <!-- Kok-Tobe TV tower -->
+      <path fill="#090C0F" d="M296 616L300 470L303 470L307 616Z"/><path fill="#090C0F" d="M290 520h20v6h-20zM288 560h24v5h-24zM293 486h14v5h-14z"/>
+      <circle id="tip" cx="301.5" cy="466" r="3.2" fill="#FF3B30"/>
+      <g id="city" fill="#080B0E"></g>
+      <g id="wins"></g>
+    </g>
+    <!-- street lamps -->
+    <g class="px" data-d="22" id="lamps"></g>
+    <!-- road -->
+    <rect y="690" width="1600" height="210" fill="url(#road)"/>
+    <rect y="689" width="1600" height="2" fill="#1A2120" opacity=".8"/>
+    <g id="wet" opacity=".55"></g>
+    <path d="M0 800H1600" stroke="#1C2126" stroke-width="2" stroke-dasharray="70 60" opacity=".7"/>
+    <!-- car -->
+    <g id="car" class="px" data-d="-8"><g id="carS" transform="translate(1600 905) scale(.74) translate(-1590 -905)">
+      <polygon points="1520,668 1600,600 1600,780" fill="url(#beam)" filter="url(#blur6)" opacity=".9"/>
+      <g mask="url(#refl)"><g transform="translate(0 1670) scale(1 -1) translate(1560 470) scale(-1 1)" style="color:#1A1F25"><use href="#sedan" x="0" y="40" width="1000" height="340"/></g></g>
+      <ellipse cx="1060" cy="836" rx="470" ry="18" fill="#000" opacity=".75" filter="url(#blur6)"/>
+      <g transform="translate(1560 470) scale(-1 1)">
+        <use href="#sedan" x="0" y="40" width="1000" height="340" style="color:#12161B"/>
+        <path fill="url(#paint)" d="M40 240C36 222 40 204 58 194L118 180C200 168 280 160 340 152C382 132 420 108 458 96C520 86 600 84 662 90C722 100 772 124 806 142C852 147 902 151 936 157C954 164 962 182 960 202L958 244C957 262 948 276 930 278L853 278A70 70 0 0 0 727 278L279 278A70 70 0 0 0 153 278L76 278C52 278 42 262 40 240Z"/>
+        <path fill="#05070A" opacity=".9" d="M360 152C394 132 426 114 462 104C522 95 600 94 650 99C698 108 738 124 768 140Z"/>
+        <rect x="552" y="96" width="9" height="52" fill="#14181D"/>
+        <path fill="none" stroke="#000" stroke-opacity=".55" stroke-width="2" d="M364 156L362 262M560 150L560 270M768 144L770 252"/>
+        <!-- rim light that never moves -->
+        <path fill="none" stroke="#3A424C" stroke-width="2" d="M118 180C200 168 280 160 340 152C382 132 420 108 458 96C520 86 600 84 662 90C722 100 772 124 806 142C852 147 902 151 936 157"/>
+        <path fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="2" d="M118 206C380 196 700 194 954 200"/>
+        <path fill="#E8F6FF" d="M50 214C52 204 60 198 72 195L126 186C118 196 104 206 84 212Z"/>
+        <path fill="#FF3B30" d="M944 166C952 170 956 178 957 188L928 190C930 180 934 172 944 166Z"/>
+        <ellipse cx="88" cy="203" rx="40" ry="14" fill="#DDF2FF" opacity=".55" filter="url(#blur6)"/>
+        <ellipse cx="946" cy="178" rx="20" ry="10" fill="#FF3B30" opacity=".6" filter="url(#blur6)"/>
+      </g>
+      <!-- the strip of light running along the body (gradient sits in the flipped car space, so it runs from the nose to the tail) -->
+      <path transform="translate(1560 470) scale(-1 1)" fill="none" stroke="url(#sweep)" stroke-width="3" stroke-linecap="round" d="M118 180C200 168 280 160 340 152C382 132 420 108 458 96C520 86 600 84 662 90C722 100 772 124 806 142C852 147 902 151 936 157"/>
+      <path transform="translate(1560 470) scale(-1 1)" fill="none" stroke="url(#sweep)" stroke-width="2" opacity=".6" d="M118 206C380 196 700 194 954 200"/>
+      <rect x="560" y="470" width="1000" height="300" fill="url(#glintG)" clip-path="url(#bodyClip)"/>
+      <g transform="translate(1560 470) scale(-1 1)">
+        <g><circle cx="216" cy="309" r="56" fill="#07090B"/><circle cx="216" cy="309" r="37" fill="#1A1E24" stroke="#3A424C" stroke-width="2"/><path stroke="#3A424C" stroke-width="5" d="M216 274V344M181 309H251M191 284L241 334M241 284L191 334"/><circle cx="216" cy="309" r="9" fill="#C7FF45"/></g>
+        <g><circle cx="790" cy="309" r="56" fill="#07090B"/><circle cx="790" cy="309" r="37" fill="#1A1E24" stroke="#3A424C" stroke-width="2"/><path stroke="#3A424C" stroke-width="5" d="M790 274V344M755 309H825M765 284L815 334M815 284L765 334"/><circle cx="790" cy="309" r="9" fill="#C7FF45"/></g>
+      </g>
+      <!-- roof sign -->
+      <g transform="translate(1000 548)"><rect x="-38" y="-14" width="76" height="16" rx="4" fill="#C7FF45"/><rect x="-38" y="-14" width="76" height="16" rx="4" fill="#C7FF45" filter="url(#blur6)" opacity=".7"/><text x="0" y="-2.5" text-anchor="middle" font-family="Unbounded,sans-serif" font-size="10" font-weight="700" fill="#0B0F04" letter-spacing="1.5">TAXI</text></g>
+    </g>
+    </g>
+    <rect y="860" width="1600" height="40" fill="#080A0D" opacity=".6"/>
+  </svg>
+
+  <div class="hero-c gut">
+    <div class="inner">
+      <p class="status"><b></b>Таксопарк · Алматы · на линии</p>
+      <h1 id="h1"><span class="ln"><span>Твой авто.</span></span><span class="ln"><span>Твой доход.</span></span><span class="ln"><span>Твои правила.</span></span></h1>
+      <p class="sub">Подключайся к таксопарку в Алматы. Выбирай автомобиль, выходи на линию и начинай зарабатывать.</p>
+      <div class="cta">
+        <a href="#join" class="btn btn-lime">Подключиться к парку<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#cars" class="btn btn-ghost">Выбрать авто</a>
+      </div>
+      <ul class="perks" id="perks"></ul>
+    </div>
+  </div>
+  <div class="scroll" aria-hidden="true"><i></i>Листайте</div>
+</section>
+
+<!-- CARS -->
+<section class="sec gut" id="cars" aria-labelledby="carsT">
+  <div class="inner">
+    <div class="sh">
+      <div class="rv"><p class="k">Автопарк</p><h2 id="carsT">Выбери <em>свою</em> машину</h2></div>
+      <span class="demo-tag rv d1">Демо: модели и цены — пример</span>
+    </div>
+    <div class="filters rv" role="group" aria-label="Фильтры">
+      <div id="fCls" style="display:contents"></div>
+      <span class="fsep" aria-hidden="true"></span>
+      <div id="fBox" style="display:contents"></div>
+      <span class="fsep" aria-hidden="true"></span>
+      <label class="toggle"><input type="checkbox" id="fAv"> Только свободные</label>
+    </div>
+    <div class="grid-cars" id="carGrid" aria-live="polite"></div>
+    <p class="note">Классы Эконом, Комфорт, Комфорт+ и Бизнес — категории сайта. Парк показывает только те машины, которые у него есть.</p>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="sec gut" id="income" aria-labelledby="incT" style="background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%)">
+  <div class="inner">
+    <div class="sh">
+      <div class="rv"><p class="k">Калькулятор</p><h2 id="incT">Посчитай, что <em>останется</em> тебе</h2><p class="lead">Подставь свои цифры: выручку, смены, аренду и расходы. Результат пересчитывается сразу.</p></div>
+    </div>
+    <div class="calc">
+      <div class="panel rv" id="calcIn"></div>
+      <div class="panel res rv d1" aria-live="polite">
+        <p class="k">Предварительный остаток за месяц</p>
+        <div class="big" id="cRes">0 ₸</div>
+        <p class="per" id="cPer"></p>
+        <div class="bar" id="cBar" aria-hidden="true"></div>
+        <ul class="bd" id="cBd"></ul>
+        <p class="disc">Это пример расчёта, а не обещание дохода. Начальные значения — условные. Налоги и прочие платежи могут быть не учтены. Точные условия аренды и комиссии сообщит парк.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="sec gut" id="start" aria-labelledby="stT">
+  <div class="inner">
+    <div class="sh"><div class="rv"><p class="k">Как начать</p><h2 id="stT">Четыре шага <em>до линии</em></h2></div></div>
+    <ol class="steps" id="steps">
+      <li class="step"><span class="dot"></span><div class="n">01</div><h3>Оставь заявку</h3><p>Имя, номер и класс машины. Займёт меньше минуты.</p></li>
+      <li class="step"><span class="dot"></span><div class="n">02</div><h3>Получи консультацию</h3><p>Расскажем условия аренды, комиссии и ответим на вопросы.</p></li>
+      <li class="step"><span class="dot"></span><div class="n">03</div><h3>Выбери автомобиль</h3><p>Посмотришь свободные машины и выберешь подходящую.</p></li>
+      <li class="step"><span class="dot"></span><div class="n">04</div><h3>Выходи на линию</h3><p>После оформления документов и подключения можно работать.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="sec gut" aria-labelledby="bnT" style="padding-top:0">
+  <div class="inner">
+    <div class="sh"><div class="rv"><p class="k">Почему мы</p><h2 id="bnT">Работать с парком — <em>понятно</em></h2></div></div>
+    <div class="bento" id="bento"></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec gut" aria-labelledby="glT" style="padding-top:0">
+  <div class="inner">
+    <div class="sh"><div class="rv"><p class="k">Галерея</p><h2 id="glT">Машины <em>парка</em></h2></div><span class="demo-tag rv d1">Демо: здесь будут фото вашего автопарка</span></div>
+    <div class="gal" id="gal"></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec gut" aria-labelledby="rvT" style="padding-top:0">
+  <div class="inner">
+    <div class="sh"><div class="rv"><p class="k">Отзывы водителей</p><h2 id="rvT">Слово — <em>водителям</em></h2><p class="lead">Короткие видео от водителей парка: как подключились и как работается.</p></div><span class="demo-tag rv d1">Блок ждёт настоящие видео</span></div>
+    <div class="revs">
+      <div class="rev rv"><div class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></div><div><div class="who"><span class="ava"></span><div><div class="ln1"></div><div class="ln2"></div></div></div><p class="ph">Видео-отзыв водителя</p></div></div>
+      <div class="rev rv d1"><div class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></div><div><div class="who"><span class="ava"></span><div><div class="ln1"></div><div class="ln2"></div></div></div><p class="ph">Видео-отзыв водителя</p></div></div>
+      <div class="rev rv d2"><div class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></div><div><div class="who"><span class="ava"></span><div><div class="ln1"></div><div class="ln2"></div></div></div><p class="ph">Видео-отзыв водителя</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec gut" id="faq" aria-labelledby="fqT" style="padding-top:0">
+  <div class="inner">
+    <div class="sh"><div class="rv"><p class="k">Вопросы</p><h2 id="fqT">Частые <em>вопросы</em></h2></div><span class="demo-tag rv d1">Демо: ответы заполняет парк</span></div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="sec gut" id="join" aria-labelledby="jnT" style="padding-top:0">
+  <div class="inner join">
+    <div class="rv">
+      <p class="k">Заявка</p>
+      <h2 id="jnT">Подключись <em>к парку</em></h2>
+      <p class="lead">Оставь контакты. Заявка придёт в WhatsApp парка, менеджер свяжется и расскажет условия.</p>
+      <ul class="contacts" id="contacts"></ul>
+    </div>
+    <form class="form rv d1" id="form" novalidate>
+      <div class="row2">
+        <div class="f" id="fName"><label for="name">Имя</label><input class="inp" id="name" name="name" autocomplete="given-name" placeholder="Как к вам обращаться"><p class="msg">Напишите имя</p></div>
+        <div class="f" id="fPhone"><label for="phone">Телефон</label><input class="inp" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (7__) ___-__-__"><p class="msg">Введите номер полностью: +7 (7xx) xxx-xx-xx</p></div>
+      </div>
+      <div class="f"><span class="lbl" id="clsL">Класс автомобиля</span><div class="seg" role="radiogroup" aria-labelledby="clsL" id="fClsSeg"></div></div>
+      <div class="f" id="fLic"><span class="lbl" id="licL">Водительское удостоверение</span>
+        <div class="seg" role="radiogroup" aria-labelledby="licL">
+          <label><input type="radio" name="lic" value="Есть, категория B"><span>Есть, категория B</span></label>
+          <label><input type="radio" name="lic" value="Пока нет"><span>Пока нет</span></label>
+        </div><p class="msg">Выберите вариант</p></div>
+      <div class="f"><span class="lbl" id="conL">Как с вами связаться</span>
+        <div class="seg" role="radiogroup" aria-labelledby="conL">
+          <label><input type="radio" name="con" value="WhatsApp" checked><span>WhatsApp</span></label>
+          <label><input type="radio" name="con" value="Звонок"><span>Звонок</span></label>
+        </div></div>
+      <div class="f"><label for="cmt">Комментарий</label><textarea class="inp" id="cmt" name="cmt" placeholder="Например: хочу работать в ночную смену"></textarea></div>
+      <div class="f" id="fOk"><label class="consent"><input type="checkbox" id="ok"><span>Согласен на обработку персональных данных для связи по заявке</span></label><p class="msg">Нужно согласие, чтобы отправить заявку</p></div>
+      <button class="btn btn-lime" type="submit" id="sendBtn">Отправить заявку<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <p class="fhint">Заявка откроется в WhatsApp с готовым текстом — останется нажать «Отправить».</p>
+    </form>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="sec gut" id="contacts" aria-labelledby="lcT" style="padding-top:0">
+  <div class="inner">
+    <div class="sh"><div class="rv"><p class="k">Офис парка</p><h2 id="lcT">Где <em>нас найти</em></h2></div></div>
+    <div class="loc">
+      <div class="mapbox rv" id="mapbox">
+        <svg viewBox="0 0 800 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="800" height="420" fill="#0C0F12"/>
+          <g stroke="#1A1F25" stroke-width="10" fill="none">
+            <path d="M-20 90L820 70"/><path d="M-20 210L820 196"/><path d="M-20 330L820 318"/>
+            <path d="M120 -20L140 440"/><path d="M300 -20L314 440"/><path d="M480 -20L490 440"/><path d="M660 -20L664 440"/>
+          </g>
+          <g stroke="#14181D" stroke-width="4" fill="none"><path d="M-20 150L820 134"/><path d="M-20 270L820 258"/><path d="M210 -20L226 440"/><path d="M390 -20L402 440"/><path d="M570 -20L578 440"/></g>
+          <path d="M-20 380C200 360 360 410 820 300" stroke="#1D2A2F" stroke-width="18" fill="none" opacity=".7"/>
+        </svg>
+        <div class="ph" id="mapPh"><svg viewBox="0 0 24 24" fill="none" stroke="#C7FF45" stroke-width="2"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Карта с офисом появится, когда парк укажет адрес</span></div>
+      </div>
+      <div class="panel locinfo rv d1">
+        <ul class="contacts" id="locList"></ul>
+        <a class="btn btn-ghost" id="routeBtn" target="_blank" rel="noopener" hidden>Построить маршрут</a>
+        <a class="btn btn-lime" id="locWa" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="gut">
+  <div class="inner"><span data-cfg="name">Ваш таксопарк</span> · Алматы<span>Демо-версия сайта: автомобили, цены и тексты — пример</span></div>
+</footer>
+
+<a class="fab" id="fab" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg viewBox="0 0 24 24" fill="#0B0F04"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+<div class="mbar" id="mbar"><a href="#join" class="btn btn-lime">Подключиться к парку</a><a class="btn btn-ghost wa" id="mbarWa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#F5F5F3" style="width:22px;height:22px"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3z"/></svg></a></div>
+
+<!-- car modal -->
+<dialog id="carDlg" aria-labelledby="mTitle">
+  <div class="sheet">
+    <button class="x" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="m-hero"><span class="cls" id="mCls"></span><svg class="carsvg" id="mSvg" viewBox="0 40 1000 340" aria-hidden="true"><use href="#sedan"/></svg></div>
+    <div class="m-body">
+      <div><h3 id="mTitle"></h3><table class="tbl"><tbody id="mTbl"></tbody></table></div>
+      <div><p class="k" style="margin-bottom:12px">Фото автомобиля</p><div class="slots"><div class="slot">Фото<br>спереди</div><div class="slot">Салон</div><div class="slot">Фото<br>сбоку</div></div><p class="note" style="margin-top:14px">Откроется WhatsApp с сообщением про эту машину.</p></div>
+    </div>
+    <div class="m-act"><a class="btn btn-lime" id="mPick" target="_blank" rel="noopener">Выбрать автомобиль</a></div>
+  </div>
+</dialog>
+
+<!-- lightbox -->
+<dialog id="lb" class="lb" aria-label="Просмотр фото">
+  <div class="sheet">
+    <button class="x" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <figure id="lbFig"></figure>
+    <div class="cap"><span id="lbCap"></span><div class="nav2"><button id="lbPrev" aria-label="Предыдущее"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button id="lbNext" aria-label="Следующее"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+  </div>
+</dialog>
+
+<!-- form result -->
+<dialog id="okDlg" aria-labelledby="okT">
+  <div class="sheet ok-sheet">
+    <button class="x" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h3 id="okT">Заявка готова</h3>
+    <p>Так она придёт менеджеру парка. Нажмите кнопку — откроется WhatsApp с этим текстом.</p>
+    <div class="pv" id="pv"></div>
+    <a class="btn btn-lime" id="okWa" target="_blank" rel="noopener">Открыть WhatsApp</a>
+  </div>
+</dialog>
+
+<script>
+/* ===== Everything the park edits lives here ===== */
+const CONFIG={
+  name:"Ваш таксопарк",
+  short:"Ваш парк",
+  whatsapp:"77000000000",            // digits only, no + and spaces
+  phone:"+7 700 000 00 00",
+  address:"",                        // e.g. "ул. Примерная 1, Алматы" — empty = no map pin, no route button
+  hours:"Ежедневно 9:00–20:00",
+  heroPerks:["Эконом, Комфорт, Комфорт+ и Бизнес","Заявка за минуту","Ответ в WhatsApp"]
+};
+const CLASSES=["Эконом","Комфорт","Комфорт+","Бизнес"];
+/* demo data — replace with the park's real cars */
+const CARS=[
+  {id:"cobalt",brand:"Chevrolet",model:"Cobalt",year:2023,cls:"Эконом",box:"Автомат",fuel:"Бензин",rent:9500,free:true,terms:"Аренда посуточно, график свободный"},
+  {id:"accent",brand:"Hyundai",model:"Accent",year:2022,cls:"Эконом",box:"Автомат",fuel:"Бензин",rent:11000,free:true,terms:"Аренда посуточно, ТО за счёт парка"},
+  {id:"rio",brand:"Kia",model:"Rio",year:2021,cls:"Эконом",box:"Механика",fuel:"Газ / бензин",rent:10000,free:false,terms:"Аренда посуточно"},
+  {id:"elantra",brand:"Hyundai",model:"Elantra",year:2022,cls:"Комфорт",box:"Автомат",fuel:"Бензин",rent:14000,free:true,terms:"Аренда посуточно, ТО за счёт парка"},
+  {id:"k5",brand:"Kia",model:"K5",year:2022,cls:"Комфорт+",box:"Автомат",fuel:"Бензин",rent:18000,free:true,terms:"Аренда посуточно или с выкупом"},
+  {id:"sonata",brand:"Hyundai",model:"Sonata",year:2022,cls:"Комфорт+",box:"Автомат",fuel:"Бензин",rent:17000,free:false,terms:"Аренда посуточно"},
+  {id:"camry70",brand:"Toyota",model:"Camry",year:2021,cls:"Комфорт+",box:"Автомат",fuel:"Бензин",rent:19000,free:true,terms:"Аренда посуточно, ТО за счёт парка"},
+  {id:"camry75",brand:"Toyota",model:"Camry",year:2024,cls:"Бизнес",box:"Автомат",fuel:"Бензин",rent:24000,free:true,terms:"Аренда посуточно, водитель со стажем от 3 лет"}
+];
+const TINT={"Эконом":"#1B2026","Комфорт":"#20262E","Комфорт+":"#262C24","Бизнес":"#0F1215"};
+const FAQ=[
+  ["Какие документы нужны для подключения?","Обычно — удостоверение личности и водительское удостоверение категории B. Точный список парк укажет здесь."],
+  ["Какие автомобили доступны?","Свободные машины видны в каталоге выше: включите фильтр «Только свободные»."],
+  ["Сколько стоит аренда?","Цена указана в карточке каждой машины. Здесь парк опишет, что входит в аренду."],
+  ["Есть ли депозит?","Парк укажет, нужен ли депозит и какой."],
+  ["Как рассчитывается комиссия?","Парк опишет комиссию: процент или фиксированная сумма, и за что она берётся."],
+  ["Можно ли работать по собственному графику?","Парк опишет, какие графики доступны."],
+  ["Как проходит подключение?","Заявка → консультация → выбор машины → оформление → выход на линию. Сроки зависят от парка."],
+  ["Куда обращаться за поддержкой?",`В WhatsApp парка или по телефону — контакты в конце страницы.`]
+];
+
+/* ===== helpers ===== */
+const $=id=>document.getElementById(id);
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fmt=n=>Math.round(n).toLocaleString("ru-RU").replace(/ /g," ")+" ₸";
+const hasWa=/^\d{11}$/.test(CONFIG.whatsapp||"");
+const wa=t=>hasWa?"https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(t):null;
+function setWa(el,t){const u=wa(t);if(u){el.href=u;el.removeAttribute("aria-disabled")}else{el.removeAttribute("href");el.setAttribute("aria-disabled","true");el.title="Номер WhatsApp не указан"}}
+document.querySelectorAll("[data-cfg]").forEach(e=>e.textContent=CONFIG[e.dataset.cfg]);
+const GENERAL="Здравствуйте! Хочу подключиться к таксопарку. Расскажите, пожалуйста, условия.";
+setWa($("fab"),GENERAL);setWa($("mbarWa"),GENERAL);setWa($("locWa"),GENERAL);
+
+/* ===== hero ===== */
+$("perks").innerHTML=CONFIG.heroPerks.map(p=>`<li>${p}</li>`).join("");
+(function scene(){
+  const svgNS="http://www.w3.org/2000/svg",S=$("scene");
+  let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  const st=$("stars");for(let i=0;i<70;i++){const c=document.createElementNS(svgNS,"circle");c.setAttribute("cx",(rnd()*1600).toFixed(0));c.setAttribute("cy",(rnd()*300).toFixed(0));c.setAttribute("r",(rnd()*1.1+.3).toFixed(2));c.setAttribute("fill","#fff");c.setAttribute("opacity",(rnd()*.5+.1).toFixed(2));st.appendChild(c)}
+  const city=$("city"),wins=$("wins");let x=470;
+  while(x<1600){const w=30+rnd()*60,h=30+rnd()*(x>900&&x<1150?150:95),y=690-h;
+    const r=document.createElementNS(svgNS,"rect");r.setAttribute("x",x.toFixed(0));r.setAttribute("y",y.toFixed(0));r.setAttribute("width",w.toFixed(0));r.setAttribute("height",h.toFixed(0));city.appendChild(r);
+    for(let wy=y+8;wy<682;wy+=11)for(let wx=x+6;wx<x+w-6;wx+=9){if(rnd()<.2){const q=document.createElementNS(svgNS,"rect");q.setAttribute("x",wx.toFixed(0));q.setAttribute("y",wy.toFixed(0));q.setAttribute("width","3");q.setAttribute("height","4");q.setAttribute("fill",rnd()<.85?"#F2D9A0":"#C7FF45");q.setAttribute("opacity",(rnd()*.5+.25).toFixed(2));wins.appendChild(q)}}
+    x+=w+2+rnd()*10}
+  const L=$("lamps"),W=$("wet");
+  [140,520,900,1280].forEach(lx=>{
+    L.insertAdjacentHTML("beforeend",`<path d="M${lx} 690V560q0-10 12-10h26" stroke="#15191E" stroke-width="4" fill="none"/><ellipse cx="${lx+40}" cy="551" rx="9" ry="3" fill="#FFE2A8"/><circle cx="${lx+40}" cy="556" r="46" fill="#FFD27A" opacity=".18" filter="url(#blur20)"/>`);
+    W.insertAdjacentHTML("beforeend",`<rect x="${lx+30}" y="700" width="20" height="170" fill="#FFD27A" opacity=".22" filter="url(#blur6)"/>`)});
+  W.insertAdjacentHTML("beforeend",`<rect x="1500" y="700" width="60" height="150" fill="#C7FF45" opacity=".08" filter="url(#blur6)"/>`);
+  /* mobile crop: show the car, not the empty sky */
+  const mq=matchMedia("(max-width:900px)");
+  const cs=$("carS"),CT=cs.getAttribute("transform");
+  const fit=()=>{if(mq.matches){S.setAttribute("viewBox","500 330 1100 560");S.setAttribute("preserveAspectRatio","xMidYMid meet");cs.removeAttribute("transform")}else{S.setAttribute("viewBox","0 0 1600 900");S.setAttribute("preserveAspectRatio","xMaxYMax slice");cs.setAttribute("transform",CT)}};
+  fit();mq.addEventListener("change",fit);
+  if(RM){S.pauseAnimations&&S.pauseAnimations();return}
+  /* blinking tower light */
+  setInterval(()=>{const t=$("tip");t.style.opacity=t.style.opacity==="0.2"?"1":"0.2"},900);
+  /* parallax */
+  const layers=[...S.querySelectorAll(".px")];let mx=0,my=0,tx=0,ty=0,sy=0;
+  addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
+  addEventListener("scroll",()=>{sy=scrollY},{passive:true});
+  (function tick(){tx+=(mx-tx)*.06;ty+=(my-ty)*.06;
+    if(sy<innerHeight*1.2){layers.forEach(l=>{const d=+l.dataset.d;l.setAttribute("transform",`translate(${(-tx*d*2).toFixed(2)} ${(-ty*d+sy*d*.012).toFixed(2)})`)});
+      S.style.transform=`translateY(${(sy*.18).toFixed(1)}px)`;}
+    requestAnimationFrame(tick)})();
+})();
+requestAnimationFrame(()=>document.documentElement.classList.add("loaded"));
+
+/* ===== header / menu / floating ===== */
+const hdr=$("hdr"),fab=$("fab"),mbar=$("mbar");
+function onScroll(){hdr.classList.toggle("solid",scrollY>40);const past=scrollY>innerHeight*.7;fab.classList.toggle("show",past);mbar.classList.toggle("show",past&&!formSeen)}
+let formSeen=false;
+new IntersectionObserver(es=>{formSeen=es[0].isIntersecting;onScroll()},{threshold:.15}).observe($("join"));
+addEventListener("scroll",onScroll,{passive:true});onScroll();
+const burger=$("burger");
+function menu(open){document.body.classList.toggle("menu-open",open);burger.setAttribute("aria-expanded",open);burger.setAttribute("aria-label",open?"Закрыть меню":"Открыть меню");$("mmenu").setAttribute("aria-hidden",!open);document.body.style.overflow=open?"hidden":""}
+burger.onclick=()=>menu(!document.body.classList.contains("menu-open"));
+$("mmenu").querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>menu(false)));
+addEventListener("keydown",e=>{if(e.key==="Escape"&&document.body.classList.contains("menu-open"))menu(false)});
+
+/* ===== reveal ===== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+function watch(root=document){root.querySelectorAll(".rv:not(.in)").forEach(el=>RM?el.classList.add("in"):io.observe(el))}
+
+/* ===== cars ===== */
+const F={cls:"Все",box:"Все",free:false};
+function chips(id,list,key){$(id).innerHTML=list.map(v=>`<button class="chip" type="button" aria-pressed="${F[key]===v}" data-v="${v}">${v}</button>`).join("");
+  $(id).querySelectorAll(".chip").forEach(b=>b.onclick=()=>{F[key]=b.dataset.v;$(id).querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===b));renderCars()})}
+chips("fCls",["Все",...CLASSES],"cls");chips("fBox",["Все","Автомат","Механика"],"box");
+$("fAv").onchange=e=>{F.free=e.target.checked;renderCars()};
+const carSvg=c=>`<svg viewBox="0 40 1000 340" aria-hidden="true" style="color:${TINT[c.cls]}"><g transform="translate(1000 0) scale(-1 1)"><use href="#sedan" x="0" y="40" width="1000" height="340"/></g></svg>`;
+function renderCars(){
+  const list=CARS.filter(c=>(F.cls==="Все"||c.cls===F.cls)&&(F.box==="Все"||c.box===F.box)&&(!F.free||c.free));
+  const g=$("carGrid");
+  g.innerHTML=list.length?list.map((c,i)=>`<article class="car rv ${i%3?"d"+(i%3):""}" tabindex="0" role="button" aria-label="${c.brand} ${c.model} ${c.year}, подробнее" data-id="${c.id}">
+    <div class="top"><span class="cls">${c.cls}</span><span class="av ${c.free?"on":""}">${c.free?"Свободна":"В работе"}</span></div>
+    <div class="pic">${carSvg(c)}</div>
+    <h3>${c.brand} ${c.model}</h3><div class="yr">${c.year} год</div>
+    <ul class="specs"><li>${c.box}</li><li>${c.fuel}</li></ul>
+    <div class="bot"><div class="price"><small>Аренда · пример</small><b>${fmt(c.rent)} <span>/ сутки</span></b></div><span class="pick">Выбрать</span></div>
+  </article>`).join(""):`<div class="empty">Под эти фильтры машин нет. Попробуйте другой класс или коробку.</div>`;
+  g.querySelectorAll(".car").forEach(el=>{
+    el.addEventListener("click",()=>openCar(el.dataset.id));
+    el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openCar(el.dataset.id)}});
+    el.addEventListener("pointermove",e=>{const r=el.getBoundingClientRect();el.style.setProperty("--mx",(e.clientX-r.left)+"px");el.style.setProperty("--my",(e.clientY-r.top)+"px")});
+  });
+  watch(g);
+}
+renderCars();
+
+/* dialogs */
+function openDlg(d){d.showModal();document.body.style.overflow="hidden"}
+document.querySelectorAll("dialog").forEach(d=>{
+  d.addEventListener("close",()=>{document.body.style.overflow=""});
+  d.addEventListener("click",e=>{if(e.target===d||e.target.closest("[data-close]"))d.close()});
+});
+let lastCar=null;
+function openCar(id){const c=CARS.find(x=>x.id===id);lastCar=document.activeElement;
+  $("mCls").textContent=c.cls;$("mTitle").textContent=`${c.brand} ${c.model}`;
+  $("mSvg").style.color=TINT[c.cls];$("mSvg").innerHTML=`<g transform="translate(1000 0) scale(-1 1)"><use href="#sedan" x="0" y="40" width="1000" height="340"/></g>`;
+  $("mTbl").innerHTML=[["Год выпуска",c.year],["Класс",c.cls],["Коробка",c.box],["Топливо",c.fuel],["Статус",c.free?"Свободна":"В работе"],["Условия",c.terms],["Аренда (пример)",fmt(c.rent)+" / сутки"]].map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("");
+  setWa($("mPick"),`Здравствуйте! Интересует ${c.brand} ${c.model} ${c.year} (${c.cls}). Расскажите, пожалуйста, условия аренды и когда можно посмотреть машину.`);
+  $("mPick").textContent=c.free?"Выбрать автомобиль":"Узнать, когда освободится";
+  openDlg($("carDlg"))}
+$("carDlg").addEventListener("close",()=>lastCar&&lastCar.focus&&lastCar.focus());
+
+/* ===== calculator ===== */
+const C=[
+  {k:"rev",l:"Средняя выручка за смену",min:5000,max:80000,step:500,v:25000,f:fmt},
+  {k:"sh",l:"Смен в месяц",min:1,max:31,step:1,v:26,f:n=>n+" "+(n%10===1&&n%100!==11?"смена":(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20))?"смены":"смен")},
+  {k:"rent",l:"Аренда за смену",min:0,max:40000,step:500,v:12000,f:fmt},
+  {k:"fuel",l:"Топливо за смену",min:0,max:20000,step:500,v:6000,f:fmt},
+  {k:"com",l:"Комиссии сервисов, % от выручки",min:0,max:40,step:1,v:15,f:n=>n+" %"},
+  {k:"oth",l:"Прочие расходы в месяц",min:0,max:150000,step:1000,v:10000,f:fmt}
+];
+const V={};
+$("calcIn").innerHTML=`<p class="k" style="margin-bottom:24px">Ваши цифры <span class="demo-tag" style="margin-left:8px">значения — пример</span></p>`+C.map(c=>{V[c.k]=c.v;return `<div class="fld"><div class="lab"><label for="c_${c.k}">${c.l}</label><output id="o_${c.k}" for="c_${c.k}">${c.f(c.v)}</output></div><input type="range" id="c_${c.k}" min="${c.min}" max="${c.max}" step="${c.step}" value="${c.v}"></div>`}).join("");
+const COLORS={rent:"#5B6470",fuel:"#3E4650",com:"#8E949B",oth:"#2C3239",net:"#C7FF45"};
+let shown=0,raf=0;
+function calc(){
+  const gross=V.rev*V.sh,rent=V.rent*V.sh,fuel=V.fuel*V.sh,com=gross*V.com/100,oth=V.oth,net=gross-rent-fuel-com-oth;
+  const parts=[["Аренда",rent,"rent"],["Топливо",fuel,"fuel"],["Комиссии",com,"com"],["Прочие",oth,"oth"]];
+  $("cBar").innerHTML=parts.map(p=>`<i style="flex-grow:${Math.max(p[1],0)};background:${COLORS[p[2]]}"></i>`).join("")+`<i style="flex-grow:${Math.max(net,0)};background:${COLORS.net}"></i>`;
+  $("cBd").innerHTML=`<li><span><i style="background:transparent;border:1px solid var(--line2)"></i>Выручка за ${V.sh} ${C[1].f(V.sh).split(" ")[1]}</span><b>${fmt(gross)}</b></li>`+parts.map(p=>`<li><span><i style="background:${COLORS[p[2]]}"></i>${p[0]}</span><b>− ${fmt(p[1])}</b></li>`).join("")+`<li><span><i style="background:${COLORS.net}"></i>Остаток</span><b style="color:${net<0?"var(--red)":"var(--lime)"}">${fmt(net)}</b></li>`;
+  $("cPer").textContent=V.sh?`≈ ${fmt(net/V.sh)} за смену`:"";
+  $("cRes").classList.toggle("neg",net<0);
+  cancelAnimationFrame(raf);const from=shown,t0=performance.now(),dur=RM?0:450;
+  (function step(t){const p=dur?Math.min(1,(t-t0)/dur):1,e=1-Math.pow(1-p,3);shown=from+(net-from)*e;$("cRes").textContent=fmt(shown);if(p<1)raf=requestAnimationFrame(step)})(t0);
+}
+C.forEach(c=>{const el=$("c_"+c.k);const paint=()=>el.style.setProperty("--p",((el.value-c.min)/(c.max-c.min)*100)+"%");paint();
+  el.addEventListener("input",()=>{V[c.k]=+el.value;$("o_"+c.k).textContent=c.f(+el.value);paint();calc()})});
+calc();
+
+/* ===== steps progress ===== */
+const stepsEl=$("steps"),stepItems=[...stepsEl.querySelectorAll(".step")];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");const n=stepItems.filter(s=>s.classList.contains("on")).length;stepsEl.style.setProperty("--prog",n/stepItems.length)}}),{threshold:.6});
+stepItems.forEach((s,i)=>{s.classList.add("rv");if(i)s.classList.add("d"+Math.min(i,3));so.observe(s)});
+
+/* ===== benefits ===== */
+const mini=(x,y,s,c,o)=>`<g transform="translate(${x} ${y}) scale(${s}) translate(1000 0) scale(-1 1)" style="color:${c}" opacity="${o}"><use href="#sedan" x="0" y="40" width="1000" height="340"/></g>`;
+const B=[
+  ["t1","Выбор подходящего автомобиля","От эконома до бизнеса: смотришь свободные машины и выбираешь под свой формат работы.",`<svg viewBox="0 0 320 120">${mini(0,52,.15,"#1B2026",1)}${mini(100,40,.19,"#20262E",1)}${mini(192,24,.24,"#262C24",1)}<path d="M0 118H320" stroke="#2C3239"/><circle cx="244" cy="22" r="4" fill="#C7FF45"/></svg>`],
+  ["t2","Понятные условия","Условия сотрудничества объясняем до подключения, а не после.",`<svg viewBox="0 0 160 130" fill="none"><rect x="36" y="8" width="88" height="114" rx="10" stroke="#3A424C" stroke-width="2"/><path d="M52 34h56M52 50h56M52 66h36" stroke="#3A424C" stroke-width="2" stroke-linecap="round"/><circle cx="104" cy="96" r="18" fill="#C7FF45"/><path d="M96 96l6 6 10-12" stroke="#0B0F04" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`],
+  ["t3","Поддержка водителей","На связи, если на линии возник вопрос по машине или работе.",`<svg viewBox="0 0 160 130" fill="none"><rect x="14" y="20" width="96" height="54" rx="16" stroke="#3A424C" stroke-width="2"/><path d="M34 74l-6 16 20-16" stroke="#3A424C" stroke-width="2" stroke-linejoin="round"/><rect x="58" y="62" width="88" height="44" rx="14" fill="#C7FF45"/><circle cx="84" cy="84" r="4" fill="#0B0F04"/><circle cx="102" cy="84" r="4" fill="#0B0F04"/><circle cx="120" cy="84" r="4" fill="#0B0F04"/></svg>`],
+  ["t4","Прозрачные аренда и комиссии","Сколько стоит аренда, какая комиссия и за что — видно заранее, без сюрпризов в конце недели.",`<svg viewBox="0 0 320 110" fill="none"><rect x="0" y="40" width="96" height="22" rx="6" fill="#5B6470"/><rect x="100" y="40" width="44" height="22" rx="6" fill="#3E4650"/><rect x="148" y="40" width="34" height="22" rx="6" fill="#8E949B"/><rect x="186" y="40" width="134" height="22" rx="6" fill="#C7FF45"/><text x="0" y="28" fill="#8E949B" font-family="Manrope,sans-serif" font-size="12" font-weight="600">аренда</text><text x="148" y="28" fill="#8E949B" font-family="Manrope,sans-serif" font-size="12" font-weight="600">комиссия</text><text x="186" y="88" fill="#C7FF45" font-family="Manrope,sans-serif" font-size="12" font-weight="700">остаётся тебе</text></svg>`],
+  ["t5","Удобная подача заявки","Пара полей на сайте — и заявка уже в WhatsApp у менеджера.",`<svg viewBox="0 0 220 130" fill="none"><rect x="76" y="4" width="68" height="122" rx="14" stroke="#3A424C" stroke-width="2"/><rect x="88" y="26" width="44" height="8" rx="4" fill="#2C3239"/><rect x="88" y="42" width="44" height="8" rx="4" fill="#2C3239"/><rect x="88" y="86" width="44" height="18" rx="9" fill="#C7FF45"/><path d="M156 95h40M186 85l10 10-10 10" stroke="#C7FF45" stroke-width="2" stroke-linecap="round"/></svg>`],
+  ["t6","Вопросы — до подключения","Спроси всё, что важно, прежде чем выходить на линию.",`<svg viewBox="0 0 220 130"><text x="110" y="112" text-anchor="middle" font-family="Unbounded,sans-serif" font-size="128" font-weight="700" fill="none" stroke="#C7FF45" stroke-width="2">?</text></svg>`]
+];
+$("bento").innerHTML=B.map((b,i)=>`<div class="tile ${b[0]} rv ${i%3?"d"+(i%3):""}"><div class="art">${b[3]}</div><h3>${b[1]}</h3><p>${b[2]}</p></div>`).join("");
+
+/* ===== gallery (demo scenes until real photos arrive) ===== */
+const scenes=[
+  {cap:"Ночная смена",sky:["#06080B","#121A17"],tint:"#12161B",ground:"#0B0E11",glow:"#C7FF45"},
+  {cap:"Перед выездом",sky:["#0B0F14","#1B2430"],tint:"#20262E",ground:"#101419",glow:"#9CC7FF"},
+  {cap:"Город",sky:["#0A0A0C","#2A1F18"],tint:"#262C24",ground:"#0E0C0B",glow:"#FFB86B"},
+  {cap:"Бизнес-класс",sky:["#050607","#0F1215"],tint:"#0F1215",ground:"#08090A",glow:"#F5F5F3"},
+  {cap:"После мойки",sky:["#0C1116","#1C2A33"],tint:"#1B2026",ground:"#0B1014",glow:"#7FD3FF"},
+  {cap:"Утро",sky:["#11151A","#3A3226"],tint:"#20262E",ground:"#14161A",glow:"#FFD27A"}
+];
+const sceneSvg=(s,i,flip)=>`<svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="gs${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${s.sky[0]}"/><stop offset="1" stop-color="${s.sky[1]}"/></linearGradient><radialGradient id="gg${i}" cx=".5" cy=".7" r=".5"><stop offset="0" stop-color="${s.glow}" stop-opacity=".14"/><stop offset="1" stop-color="${s.glow}" stop-opacity="0"/></radialGradient></defs><rect width="800" height="450" fill="url(#gs${i})"/><rect width="800" height="450" fill="url(#gg${i})"/><rect y="352" width="800" height="98" fill="${s.ground}"/><ellipse cx="400" cy="372" rx="215" ry="8" fill="#000" opacity=".7"/><g transform="translate(${flip?610:190} 218.7) scale(${flip?-.42:.42} .42)" style="color:${s.tint}"><use href="#sedan" x="0" y="40" width="1000" height="340"/></g></svg>`;
+$("gal").innerHTML=scenes.map((s,i)=>`<figure class="g g${i+1} rv ${i%3?"d"+(i%3):""}" tabindex="0" role="button" aria-label="Открыть фото: ${s.cap}" data-i="${i}" style="margin:0">${sceneSvg(s,i,i%2)}<figcaption>${s.cap}</figcaption></figure>`).join("");
+let cur=0;
+function showLb(i){cur=(i+scenes.length)%scenes.length;$("lbFig").innerHTML=sceneSvg(scenes[cur],"lb"+cur,cur%2);$("lbCap").textContent=`${scenes[cur].cap} · ${cur+1} / ${scenes.length} · демо-изображение`}
+$("gal").querySelectorAll(".g").forEach(f=>{const o=()=>{showLb(+f.dataset.i);openDlg($("lb"))};f.onclick=o;f.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();o()}}});
+$("lbPrev").onclick=()=>showLb(cur-1);$("lbNext").onclick=()=>showLb(cur+1);
+$("lb").addEventListener("keydown",e=>{if(e.key==="ArrowLeft")showLb(cur-1);if(e.key==="ArrowRight")showLb(cur+1)});
+let tsx=null;$("lb").addEventListener("touchstart",e=>{tsx=e.touches[0].clientX},{passive:true});
+$("lb").addEventListener("touchend",e=>{if(tsx==null)return;const dx=e.changedTouches[0].clientX-tsx;if(Math.abs(dx)>45)showLb(cur+(dx<0?1:-1));tsx=null},{passive:true});
+
+/* ===== FAQ ===== */
+$("faqList").innerHTML=FAQ.map(q=>`<details class="rv"><summary>${q[0]}<i aria-hidden="true"></i></summary><div class="ans"><p>${q[1]}</p></div></details>`).join("");
+if(!RM)$("faqList").querySelectorAll("details").forEach(d=>{const a=d.querySelector(".ans");d.querySelector("summary").addEventListener("click",e=>{e.preventDefault();
+  if(d.open){a.animate([{height:a.offsetHeight+"px"},{height:"0px"}],{duration:320,easing:"ease"}).onfinish=()=>d.open=false}
+  else{d.open=true;const h=a.offsetHeight;a.animate([{height:"0px"},{height:h+"px"}],{duration:380,easing:"cubic-bezier(.2,.7,.1,1)"})}})});
+
+/* ===== form ===== */
+$("fClsSeg").innerHTML=["Пока не знаю",...CLASSES].map((c,i)=>`<label><input type="radio" name="cls" value="${c}" ${i===0?"checked":""}><span>${c}</span></label>`).join("");
+const ph=$("phone");
+function maskPhone(v){const d=v.replace(/\D/g,"");let r;
+  if(v.trim().startsWith("+7"))r=d.slice(1);else if(d.length>=11&&/^[78]/.test(d))r=d.slice(1);else r=d;
+  if(r.startsWith("8"))r=r.slice(1);r=r.slice(0,10);let o="+7";
+  if(r.length)o+=" ("+r.slice(0,3);if(r.length>=3)o+=")";if(r.length>3)o+=" "+r.slice(3,6);if(r.length>6)o+="-"+r.slice(6,8);if(r.length>8)o+="-"+r.slice(8,10);return o}
+ph.addEventListener("input",()=>{const p=ph.value;ph.value=p.replace(/\D/g,"").length?maskPhone(p):"";$("fPhone").classList.remove("err")});
+ph.addEventListener("focus",()=>{if(!ph.value)ph.value="+7 ("});
+ph.addEventListener("blur",()=>{if(ph.value.replace(/\D/g,"").length<=1)ph.value=""});
+$("name").addEventListener("input",()=>$("fName").classList.remove("err"));
+document.querySelectorAll('input[name=lic]').forEach(r=>r.addEventListener("change",()=>$("fLic").classList.remove("err")));
+$("ok").addEventListener("change",()=>$("fOk").classList.remove("err"));
+let busy=false;
+$("form").addEventListener("submit",e=>{e.preventDefault();if(busy)return;
+  const name=$("name").value.trim(),digits=ph.value.replace(/\D/g,""),lic=document.querySelector('input[name=lic]:checked'),cls=document.querySelector('input[name=cls]:checked').value,con=document.querySelector('input[name=con]:checked').value,cmt=$("cmt").value.trim();
+  const bad=[];
+  if(name.length<2){$("fName").classList.add("err");bad.push("name")}
+  if(!/^77\d{9}$/.test(digits)){$("fPhone").classList.add("err");bad.push("phone")}
+  if(!lic){$("fLic").classList.add("err");bad.push("lic")}
+  if(!$("ok").checked){$("fOk").classList.add("err");bad.push("ok")}
+  if(bad.length){const first=document.querySelector(".f.err");first&&first.scrollIntoView({behavior:RM?"auto":"smooth",block:"center"});const i=first&&first.querySelector("input");i&&i.focus({preventScroll:true});return}
+  busy=true;const btn=$("sendBtn");btn.disabled=true;
+  const text=`Здравствуйте! Хочу подключиться к таксопарку.\nИмя: ${name}\nТелефон: ${ph.value}\nКласс авто: ${cls}\nВодительское удостоверение: ${lic.value}\nКак связаться: ${con}${cmt?"\nКомментарий: "+cmt:""}`;
+  $("pv").textContent=text;
+  const u=wa(text);
+  if(u){$("okWa").href=u;$("okWa").hidden=false;$("okT").textContent="Заявка готова";}
+  else{$("okWa").hidden=true;$("okT").textContent="WhatsApp парка ещё не подключён";}
+  openDlg($("okDlg"));
+  setTimeout(()=>{busy=false;btn.disabled=false},1200);
+});
+
+/* ===== contacts / map ===== */
+const rows=[["Телефон",CONFIG.phone],["WhatsApp",CONFIG.phone],["График",CONFIG.hours],["Адрес",CONFIG.address||"Укажет парк"]];
+$("contacts").innerHTML=rows.slice(0,3).map(r=>`<li><span>${r[0]}</span><b>${r[1]}</b></li>`).join("");
+$("locList").innerHTML=rows.map(r=>`<li><span>${r[0]}</span><b>${r[1]}</b></li>`).join("");
+if(CONFIG.address){const q=encodeURIComponent(CONFIG.address);$("routeBtn").href="https://2gis.kz/almaty/search/"+q;$("routeBtn").hidden=false;$("mapPh").querySelector("span").textContent=CONFIG.address}
+
+watch();
+</script>
+</body>
+</html>
