@@ -133,6 +133,55 @@ section{position:relative;padding:clamp(80px,11vw,140px) 0}
 .stamp b{font-family:var(--display);font-weight:700;font-size:clamp(26px,3vw,34px);line-height:1;text-align:center}
 .stamp b small{display:block;font-size:11px;font-family:var(--body);font-weight:800;letter-spacing:.1em;color:var(--sun3);margin-top:4px}
 
+
+/* ===== motion pack ===== */
+/* headline: words rise one by one */
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .02em .2em;margin-bottom:-.2em}
+.hero h1 .wi{display:inline-block;transform:translateY(110%) rotate(6deg);animation:rise 1s cubic-bezier(.2,.9,.2,1) forwards}
+.hero h1 em.wi{overflow:visible}
+@keyframes rise{to{transform:none}}
+/* scroll parallax in hero */
+.c-main{translate:0 calc(var(--sy,0) * -50px)}
+.c-back{translate:0 calc(var(--sy,0) * -140px)}
+.sunbig{rotate:calc(var(--sy,0) * 70deg);scale:calc(1 + var(--sy,0) * .15)}
+.chip1{translate:0 calc(var(--sy,0) * -90px)}
+.chip2{translate:0 calc(var(--sy,0) * -30px)}
+.stamp{translate:0 calc(var(--sy,0) * -120px)}
+/* scroll progress */
+.prog{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,var(--sun),var(--sun2),var(--green2));transform-origin:0 50%;transform:scaleX(var(--p,0))}
+/* gallery: curtain reveal + zoom out */
+.gal .rv{opacity:1;transform:none;background:var(--bg2);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.gal .rv img{clip-path:inset(100% 0 0 0);transform:scale(1.35);transition:clip-path 1.2s cubic-bezier(.7,0,.2,1),transform 1.6s cubic-bezier(.2,.8,.2,1)}
+.gal .rv.in img{clip-path:inset(0 0 0 0);transform:scale(1)}
+.gal .rv.in:hover img{transform:scale(1.06);transition-duration:.8s}
+.gal figcaption{opacity:0;translate:0 14px;transition:opacity .6s .7s,translate .6s .7s}
+.gal .in figcaption{opacity:1;translate:0 0}
+/* clubs: names slide in, felt dots pop */
+.club-list .rv{transform:translateX(-60px)}
+.club-list .rv.in{transform:none}
+.club-list .dot{scale:0;transition:transform .5s cubic-bezier(.3,1.6,.5,1),scale .7s .35s cubic-bezier(.3,1.7,.5,1)}
+.club-list .in .dot{scale:1}
+.fl{position:absolute;border-radius:50%;opacity:.16;filter:blur(1px);animation:drift var(--t,14s) ease-in-out infinite alternate;pointer-events:none}
+@keyframes drift{to{transform:translate(var(--x,40px),var(--y,-60px)) rotate(40deg)}}
+.clubs .wrap{position:relative;z-index:1}
+/* price cards pop */
+.pc.rv{transform:translateY(60px) scale(.92)}
+.pc.rv.in{transform:none}
+/* WhatsApp pulse */
+.pulse{position:relative}
+.pulse::after{content:"";position:absolute;inset:0;border-radius:inherit;animation:pulse 2.4s ease-out infinite;pointer-events:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,143,106,.55)}75%,100%{box-shadow:0 0 0 20px rgba(63,143,106,0)}}
+/* review cards fan in */
+.revs .rc{opacity:0;transform:translateY(50px) rotate(3deg);transition:opacity .8s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.revs.in .rc{opacity:1;transform:none}
+.revs.in .rc:nth-child(2){transition-delay:.1s}.revs.in .rc:nth-child(3){transition-delay:.2s}.revs.in .rc:nth-child(4){transition-delay:.3s}.revs.in .rc:nth-child(5){transition-delay:.4s}
+.revs.rv{opacity:1;transform:none}
+/* team faces bounce */
+.tm .face{transition:transform .6s cubic-bezier(.3,1.7,.5,1)}
+.tm:hover .face{transform:translateY(-8px) rotate(-8deg) scale(1.08)}
+/* confetti */
+.cf{position:fixed;z-index:100;pointer-events:none;border-radius:50%;left:0;top:0}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
@@ -280,6 +329,9 @@ footer nav{display:flex;gap:20px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .rv{opacity:1;transform:none}
+  .gal .rv img{clip-path:none;transform:none}.gal figcaption{opacity:1;translate:0}.club-list .dot{scale:1}.revs .rc{opacity:1;transform:none}
+  .hero h1 .wi{transform:none}
+  .c-main,.c-back,.sunbig,.chip1,.chip2,.stamp{translate:none;rotate:none;scale:none}
   .hero h1 em path{stroke-dashoffset:0}
 }
 </style>
@@ -310,6 +362,7 @@ footer nav{display:flex;gap:20px}
 </svg>
 
 <header class="nav solid" id="nav">
+  <div class="prog" id="prog"></div>
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Ниет 7 балабақшасы">
       <svg><use href="#logo"/></svg>
@@ -335,7 +388,7 @@ footer nav{display:flex;gap:20px}
   <div class="wrap hero-grid">
     <div>
       <p class="k rv">Алматы · Ақбұлақ</p>
-      <h1 class="rv d1">Балаңыз <em>асығып<svg viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M3 14 C 50 4, 120 4, 197 10" stroke="#ffc23d" stroke-width="7" fill="none" stroke-linecap="round"/></svg></em> баратын балабақша</h1>
+      <h1 id="h1">Балаңыз <em>асығып<svg viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M3 14 C 50 4, 120 4, 197 10" stroke="#ffc23d" stroke-width="7" fill="none" stroke-linecap="round"/></svg></em> баратын балабақша</h1>
       <p class="lead rv d2">1,5 жастан 6 жасқа дейінгі балаларға арналған «Ниет 7» жеке балабақшасы. Тек қазақ топтары, бес мезгіл тамақ, мектепке дайындық және бейнебақылау — бәрі бір жерде.</p>
       <ul class="tags rv d2">
         <li style="--c:var(--sun)">1,5–6 жас</li>
@@ -343,7 +396,7 @@ footer nav{display:flex;gap:20px}
         <li style="--c:var(--blue)">Әр топта 20 балаға дейін</li>
       </ul>
       <div class="cta rv d3">
-        <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Сынақ күніне жазылу</a>
+        <a class="btn btn-wa pulse" data-wa href="#" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Сынақ күніне жазылу</a>
         <a class="btn btn-ghost" href="#price">Бағаны көру</a>
       </div>
       <a class="rating rv d3" href="https://2gis.kz/almaty/geo/70000001083954023" target="_blank" rel="noopener">
@@ -439,6 +492,7 @@ footer nav{display:flex;gap:20px}
 
 <!-- CLUBS -->
 <section class="clubs" id="clubs">
+  <span class="fl" aria-hidden="true" style="width:160px;height:160px;left:-4%;top:8%;background:#ffd76a;--t:16s;--x:60px;--y:-40px"></span><span class="fl" aria-hidden="true" style="width:90px;height:90px;left:84%;top:6%;background:#e66aa8;--t:13s;--x:-50px;--y:50px"></span><span class="fl" aria-hidden="true" style="width:220px;height:220px;left:78%;top:58%;background:#ffb23a;--t:19s;--x:-70px;--y:-60px"></span><span class="fl" aria-hidden="true" style="width:70px;height:70px;left:40%;top:88%;background:#3e7fd6;--t:12s;--x:40px;--y:-70px"></span><span class="fl" aria-hidden="true" style="width:120px;height:120px;left:8%;top:70%;background:#e4513d;--t:17s;--x:70px;--y:30px"></span><span class="fl" aria-hidden="true" style="width:50px;height:50px;left:60%;top:20%;background:#9bd36a;--t:11s;--x:-30px;--y:60px"></span>
   <div class="wrap">
     <div class="head" style="margin-bottom:0">
       <div>
@@ -525,13 +579,13 @@ footer nav{display:flex;gap:20px}
       <div class="pc rv tilt" style="--c:var(--sun)">
         <span class="big"></span>
         <span class="age">1,5 – 2,5 жас</span>
-        <div class="sum">60 000 <small>₸-ден</small></div>
+        <div class="sum"><span data-n="60000" data-f>60 000</span> <small>₸-ден</small></div>
         <div class="per">айына</div>
       </div>
       <div class="pc rv d1 tilt" style="--c:var(--green2)">
         <span class="big"></span>
         <span class="age">2,5 – 6 жас</span>
-        <div class="sum">50 000 <small>₸</small></div>
+        <div class="sum"><span data-n="50000" data-f>50 000</span> <small>₸</small></div>
         <div class="per">айына</div>
       </div>
     </div>
@@ -607,7 +661,7 @@ footer nav{display:flex;gap:20px}
   </div>
 </footer>
 
-<div class="fab" id="fab"><a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>WhatsApp-қа жазу</a></div>
+<div class="fab" id="fab"><a class="btn btn-wa pulse" data-wa href="#" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>WhatsApp-қа жазу</a></div>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Фото">
   <button class="x" aria-label="Жабу">✕</button>
@@ -715,13 +769,70 @@ footer nav{display:flex;gap:20px}
       e.target.querySelectorAll('[data-n]').forEach(function(n){
         if (reduce) return;
         var to = +n.dataset.n, t0 = performance.now();
-        (function step(t){ var p = Math.min((t-t0)/1200,1); n.textContent = Math.round(to*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(step); })(t0);
+        (function step(t){ var p = Math.min((t-t0)/1200,1); var v = Math.round(to*(1-Math.pow(1-p,3))); n.textContent = n.hasAttribute('data-f') ? String(v).replace(/\B(?=(\d{3})+(?!\d))/g,'\u00a0') : v; if(p<1) requestAnimationFrame(step); })(t0);
       });
       io.unobserve(e.target);
     });
   }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
 
+
+
+  // headline words rise
+  (function(){
+    var h1 = document.getElementById('h1'); if (!h1 || reduce) return;
+    var i = 0, nodes = Array.prototype.slice.call(h1.childNodes);
+    nodes.forEach(function(n){
+      if (n.nodeType === 3){
+        var frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(part){
+          if (!part) return;
+          if (/^\s+$/.test(part)){ frag.appendChild(document.createTextNode(' ')); return; }
+          var w = document.createElement('span'); w.className = 'w';
+          var wi = document.createElement('span'); wi.className = 'wi'; wi.textContent = part;
+          wi.style.animationDelay = (.15 + i++ * .09) + 's';
+          w.appendChild(wi); frag.appendChild(w);
+        });
+        h1.replaceChild(frag, n);
+      } else if (n.nodeType === 1){
+        n.classList.add('wi'); n.style.display = 'inline-block'; n.style.animationDelay = (.15 + i++ * .09) + 's';
+        n.style.opacity = '0'; n.animate([{opacity:0, transform:'translateY(60%) scale(.9)'},{opacity:1, transform:'none'}], {duration:900, delay:(150 + (i-1)*90), easing:'cubic-bezier(.2,.9,.2,1)', fill:'forwards'});
+        n.style.animation = 'none';
+      }
+    });
+  })();
+
+  // scroll-linked vars: hero parallax + progress bar
+  (function(){
+    var root = document.documentElement, prog = document.getElementById('prog'), ticking = false;
+    function upd(){
+      ticking = false;
+      var y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
+      prog.style.setProperty('--p', max > 0 ? (y/max).toFixed(4) : 0);
+      if (!reduce) document.querySelector('.hero').style.setProperty('--sy', Math.min(y/innerHeight, 1.5).toFixed(3));
+    }
+    addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(upd); } }, {passive:true}); upd();
+  })();
+
+  // confetti of felt circles on WhatsApp click
+  if (!reduce) document.querySelectorAll('[data-wa]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var r = a.getBoundingClientRect(), x = e.clientX || r.left + r.width/2, y = e.clientY || r.top + r.height/2;
+      for (var k=0;k<28;k++){
+        var d = document.createElement('i'), s = 8 + Math.random()*12;
+        d.className = 'cf'; d.style.width = d.style.height = s + 'px';
+        d.style.background = colors[k % colors.length];
+        document.body.appendChild(d);
+        var ang = Math.random()*Math.PI*2, v = 80 + Math.random()*160;
+        var dx = Math.cos(ang)*v, dy = Math.sin(ang)*v - 120;
+        d.animate([
+          {transform:'translate('+(x-s/2)+'px,'+(y-s/2)+'px) scale(.4)', opacity:1},
+          {transform:'translate('+(x-s/2+dx*.7)+'px,'+(y-s/2+dy*.7)+'px) scale(1)', opacity:1, offset:.45},
+          {transform:'translate('+(x-s/2+dx)+'px,'+(y-s/2+dy+260)+'px) scale(.8) rotate(200deg)', opacity:0}
+        ], {duration:1100 + Math.random()*500, easing:'cubic-bezier(.2,.7,.4,1)'}).onfinish = (function(el){ return function(){ el.remove(); }; })(d);
+      }
+    });
+  });
 
   // reviews arrows
   var rv = document.getElementById('revs');
