@@ -173,6 +173,29 @@ section{position:relative;padding:clamp(80px,11vw,140px) 0}
 .lb .x{top:calc(16px + env(safe-area-inset-top,0px));right:16px}
 .lb .pv{left:16px;top:50%;margin-top:-26px}.lb .nx{right:16px;top:50%;margin-top:-26px}
 
+
+/* REVIEWS */
+.rev-top{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}
+.rev-top b{font-family:var(--display);font-weight:700;font-size:52px;line-height:1}
+.rev-top .st{color:var(--sun2);font-size:22px;letter-spacing:2px}
+.rev-top small{display:block;color:var(--muted);font-weight:700;font-size:14px}
+.revs{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px max(20px,calc((100vw - 1180px)/2 + 20px)) 30px;scrollbar-width:none;perspective:1400px}
+.revs::-webkit-scrollbar{display:none}
+.rc{flex:0 0 min(380px,84vw);scroll-snap-align:center;background:#fff;border-radius:var(--r);padding:30px 28px 26px;box-shadow:0 2px 0 var(--line2),0 30px 50px -40px rgba(80,40,0,.5);display:flex;flex-direction:column;position:relative;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.rc::before{content:"\201C";position:absolute;right:22px;top:4px;font-family:Georgia,serif;font-size:110px;line-height:1;color:var(--c);opacity:.18}
+.rc .st{color:var(--sun2);font-size:18px;letter-spacing:2px;margin-bottom:16px}
+.rc p{margin:0 0 22px;font-size:17px;line-height:1.55;color:var(--ink);flex:1}
+.rc footer{all:unset;display:flex;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:16px}
+.rc footer i{width:42px;height:42px;border-radius:50%;background:var(--c);display:grid;place-items:center;color:#fff;font-style:normal;font-family:var(--display);font-weight:700;box-shadow:inset -4px -4px 0 rgba(0,0,0,.1)}
+.rc footer b{display:block;font-size:15px}
+.rc footer small{color:var(--muted);font-weight:700;font-size:13px}
+.rev-nav{position:relative;z-index:2;display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.rev-nav .arrows{display:flex;gap:10px}
+.rev-nav .arrows button{width:52px;height:52px;border-radius:50%;border:0;background:#fff;box-shadow:inset 0 0 0 2px var(--line2);font-size:22px}
+.rev-nav .arrows button:hover{background:var(--sun);color:#fff;box-shadow:none}
+.rev-nav a{font-weight:800;color:var(--green);text-decoration:none}
+@media(max-width:600px){.rev-nav .arrows{display:none}}
+
 /* PRICE */
 .price{background:var(--bg2);border-radius:clamp(30px,5vw,60px);margin:0 clamp(8px,1.5vw,20px)}
 .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;perspective:1400px}
@@ -273,6 +296,7 @@ footer nav{display:flex;gap:20px}
       <li><a href="#why">Біз туралы</a></li>
       <li><a href="#clubs">Үйірмелер</a></li>
       <li><a href="#gallery">Галерея</a></li>
+      <li><a href="#reviews">Пікірлер</a></li>
       <li><a href="#price">Баға</a></li>
       <li><a href="#contact">Байланыс</a></li>
     </ul>
@@ -427,6 +451,33 @@ footer nav{display:flex;gap:20px}
       <button class="rv d2 tilt" data-i="6"><img src="img/ashana.jpg" alt="Асхана" loading="lazy"><figcaption>Асхана<small>Жеке асхана, 5 мезгіл тамақ</small></figcaption></button>
       <button class="rv d3 tilt" data-i="7"><img src="img/zhuynu.jpg" alt="Жуынатын бөлме" loading="lazy"><figcaption>Жуынатын бөлме<small>Таза әрі ыңғайлы</small></figcaption></button>
     </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" style="padding-bottom:clamp(50px,7vw,90px)">
+  <div class="wrap">
+    <div class="head" style="margin-bottom:30px">
+      <div>
+        <p class="k rv">Пікірлер</p>
+        <h2 class="rv d1">Ата-аналар не дейді</h2>
+      </div>
+      <div class="rv d2">
+        <p class="lead" style="margin:0">Бұл — 2ГИС-те ата-аналар қалдырған шынайы пікірлер.</p>
+        <div class="rev-top"><b>4,7</b><div><div class="st">★★★★★</div><small>2ГИС-тегі 64 баға</small></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="revs rv" id="revs">
+      <article class="rc tilt" style="--c:var(--sun)"><div class="st" aria-label="5 жұлдыз">★★★★★</div><p>Балабақша барлық стандартқа сай. Мықты білім ордасы. Тәжірибелі тәрбиешілер. Қызым балабақшаға таңертең қуанып кетеді, көңілді қайтады. Неше түрлі іс-шаралар өтеді. Бала түгілі өзім белсенді қатысуға тырысамын.</p><footer><i>А</i><div><b>Ата-ана</b><small>2ГИС · 3 шілде 2025</small></div></footer></article>
+      <article class="rc tilt" style="--c:var(--green2)"><div class="st" aria-label="5 жұлдыз">★★★★★</div><p>Өте жақсы балабақша балаларым тез үйреніп кетті осы балабақшаны таңдағаныма өкінбеймін тәрбиешілері де өте керемет. Іс-шараларды да жақсы деңгейде ұйымдастырады 👍👍👍</p><footer><i>А</i><div><b>Ата-ана</b><small>2ГИС · 8 маусым 2026</small></div></footer></article>
+      <article class="rc tilt" style="--c:var(--blue)"><div class="st" aria-label="5 жұлдыз">★★★★★</div><p>Менің ұлым демалыс күндері де балабақшаға сұранады, іс шаралар жиі ұйымдастырылады, тәрбиешілері өте жақсы</p><footer><i>А</i><div><b>Ата-ана</b><small>2ГИС · 4 шілде 2025</small></div></footer></article>
+      <article class="rc tilt" style="--c:var(--pink)"><div class="st" aria-label="5 жұлдыз">★★★★★</div><p>Кызым 2ай болды барып жур адаптация болган жок жыламай кунде озы барады Апайларга Рахмет кунде ар турлы Ис шаралар жасайды</p><footer><i>А</i><div><b>Ата-ана</b><small>2ГИС · 15 қыркүйек 2026</small></div></footer></article>
+      <article class="rc tilt" style="--c:var(--violet)"><div class="st" aria-label="5 жұлдыз">★★★★★</div><p>Өте керемет балабақша. Тәрбиешілері білімді, білікті жандар. Әрқашан балабақшада қызықты, танымды, пайдалы, іс шаралар өткізіп тұрады. Рахмет сіздерге, жұмыстарыңыз алға өрлей берсін ❤️❤️❤️</p><footer><i>А</i><div><b>Ата-ана</b><small>2ГИС · 3 шілде 2025</small></div></footer></article>
+  </div>
+  <div class="wrap rev-nav">
+    <a href="https://2gis.kz/almaty/geo/70000001083954023" target="_blank" rel="noopener">Барлық пікірлерді 2ГИС-те оқу →</a>
+    <div class="arrows"><button aria-label="Алдыңғы" data-d="-1">←</button><button aria-label="Келесі" data-d="1">→</button></div>
   </div>
 </section>
 
@@ -640,6 +691,13 @@ footer nav{display:flex;gap:20px}
     });
   }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+
+  // reviews arrows
+  var rv = document.getElementById('revs');
+  document.querySelectorAll('.rev-nav [data-d]').forEach(function(b){
+    b.addEventListener('click', function(){ rv.scrollBy({left: +b.dataset.d * (rv.querySelector('.rc').offsetWidth + 18), behavior: reduce ? 'auto' : 'smooth'}); });
+  });
 
   // lightbox
   var items = Array.prototype.map.call(document.querySelectorAll('#gal button'), function(b){
