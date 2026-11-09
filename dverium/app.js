@@ -27,11 +27,12 @@ const ajar = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: .7 });
 function observe(root = document) {
   $$('.rv:not(.in), .card:not(.in)', root).forEach(el => RM ? el.classList.add('in') : io.observe(el));
-  if (!HOVER && !RM) $$('.card__ph img, .ld__d img', root).forEach(i => ajar.observe(i));
+  if (!HOVER && !RM) $$('.card:not(.card--ai) .card__ph img, .ld:not(.ld--ai) .ld__d img', root).forEach(i => ajar.observe(i));
 }
 
 /* ---------- cards ---------- */
-const card = d => `<article class="card">
+const AI = new Set(window.DV_AI || []);
+const card = d => `<article class="card${AI.has(d.img) ? ' card--ai' : ''}">
   <a class="card__ph" href="#/door/${d.id}" aria-label="${esc(full(d))}">
     <span class="card__tag">${d.made === 'dverium' ? 'Dverium' : MA[d.made]}</span>
     <img src="img/s/${d.img}.jpg" alt="Межкомнатная дверь ${esc(full(d))}" loading="lazy" decoding="async"></a>
@@ -44,7 +45,7 @@ const card = d => `<article class="card">
 /* ---------- collection line ---------- */
 const LINE = ['temnyj-oreh', 'agaro', 'ral-6018', 'beatris', 'baget-ral-1013', 'dl-810-al2-tryufel', 'venza', 'yurta', 'barselona-2-mokko', 'baget-ral-9016', 'platinum-oreh-lusso', 'franciya', 'ral-8025', 'dubaj'];
 const track = $('#lineTrack');
-track.innerHTML = LINE.map(byId).filter(Boolean).map(d => `<a class="ld" href="#/door/${d.id}"><span class="ld__d"><img src="img/s/${d.img}.jpg" alt="${esc(full(d))}" loading="lazy"></span><span class="ld__t"><b>${esc(title(d))}</b><span>${esc(ST[d.style])}</span></span></a>`).join('');
+track.innerHTML = LINE.map(byId).filter(Boolean).map(d => `<a class="ld${AI.has(d.img) ? ' ld--ai' : ''}" href="#/door/${d.id}"><span class="ld__d"><img src="img/s/${d.img}.jpg" alt="${esc(full(d))}" loading="lazy"></span><span class="ld__t"><b>${esc(title(d))}</b><span>${esc(ST[d.style])}</span></span></a>`).join('');
 (function drag(el) {
   let down = false, x0 = 0, s0 = 0, moved = false;
   el.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; down = true; moved = false; x0 = e.clientX; s0 = el.scrollLeft; });
@@ -221,7 +222,7 @@ function renderDoor(d) {
   $('#door').innerHTML = `<article class="dp"><div class="wrap">
     <nav class="crumbs"><a href="#/">Главная</a>/<a href="#/s/catalog">Каталог</a>/<span>${esc(title(d))}</span></nav>
     <div class="dp__g">
-      <div class="dp__img"><small>${HOVER ? 'Наведите — дверь откроется' : ''}</small><img src="img/d/${d.img}.jpg" alt="Межкомнатная дверь ${esc(full(d))}"></div>
+      <div class="dp__img${AI.has(d.img) ? ' dp__img--ai' : ''}"><small>${HOVER ? 'Наведите — дверь откроется' : ''}</small><img src="img/d/${d.img}.jpg" alt="Межкомнатная дверь ${esc(full(d))}"></div>
       <div>
         <p class="kicker">${d.made === 'dverium' ? 'Производство Dverium' : 'Производство: ' + MA[d.made]} · ${ST[d.style]}</p>
         <h1>${esc(title(d))}</h1>
@@ -249,7 +250,7 @@ function renderDoor(d) {
     $('#qE').textContent = ''; const n = $('#qN').value.trim();
     openWA(`${msg}\nКоличество: ${$('#qQ').value}\nВысота проёма: ${$('#qH').value}${n ? '\nИмя: ' + n : ''}\nТелефон: ${p}`);
   });
-  if (!HOVER && !RM) { const im = $('.dp__img img'); setTimeout(() => { im.style.transform = 'rotateY(-22deg)'; im.style.boxShadow = '18px 0 30px rgba(0,0,0,.14)'; }, 700); setTimeout(() => { im.style.transform = ''; im.style.boxShadow = ''; }, 2400); }
+  if (!HOVER && !RM && !AI.has(d.img)) { const im = $('.dp__img img'); setTimeout(() => { im.style.transform = 'rotateY(-22deg)'; im.style.boxShadow = '18px 0 30px rgba(0,0,0,.14)'; }, 700); setTimeout(() => { im.style.transform = ''; im.style.boxShadow = ''; }, 2400); }
   meta(`${full(d)} — межкомнатная дверь | Dverium Алматы`, `${full(d)}: ${ST[d.style].toLowerCase()}, высота ${d.h}. Производство: ${MA[d.made]}. Бесплатная доставка по Алматы и Казахстану, установка.`);
   observe($('#door'));
 }

@@ -371,3 +371,9 @@ p{margin:0}
   *,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
   .rv,.card{opacity:1!important;transform:none!important}
 }
+
+/* AI-фото: уже на белом фоне с коробкой — без поворота и рамки */
+.card--ai .card__ph::after,.ld--ai .ld__d::after{display:none}
+.card--ai .card__ph img,.ld--ai .ld__d img,.dp__img--ai img{box-shadow:none!important;mix-blend-mode:multiply}
+.card--ai:hover .card__ph img,.ld--ai:hover .ld__d img,.dp__img--ai:hover img{transform:translateY(-6px)!important;box-shadow:none!important}
+.dp__img--ai::after{display:none}

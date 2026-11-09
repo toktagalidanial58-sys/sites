@@ -22,6 +22,7 @@ window.DV_FAMS = {
   mirror: 'Зеркало'
 };
 /* model — название модели (если клиент его указал), color — цвет как в подписи */
+window.DV_AI = ["B02", "B05", "B06", "B09", "B12", "B14", "B16", "B17", "B20", "C01", "C02", "A16", "A17", "A18", "A19", "A20"];
 window.DV_DOORS = [
   // ——— Собственное производство Dverium (по индивидуальным размерам, высота под заказ)
   { id: 'temnyj-oreh', img: 'A13', model: '', color: 'Тёмный орех (Dark Walnut)', style: 'min', coat: 'model', h: 'Под заказ', made: 'dverium', fam: 'wood' },
