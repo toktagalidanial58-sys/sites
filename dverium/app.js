@@ -54,7 +54,7 @@ const AI = new Set(window.DV_AI || []);
 const card = d => `<article class="card${AI.has(d.img) ? ' card--ai' : ''}">
   <a class="card__ph" href="#/door/${d.id}" aria-label="${esc(full(d))}">
     <span class="card__tag">${d.made === 'dverium' ? 'Dverium' : MA[d.made]}</span>
-    <img src="img/s/${d.img}.jpg" alt="Межкомнатная дверь ${esc(full(d))}" loading="lazy" decoding="async"><span class="gl"></span></a>
+    <img src="img/s/${d.img}.jpg?v=1794223970" alt="Межкомнатная дверь ${esc(full(d))}" loading="lazy" decoding="async"><span class="gl"></span></a>
   <div class="card__b">
     <h3 class="card__t"><a href="#/door/${d.id}">${esc(title(d))}</a></h3>
     <span class="card__c">${esc(sub(d))}</span>
@@ -192,7 +192,7 @@ let lastY = 0, raf = 0;
 /* ---------- 3D gallery ---------- */
 const SHOW = ['temnyj-oreh', 'agaro', 'ral-6018', 'beatris', 'baget-ral-1013', 'venza', 'dl-810-al2-tryufel', 'yurta', 'manchester-mokko', 'baget-ral-5040', 'platinum-oreh-lusso', 'franciya', 'ral-8025', 'stella-madrid'].map(byId).filter(Boolean);
 const show = $('#line'), stage = $('#showStage');
-stage.innerHTML = SHOW.map(d => `<figure class="sd" data-id="${d.id}"><img src="img/d/${d.img}.jpg" alt="${esc(full(d))}" loading="lazy"><figcaption><b>${esc(title(d))}</b><span>${esc(ST[d.style])}</span></figcaption></figure>`).join('');
+stage.innerHTML = SHOW.map(d => `<figure class="sd" data-id="${d.id}"><img src="img/d/${d.img}.jpg?v=1794223970" alt="${esc(full(d))}" loading="lazy"><figcaption><b>${esc(title(d))}</b><span>${esc(ST[d.style])}</span></figcaption></figure>`).join('');
 show.style.setProperty('--n', SHOW.length);
 $('#showTot').textContent = String(SHOW.length).padStart(2, '0');
 const sds = $$('.sd', stage);
@@ -277,7 +277,7 @@ function renderDoor(d) {
   $('#door').innerHTML = `<article class="dp"><div class="wrap">
     <nav class="crumbs"><a href="#/">Главная</a>/<a href="#/s/catalog">Каталог</a>/<span>${esc(title(d))}</span></nav>
     <div class="dp__g">
-      <div class="dp__img${AI.has(d.img) ? ' dp__img--ai' : ''}"><small>${HOVER ? 'Наведите — дверь откроется' : ''}</small><img src="img/d/${d.img}.jpg" alt="Межкомнатная дверь ${esc(full(d))}"></div>
+      <div class="dp__img${AI.has(d.img) ? ' dp__img--ai' : ''}"><small>${HOVER ? 'Наведите — дверь откроется' : ''}</small><img src="img/d/${d.img}.jpg?v=1794223970" alt="Межкомнатная дверь ${esc(full(d))}"></div>
       <div>
         <p class="kicker">${d.made === 'dverium' ? 'Производство Dverium' : 'Производство: ' + MA[d.made]} · ${ST[d.style]}</p>
         <h1>${esc(title(d))}</h1>
