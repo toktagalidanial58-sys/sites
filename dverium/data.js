@@ -22,7 +22,7 @@ window.DV_FAMS = {
   mirror: 'Зеркало'
 };
 /* model — название модели (если клиент его указал), color — цвет как в подписи */
-window.DV_AI = ["B02", "B05", "B06", "B09", "B12", "B14", "B16", "B17", "B20", "C01", "C02", "A16", "A17", "A18", "A19", "A20"];
+window.DV_AI = ["B01", "B02", "B04", "B05", "B06", "B10", "B12", "B14", "B15", "B16", "B17", "B20", "B09", "A16", "A17", "A18", "A19", "A20", "C01", "C02", "C03", "C04", "C05", "C06"];
 window.DV_DOORS = [
   // ——— Собственное производство Dverium (по индивидуальным размерам, высота под заказ)
   { id: 'temnyj-oreh', img: 'A13', model: '', color: 'Тёмный орех (Dark Walnut)', style: 'min', coat: 'model', h: 'Под заказ', made: 'dverium', fam: 'wood' },
@@ -67,5 +67,6 @@ window.DV_DOORS = [
   { id: 'stella-madrid', img: 'C02', model: 'Стелла Мадрид', color: 'Белый и бежевый агат', style: 'fr', coat: 'film', h: '2,00–2,20 м', made: 'ru', fam: 'light' },
   { id: 'dl-750', img: 'C03', model: 'DL 750', color: 'Капучино и белый', style: 'neo', coat: 'enamel', h: '2,00–2,20 м', made: 'ru', fam: 'beige' },
   { id: 'dl-795', img: 'C04', model: 'DL 795', color: 'Агат, капучино, белый', style: 'fr', coat: 'enamel', h: '2,00 / 2,20 / 2,30 м', made: 'ru', fam: 'light' },
+  { id: 'innova', img: 'C06', model: 'Innova', color: 'Нефрит', style: 'fr', coat: 'film', h: '2,20 м', made: 'ru', fam: 'color' },
   { id: 'uno', img: 'C05', model: 'UNO', color: 'Белый', style: 'neo', coat: 'paint', h: '2,00–2,20 м', made: 'cn', fam: 'light' },
 ];
