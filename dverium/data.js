@@ -67,5 +67,4 @@ window.DV_DOORS = [
   { id: 'dl-750', img: 'C03', model: 'DL 750', color: 'Капучино и белый', style: 'neo', coat: 'enamel', h: '2,00–2,20 м', made: 'ru', fam: 'beige' },
   { id: 'dl-795', img: 'C04', model: 'DL 795', color: 'Агат, капучино, белый', style: 'fr', coat: 'enamel', h: '2,00 / 2,20 / 2,30 м', made: 'ru', fam: 'light' },
   { id: 'uno', img: 'C05', model: 'UNO', color: 'Белый', style: 'neo', coat: 'paint', h: '2,00–2,20 м', made: 'cn', fam: 'light' },
-  { id: 'innova', img: 'C06', model: 'Innova', color: 'Нефрит', style: 'fr', coat: 'film', h: '2,20 м', made: 'ru', fam: 'color' }
 ];
