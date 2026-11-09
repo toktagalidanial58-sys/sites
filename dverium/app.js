@@ -17,7 +17,9 @@ const priceMsg = d => `Здравствуйте! Хочу узнать стои�
 function openWA(t) { const w = window.open(waUrl(t), '_blank'); if (w) { try { w.opener = null; } catch (e) {} } else location.href = waUrl(t); }
 
 /* ---------- reveal ---------- */
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -6% 0px', threshold: .1 });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); const c = e.target.querySelector('[data-count]'); if (c) count(c); } }), { rootMargin: '0px 0px -6% 0px', threshold: .1 });
+function count(el) { const to = +el.dataset.count, t0 = performance.now(); if (RM) { el.textContent = to; return; }
+  const f = t => { const k = Math.min(1, (t - t0) / 1300); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(f); }; requestAnimationFrame(f); }
 /* на телефоне двери приоткрываются, когда появляются на экране */
 const ajar = new IntersectionObserver(es => es.forEach(e => {
   if (!e.isIntersecting) return;
@@ -25,7 +27,24 @@ const ajar = new IntersectionObserver(es => es.forEach(e => {
   setTimeout(() => { img.style.transform = 'rotateY(-20deg)'; img.style.boxShadow = '14px 0 26px rgba(0,0,0,.12)'; }, 350);
   setTimeout(() => { img.style.transform = ''; img.style.boxShadow = ''; }, 1900);
 }), { threshold: .7 });
+function splitWords(root) {
+  $$('.split:not([data-s])', root).forEach(el => {
+    el.dataset.s = 1;
+    el.innerHTML = el.textContent.trim().split(/\s+/).map((w, i) => `<span class="w"><span style="transition-delay:${i * 45}ms">${w}</span></span>`).join(' ');
+  });
+}
+function tilt(root) {
+  if (!HOVER || RM) return;
+  $$('.card__ph:not([data-t])', root).forEach(ph => {
+    ph.dataset.t = 1;
+    ph.addEventListener('pointermove', e => { const r = ph.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      ph.style.transform = `rotateY(${(x - .5) * 14}deg) rotateX(${(.5 - y) * 10}deg)`; ph.style.setProperty('--gx', x * 100 + '%'); ph.style.setProperty('--gy', y * 100 + '%'); });
+    ph.addEventListener('pointerleave', () => { ph.style.transform = ''; });
+  });
+}
 function observe(root = document) {
+  splitWords(root); tilt(root);
+  $$('.split:not(.in)', root).forEach(el => RM ? el.classList.add('in') : io.observe(el));
   $$('.rv:not(.in), .card:not(.in)', root).forEach(el => RM ? el.classList.add('in') : io.observe(el));
   if (!HOVER && !RM) $$('.card:not(.card--ai) .card__ph img, .ld:not(.ld--ai) .ld__d img', root).forEach(i => ajar.observe(i));
 }
@@ -35,7 +54,7 @@ const AI = new Set(window.DV_AI || []);
 const card = d => `<article class="card${AI.has(d.img) ? ' card--ai' : ''}">
   <a class="card__ph" href="#/door/${d.id}" aria-label="${esc(full(d))}">
     <span class="card__tag">${d.made === 'dverium' ? 'Dverium' : MA[d.made]}</span>
-    <img src="img/s/${d.img}.jpg" alt="Межкомнатная дверь ${esc(full(d))}" loading="lazy" decoding="async"></a>
+    <img src="img/s/${d.img}.jpg" alt="Межкомнатная дверь ${esc(full(d))}" loading="lazy" decoding="async"><span class="gl"></span></a>
   <div class="card__b">
     <h3 class="card__t"><a href="#/door/${d.id}">${esc(title(d))}</a></h3>
     <span class="card__c">${esc(sub(d))}</span>
@@ -44,16 +63,7 @@ const card = d => `<article class="card${AI.has(d.img) ? ' card--ai' : ''}">
 
 /* ---------- collection line ---------- */
 const LINE = ['temnyj-oreh', 'agaro', 'ral-6018', 'beatris', 'baget-ral-1013', 'dl-810-al2-tryufel', 'venza', 'yurta', 'barselona-2-mokko', 'baget-ral-9016', 'platinum-oreh-lusso', 'franciya', 'ral-8025', 'dubaj'];
-const track = $('#lineTrack');
-track.innerHTML = LINE.map(byId).filter(Boolean).map(d => `<a class="ld${AI.has(d.img) ? ' ld--ai' : ''}" href="#/door/${d.id}"><span class="ld__d"><img src="img/s/${d.img}.jpg" alt="${esc(full(d))}" loading="lazy"></span><span class="ld__t"><b>${esc(title(d))}</b><span>${esc(ST[d.style])}</span></span></a>`).join('');
-(function drag(el) {
-  let down = false, x0 = 0, s0 = 0, moved = false;
-  el.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; down = true; moved = false; x0 = e.clientX; s0 = el.scrollLeft; });
-  addEventListener('pointermove', e => { if (!down) return; const dx = e.clientX - x0; if (Math.abs(dx) > 5) { moved = true; el.classList.add('drag'); } el.scrollLeft = s0 - dx; });
-  addEventListener('pointerup', () => { if (down) { down = false; setTimeout(() => el.classList.remove('drag'), 0); } });
-  el.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
-  el.addEventListener('dragstart', e => e.preventDefault());
-})(track);
+/* line track replaced by 3D gallery (see below) */
 
 /* ---------- catalog ---------- */
 const state = { style: 'all', fam: 'all', coat: 'all', made: 'all' };
@@ -179,6 +189,50 @@ document.addEventListener('click', e => {
 /* ---------- header + hero scroll ---------- */
 const hdr = $('#hdr'), hero = $('#hero'), pin = $('.hero__pin'), portal = $('#portal');
 let lastY = 0, raf = 0;
+/* ---------- 3D gallery ---------- */
+const SHOW = ['temnyj-oreh', 'agaro', 'ral-6018', 'beatris', 'baget-ral-1013', 'venza', 'dl-810-al2-tryufel', 'yurta', 'manchester-mokko', 'baget-ral-5040', 'platinum-oreh-lusso', 'franciya', 'ral-8025', 'stella-madrid'].map(byId).filter(Boolean);
+const show = $('#line'), stage = $('#showStage');
+stage.innerHTML = SHOW.map(d => `<figure class="sd" data-id="${d.id}"><img src="img/d/${d.img}.jpg" alt="${esc(full(d))}" loading="lazy"><figcaption><b>${esc(title(d))}</b><span>${esc(ST[d.style])}</span></figcaption></figure>`).join('');
+show.style.setProperty('--n', SHOW.length);
+$('#showTot').textContent = String(SHOW.length).padStart(2, '0');
+const sds = $$('.sd', stage);
+stage.addEventListener('click', e => { const f = e.target.closest('.sd'); if (f) location.hash = '#/door/' + f.dataset.id; });
+let lastIdx = -1;
+function gallery() {
+  const r = show.getBoundingClientRect(), tot = show.offsetHeight - innerHeight;
+  if (r.bottom < 0 || r.top > innerHeight) return;
+  const p = Math.min(1, Math.max(0, -r.top / tot)), f = p * (SHOW.length - 1);
+  const sp = Math.min(innerWidth * .26, 330);
+  sds.forEach((el, i) => {
+    const d = i - f, ad = Math.abs(d);
+    if (ad > 3.5) { el.style.opacity = 0; return; }
+    const x = Math.sign(d) * (ad < 1 ? ad * sp : sp + (ad - 1) * sp * .62);
+    el.style.transform = `translateX(-50%) translateX(${x}px) translateZ(${-ad * 260}px) rotateY(${Math.max(-62, Math.min(62, -d * 44))}deg)`;
+    el.style.opacity = Math.max(0, 1 - ad * .28);
+    el.style.zIndex = 100 - Math.round(ad * 10);
+    el.style.setProperty('--c', Math.max(0, 1 - ad * 2.2));
+  });
+  const idx = Math.round(f);
+  if (idx !== lastIdx) { lastIdx = idx; $('#showNum').textContent = String(idx + 1).padStart(2, '0'); }
+  $('#showBar').style.width = (p * 100).toFixed(2) + '%';
+}
+/* под заказ: поворот дверей */
+const cimg = $('.custom__img');
+function customRot() { const r = cimg.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; const k = (r.top + r.height / 2 - innerHeight / 2) / innerHeight; cimg.style.setProperty('--cr', (k * 28).toFixed(2) + 'deg'); cimg.style.setProperty('--cy', (k * 40).toFixed(1) + 'px'); }
+/* портал: наклон за мышью */
+if (HOVER && !RM) $('.hero__pin').addEventListener('pointermove', e => { const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5; portal.style.setProperty('--ry', (x * 14).toFixed(2) + 'deg'); portal.style.setProperty('--rx', (-y * 8).toFixed(2) + 'deg'); });
+/* золотая пыль в свете */
+const cv = $('#dust'), cx = cv.getContext('2d'); let parts = [];
+function sizeDust() { const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1); cv.width = r.width * dpr; cv.height = r.height * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  parts = Array.from({ length: 46 }, () => ({ x: Math.random() * r.width, y: Math.random() * r.height, r: Math.random() * 1.6 + .4, v: Math.random() * .25 + .08, a: Math.random() * Math.PI * 2 })); }
+function dust() {
+  const o = +getComputedStyle(portal).getPropertyValue('--o') || 0;
+  if (o > .02 && $('#door').hidden) { const w = cv.width / (Math.min(2, devicePixelRatio || 1)), h = cv.height / (Math.min(2, devicePixelRatio || 1)); cx.clearRect(0, 0, w, h);
+    parts.forEach(p => { p.y -= p.v; p.a += .02; p.x += Math.sin(p.a) * .25; if (p.y < -4) { p.y = h + 4; p.x = Math.random() * w; }
+      cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 7); cx.fillStyle = `rgba(255,228,170,${.35 + .4 * Math.sin(p.a) ** 2})`; cx.fill(); }); }
+  requestAnimationFrame(dust);
+}
+if (!RM) { sizeDust(); addEventListener('resize', sizeDust); requestAnimationFrame(dust); }
 const copy = $('.hero__copy');
 const setCH = () => pin.style.setProperty('--ch', copy.offsetHeight + 'px');
 addEventListener('resize', setCH); setCH(); if (document.fonts) document.fonts.ready.then(setCH);
@@ -197,6 +251,7 @@ function frame() {
     portal.style.setProperty('--z', zz.toFixed(4));
     pin.style.setProperty('--w', Math.max(0, (z - .55) / .45).toFixed(4));
   }
+  if (!onDoor && !RM) { gallery(); customRot(); }
   const heroEnd = onDoor ? 0 : hero.offsetHeight - innerHeight;
   hdr.classList.toggle('solid', onDoor || y > heroEnd + 10 || (y > 10 && innerWidth < 820));
   hdr.classList.toggle('up', y > heroEnd + 300 && y > lastY + 3 && !document.body.classList.contains('menu'));
@@ -250,7 +305,16 @@ function renderDoor(d) {
     $('#qE').textContent = ''; const n = $('#qN').value.trim();
     openWA(`${msg}\nКоличество: ${$('#qQ').value}\nВысота проёма: ${$('#qH').value}${n ? '\nИмя: ' + n : ''}\nТелефон: ${p}`);
   });
-  if (!HOVER && !RM && !AI.has(d.img)) { const im = $('.dp__img img'); setTimeout(() => { im.style.transform = 'rotateY(-22deg)'; im.style.boxShadow = '18px 0 30px rgba(0,0,0,.14)'; }, 700); setTimeout(() => { im.style.transform = ''; im.style.boxShadow = ''; }, 2400); }
+  (() => { const box = $('.dp__img'); let down = false, x0 = 0, r0 = 0, r = 0;
+    const set = v => { r = Math.max(-45, Math.min(45, v)); box.style.setProperty('--dr', r + 'deg'); };
+    box.querySelector('small').textContent = 'Потяните, чтобы повернуть';
+    box.addEventListener('pointerdown', e => { down = true; x0 = e.clientX; r0 = r; box.classList.add('drag'); box.setPointerCapture(e.pointerId); });
+    box.addEventListener('pointermove', e => { if (down) set(r0 + (e.clientX - x0) * .35); });
+    const up = () => { if (!down) return; down = false; box.classList.remove('drag'); set(0); };
+    box.addEventListener('pointerup', up); box.addEventListener('pointercancel', up);
+    if (!RM) { setTimeout(() => set(-24), 600); setTimeout(() => set(18), 1500); setTimeout(() => set(0), 2400); }
+  })();
+  if (false) { const im = $('.dp__img img'); setTimeout(() => { im.style.transform = 'rotateY(-22deg)'; im.style.boxShadow = '18px 0 30px rgba(0,0,0,.14)'; }, 700); setTimeout(() => { im.style.transform = ''; im.style.boxShadow = ''; }, 2400); }
   meta(`${full(d)} — межкомнатная дверь | Dverium Алматы`, `${full(d)}: ${ST[d.style].toLowerCase()}, высота ${d.h}. Производство: ${MA[d.made]}. Бесплатная доставка по Алматы и Казахстану, установка.`);
   observe($('#door'));
 }

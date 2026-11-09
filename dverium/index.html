@@ -69,7 +69,7 @@
     <div class="hero__pin">
       <div class="hero__copy">
         <p class="kicker">Межкомнатные двери · Алматы</p>
-        <h1>Двери, которые создают атмосферу вашего дома</h1>
+        <h1 class="lines"><span><i>Двери, которые</i></span><span><i>создают атмосферу</i></span><span><i>вашего дома</i></span></h1>
         <p class="hero__sub">Премиальные двери, безупречный дизайн и профессиональная установка в Алматы.</p>
         <div class="hero__cta">
           <a class="btn" href="#/s/catalog">Смотреть каталог</a>
@@ -80,6 +80,8 @@
         <div class="portal__light"></div>
         <div class="portal__door"><img src="img/d/A13.jpg" alt="" width="620" height="1500"><span class="portal__edge"></span></div>
         <div class="portal__floor"></div>
+        <div class="portal__beam"></div>
+        <canvas class="portal__dust" id="dust"></canvas>
       </div>
       <div class="hero__hint" aria-hidden="true"><span></span>Листайте</div>
     </div>
@@ -88,7 +90,7 @@
   <!-- Факты -->
   <section class="facts">
     <div class="wrap facts__g">
-      <div class="rv"><b>4+</b><span>года на рынке межкомнатных дверей</span></div>
+      <div class="rv"><b><em data-count="4">0</em>+</b><span>года на рынке межкомнатных дверей</span></div>
       <div class="rv"><b>По размеру</b><span>изготовление под любой проём</span></div>
       <div class="rv"><b>0 ₸</b><span>доставка по Алматы и всему Казахстану</span></div>
       <div class="rv"><b>2–3 часа</b><span>установка одной стандартной двери</span></div>
@@ -96,12 +98,15 @@
   </section>
 
   <!-- Линейка дверей -->
-  <section class="line" id="line">
-    <div class="wrap line__head">
-      <h2 class="rv">Коллекция</h2>
-      <a class="lnk rv" href="#/s/catalog">Весь каталог →</a>
+  <section class="show" id="line">
+    <div class="show__pin">
+      <div class="wrap show__head">
+        <div><p class="kicker">Коллекция</p><h2 class="split">Двери, в которые хочется войти</h2></div>
+        <div class="show__meta"><span id="showNum">01</span> / <span id="showTot">00</span><a class="lnk" href="#/s/catalog">Весь каталог →</a></div>
+      </div>
+      <div class="show__stage" id="showStage"></div>
+      <div class="show__bar"><i id="showBar"></i></div>
     </div>
-    <div class="line__track" id="lineTrack"></div>
   </section>
 
   <!-- Каталог -->
@@ -109,7 +114,7 @@
     <div class="wrap">
       <div class="head">
         <p class="kicker rv">Каталог</p>
-        <h2 class="rv">Выберите дверь под свой интерьер</h2>
+        <h2 class="split">Выберите дверь под свой интерьер</h2>
       </div>
       <div class="flt rv" id="flt">
         <div class="flt__row" data-key="style"></div>
@@ -134,7 +139,7 @@
       </div>
       <div>
         <p class="kicker rv">Производство Dverium</p>
-        <h2 class="rv">Двери под ваш проём, цвет и высоту</h2>
+        <h2 class="split">Двери под ваш проём, цвет и высоту</h2>
         <p class="lead rv">Собственный производственный цех позволяет контролировать качество и весь процесс изготовления. Делаем двери под нестандартную высоту и ширину проёмов.</p>
         <ul class="list rv">
           <li>Изготовление по индивидуальным размерам</li>
@@ -175,7 +180,7 @@
     <div class="wrap mat__g">
       <div>
         <p class="kicker rv">Материалы</p>
-        <h2 class="rv">Из чего сделаны наши двери</h2>
+        <h2 class="split">Из чего сделаны наши двери</h2>
       </div>
       <ul class="mat__l">
         <li class="rv"><b>LVL-брус</b><span>прочный каркас</span></li>
@@ -193,7 +198,7 @@
     <div class="wrap">
       <div class="head">
         <p class="kicker rv">Как мы работаем</p>
-        <h2 class="rv">От выбора двери до установки</h2>
+        <h2 class="split">От выбора двери до установки</h2>
       </div>
       <ol class="steps">
         <li class="rv"><i>1</i><h3>Заявка</h3><p>Пишете в WhatsApp или оставляете номер.</p></li>
@@ -210,7 +215,7 @@
   <section class="sec sec--grey" id="reviews">
     <div class="wrap">
       <div class="head head--row">
-        <div><p class="kicker rv">Отзывы</p><h2 class="rv">Что говорят клиенты</h2></div>
+        <div><p class="kicker rv">Отзывы</p><h2 class="split">Что говорят клиенты</h2></div>
         <div class="arrows rv"><button type="button" data-rev="-1" aria-label="Назад">←</button><button type="button" data-rev="1" aria-label="Вперёд">→</button></div>
       </div>
     </div>
@@ -229,7 +234,7 @@
     <div class="wrap calc">
       <div>
         <p class="kicker rv">Расчёт стоимости</p>
-        <h2 class="rv">Узнайте стоимость под ваши проёмы</h2>
+        <h2 class="split">Узнайте стоимость под ваши проёмы</h2>
         <p class="lead rv">Заполните параметры — заявка уйдёт менеджеру в WhatsApp, и он рассчитает точную стоимость с учётом размеров, комплектации и установки.</p>
         <div class="tabs rv" role="tablist">
           <button type="button" class="on" data-tab="calc" aria-selected="true">Расчёт стоимости</button>
@@ -265,7 +270,7 @@
     <div class="wrap faq">
       <div>
         <p class="kicker rv">Вопросы</p>
-        <h2 class="rv">Часто спрашивают</h2>
+        <h2 class="split">Часто спрашивают</h2>
         <a class="lnk rv" href="#" data-wa="Здравствуйте! У меня вопрос по дверям Dverium.">Задать свой вопрос →</a>
       </div>
       <div class="acc">
@@ -287,7 +292,7 @@
   <section class="sec" id="contacts">
     <div class="wrap">
       <p class="kicker rv">Контакты</p>
-      <h2 class="big rv">Откройте дверь в новый интерьер</h2>
+      <h2 class="big split">Откройте дверь в новый интерьер</h2>
       <div class="ct">
         <a class="rv" href="tel:+77473690303"><small>Телефон</small><b>+7 747 369 03 03</b></a>
         <a class="rv" href="https://wa.me/message/TPPZAASAKNJUH1" target="_blank" rel="noopener"><small>WhatsApp</small><b>Написать</b></a>
