@@ -550,3 +550,8 @@ body{background:var(--bg);color:var(--ink)}
 .map__btns{display:flex;gap:8px;margin-top:18px}
 .map__btns .btn{flex:1;height:46px;padding:0 14px;font-size:14px}
 .ct__b{margin-top:30px}
+.map__hours{margin:14px 0 0;display:grid;gap:4px;font-size:14.5px}
+.map__hours div{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:6px}
+.map__hours dt{color:var(--mid)}.map__hours dd{margin:0}
+.ftr__g span{color:var(--mid);font-size:14px}
+@media (max-width:600px){.map{height:auto;display:flex;flex-direction:column}.map iframe{position:relative;height:300px}.map::after{display:none}.map__card{position:relative;left:0;bottom:0;width:100%;border-radius:0;border:0;border-top:1px solid var(--line)}}
