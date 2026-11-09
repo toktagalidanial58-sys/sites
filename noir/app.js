@@ -514,26 +514,23 @@ const booking = (() => {
   $('#dates').innerHTML = days.map(d =>
     `<button class="date" type="button" data-v="${d.key}"><small>${d.today ? 'Сегодня' : d.tomorrow ? 'Завтра' : DOW[d.dow]}</small><b>${d.day}</b><small>${MON[d.mon].slice(0, 3)}</small></button>`).join('');
 
-  const hash = s => { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0) % 100; };
   function renderSlots() {
     const box = $('#slots');
     if (!state.date) { box.innerHTML = '<div class="slots-empty">Сначала выберите дату</div>'; $('#slotsDay').textContent = ''; return; }
     const d = days.find(x => x.key === state.date);
     $('#slotsDay').textContent = dateLabel(d);
     const now = almatyNow();
-    const busyRate = state.barber === 'any' ? 12 : 34;
     let html = '', free = 0;
     for (let h = CONFIG.open; h < CONFIG.close; h++) {
       for (const m of [0, 30]) {
         if (h === CONFIG.close - 1 && m === 30) continue;
         const t = `${String(h).padStart(2, '0')}:${m ? '30' : '00'}`;
-        const past = d.today && (h * 60 + m) <= (now.h * 60 + now.min + 30);
-        const busy = past || hash(state.date + state.barber + t) < busyRate;
-        if (!busy) free++;
-        html += `<button class="slot${busy ? ' busy' : ''}${state.time === t ? ' sel' : ''}" type="button" data-v="${t}"${busy ? ' disabled aria-disabled="true"' : ''}>${t}</button>`;
+        const past = d.today && (h * 60 + m) <= (now.h * 60 + now.min + 30); // прошедшее время сегодня
+        if (!past) free++;
+        html += `<button class="slot${past ? ' busy' : ''}${state.time === t ? ' sel' : ''}" type="button" data-v="${t}"${past ? ' disabled aria-disabled="true"' : ''}>${t}</button>`;
       }
     }
-    box.innerHTML = free ? html : '<div class="slots-empty">На этот день свободного времени нет — выберите другую дату.</div>';
+    box.innerHTML = free ? html : '<div class="slots-empty">На сегодня запись уже закрыта — выберите другой день.</div>';
   }
 
   // selection handlers
@@ -545,7 +542,7 @@ const booking = (() => {
     update();
   });
   pick($('#optServices'), 'service');
-  pick($('#optBarbers'), 'barber', () => { state.time = null; renderSlots(); });
+  pick($('#optBarbers'), 'barber');
   pick($('#dates'), 'date', () => { state.time = null; renderSlots(); });
   pick($('#slots'), 'time');
 
@@ -638,7 +635,7 @@ const booking = (() => {
     if (!ok) { toast('Проверьте имя и номер телефона'); return; }
     const url = waLink(message());
     $('#waAgain').href = url;
-    $('#doneText').textContent = `${state.name}, мы открыли WhatsApp с вашей заявкой. Отправьте сообщение — администратор подтвердит запись в течение 10 минут.`;
+    $('#doneText').textContent = `${state.name}, мы открыли WhatsApp с вашей заявкой. Отправьте сообщение — администратор подтвердит время в течение 10 минут.`;
     goStep(5, true);
     const w = window.open(url, '_blank');
     if (w) { try { w.opener = null; } catch (e) {} } else setTimeout(() => { location.href = url; }, 300);
@@ -660,7 +657,7 @@ const booking = (() => {
         $$('#optServices .opt').forEach(x => x.classList.toggle('sel', x.dataset.v === service));
       }
       if (barber) {
-        state.barber = barber; state.time = null;
+        state.barber = barber;
         $$('#optBarbers .opt').forEach(x => x.classList.toggle('sel', x.dataset.v === barber));
       }
       const target = !state.service ? 1 : !state.barber ? 2 : 3;
