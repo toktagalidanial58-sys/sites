@@ -258,6 +258,23 @@ footer p{font-size:14.5px}
 @keyframes pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.35,1.6);opacity:0}}
 @keyframes fabIn{from{opacity:0;transform:translateY(40px) scale(.8)}to{opacity:1;transform:none}}
 
+
+/* gallery */
+.gallery{background:linear-gradient(#fff,#f4faff)}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;grid-auto-flow:dense;gap:16px}
+.ph{position:relative;margin:0;border-radius:24px;overflow:hidden;cursor:zoom-in;box-shadow:0 22px 44px -26px rgba(15,42,99,.5);background:#dde9f7}
+.ph.t{grid-row:span 2}.ph.w{grid-column:span 2}.ph.w:nth-child(5n+3){grid-row:span 2}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.ph:hover img{transform:scale(1.07)}
+.ph figcaption{position:absolute;left:12px;bottom:12px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.9);font-weight:800;font-size:14px;color:var(--navy);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.lb{position:fixed;inset:0;z-index:200;background:rgba(6,16,40,.92);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.lb.on{opacity:1;pointer-events:auto}
+.lb img{max-width:92vw;max-height:82vh;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb button{position:absolute;border:0;background:rgba(255,255,255,.14);color:#fff;width:52px;height:52px;border-radius:50%;font-size:32px;line-height:1;cursor:pointer}
+.lb-x{top:18px;right:18px}.lb-p{left:18px;top:50%}.lb-n{right:18px;top:50%}
+.lb-c{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#fff;font-weight:800}
+@media (max-width:1020px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}}
+@media (max-width:620px){.gal{grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:10px}.ph.w{grid-column:span 2}.ph.w:nth-child(5n+3){grid-row:auto}.ph figcaption{font-size:12px;padding:6px 10px;left:8px;bottom:8px}.lb-p,.lb-n{top:auto;bottom:70px}}
 /* responsive */
 @media (max-width:1020px){
   .g4,.roles,.cgrid{grid-template-columns:repeat(2,1fr)}
@@ -331,6 +348,7 @@ footer p{font-size:14.5px}
   <a class="brand" href="#top" aria-label="Аяла Kids"><img src="data:image/jpeg;base64,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" alt="Аяла Kids логотипі"><span>Аяла <em>Kids</em></span></a>
   <div class="menu" id="menu">
     <a href="#about">Біз туралы</a>
+    <a href="#gallery">Галерея</a>
     <a href="#why">Артықшылықтар</a>
     <a href="#programs">Бағдарламалар</a>
     <a href="#prices">Бағасы</a>
@@ -431,6 +449,19 @@ footer p{font-size:14.5px}
     </div>
   </div>
 </section>
+
+<!-- GALLERY -->
+<section class="sec gallery" id="gallery">
+  <div class="wrap">
+    <div class="head c">
+      <span class="label rv">Галерея</span>
+      <h2 class="rv">Балабақшаның іші</h2>
+      <p class="lead rv">Таза, жарық әрі жайлы бөлмелер — өз көзіңізбен көріңіз.</p>
+    </div>
+    <div class="gal" data-stagger><figure class="ph t rv" data-i="0"><img src="img/01.jpg" alt="Аяла Kids — Кіреберіс" loading="lazy" decoding="async"><figcaption>Кіреберіс</figcaption></figure><figure class="ph t rv" data-i="1"><img src="img/02.jpg" alt="Аяла Kids — Дәліз" loading="lazy" decoding="async"><figcaption>Дәліз</figcaption></figure><figure class="ph w rv" data-i="2"><img src="img/03.jpg" alt="Аяла Kids — Топ бөлмесі" loading="lazy" decoding="async"><figcaption>Топ бөлмесі</figcaption></figure><figure class="ph w rv" data-i="3"><img src="img/04.jpg" alt="Аяла Kids — Ұйқы бөлмесі" loading="lazy" decoding="async"><figcaption>Ұйқы бөлмесі</figcaption></figure><figure class="ph w rv" data-i="4"><img src="img/05.jpg" alt="Аяла Kids — Сабақ бөлмесі" loading="lazy" decoding="async"><figcaption>Сабақ бөлмесі</figcaption></figure><figure class="ph w rv" data-i="5"><img src="img/06.jpg" alt="Аяла Kids — Сабақ бөлмесі" loading="lazy" decoding="async"><figcaption>Сабақ бөлмесі</figcaption></figure><figure class="ph w rv" data-i="6"><img src="img/07.jpg" alt="Аяла Kids — Ас бөлмесі" loading="lazy" decoding="async"><figcaption>Ас бөлмесі</figcaption></figure><figure class="ph w rv" data-i="7"><img src="img/08.jpg" alt="Аяла Kids — Дамытушы ойындар" loading="lazy" decoding="async"><figcaption>Дамытушы ойындар</figcaption></figure><figure class="ph t rv" data-i="8"><img src="img/09.jpg" alt="Аяла Kids — Ойыншықтар мен құралдар" loading="lazy" decoding="async"><figcaption>Ойыншықтар мен құралдар</figcaption></figure><figure class="ph t rv" data-i="9"><img src="img/10.jpg" alt="Аяла Kids — Мамандықтар баспалдағы" loading="lazy" decoding="async"><figcaption>Мамандықтар баспалдағы</figcaption></figure><figure class="ph w rv" data-i="10"><img src="img/11.jpg" alt="Аяла Kids — Өз ас үйіміз" loading="lazy" decoding="async"><figcaption>Өз ас үйіміз</figcaption></figure><figure class="ph w rv" data-i="11"><img src="img/12.jpg" alt="Аяла Kids — Медициналық кабинет" loading="lazy" decoding="async"><figcaption>Медициналық кабинет</figcaption></figure></div>
+  </div>
+</section>
+<div class="lb" id="lb" aria-hidden="true"><button class="lb-x" aria-label="Жабу">×</button><button class="lb-p" aria-label="Алдыңғы">‹</button><img alt=""><button class="lb-n" aria-label="Келесі">›</button><p class="lb-c"></p></div>
 
 <!-- WHY -->
 <section class="sec why" id="why">
@@ -689,6 +720,16 @@ footer p{font-size:14.5px}
   }
   if(!reduce) requestAnimationFrame(loop);
   else cubes.forEach(function(o){ o.el.style.transform = 'rotateX(-16deg) rotateY(-28deg)' });
+
+  /* lightbox */
+  var lb=$('#lb'), lbi=$('img',lb), lbc=$('.lb-c',lb), phs=$$('.ph'), cur=0;
+  function show(i){cur=(i+phs.length)%phs.length; var im=$('img',phs[cur]); lbi.src=im.src; lbc.textContent=$('figcaption',phs[cur]).textContent; lb.classList.add('on')}
+  phs.forEach(function(f,i){f.addEventListener('click',function(){show(i)})});
+  $('.lb-x',lb).addEventListener('click',function(){lb.classList.remove('on')});
+  $('.lb-p',lb).addEventListener('click',function(e){e.stopPropagation();show(cur-1)});
+  $('.lb-n',lb).addEventListener('click',function(e){e.stopPropagation();show(cur+1)});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('on')});
+  addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return; if(e.key==='Escape')lb.classList.remove('on'); if(e.key==='ArrowLeft')show(cur-1); if(e.key==='ArrowRight')show(cur+1)});
 
   /* form -> WhatsApp */
   var form = $('#form');
