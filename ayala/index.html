@@ -261,10 +261,9 @@ footer p{font-size:14.5px}
 
 /* gallery */
 .gallery{background:linear-gradient(#fff,#f4faff)}
-.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;grid-auto-flow:dense;gap:16px}
-.ph{position:relative;margin:0;border-radius:24px;overflow:hidden;cursor:zoom-in;box-shadow:0 22px 44px -26px rgba(15,42,99,.5);background:#dde9f7}
-.ph.t{grid-row:span 2}.ph.w{grid-column:span 2}.ph.w:nth-child(5n+3){grid-row:span 2}
-.ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.gal{columns:3;column-gap:16px}
+.ph{position:relative;margin:0 0 16px;break-inside:avoid;border-radius:24px;overflow:hidden;cursor:zoom-in;box-shadow:0 22px 44px -26px rgba(15,42,99,.5);background:#dde9f7}
+.ph img{width:100%;height:auto;transition:transform 1.1s var(--ease)}
 .ph:hover img{transform:scale(1.07)}
 .ph figcaption{position:absolute;left:12px;bottom:12px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.9);font-weight:800;font-size:14px;color:var(--navy);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .lb{position:fixed;inset:0;z-index:200;background:rgba(6,16,40,.92);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .3s}
@@ -273,8 +272,8 @@ footer p{font-size:14.5px}
 .lb button{position:absolute;border:0;background:rgba(255,255,255,.14);color:#fff;width:52px;height:52px;border-radius:50%;font-size:32px;line-height:1;cursor:pointer}
 .lb-x{top:18px;right:18px}.lb-p{left:18px;top:50%}.lb-n{right:18px;top:50%}
 .lb-c{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#fff;font-weight:800}
-@media (max-width:1020px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}}
-@media (max-width:620px){.gal{grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:10px}.ph.w{grid-column:span 2}.ph.w:nth-child(5n+3){grid-row:auto}.ph figcaption{font-size:12px;padding:6px 10px;left:8px;bottom:8px}.lb-p,.lb-n{top:auto;bottom:70px}}
+@media (max-width:1020px){.gal{columns:2}}
+@media (max-width:620px){.gal{columns:2;column-gap:10px}.ph{margin-bottom:10px;border-radius:18px}.ph figcaption{font-size:12px;padding:6px 10px;left:8px;bottom:8px}.lb-p,.lb-n{top:auto;bottom:70px}}
 /* responsive */
 @media (max-width:1020px){
   .g4,.roles,.cgrid{grid-template-columns:repeat(2,1fr)}
@@ -458,7 +457,7 @@ footer p{font-size:14.5px}
       <h2 class="rv">Балабақшаның іші</h2>
       <p class="lead rv">Таза, жарық әрі жайлы бөлмелер — өз көзіңізбен көріңіз.</p>
     </div>
-    <div class="gal" data-stagger><figure class="ph t rv" data-i="0"><img src="img/01.jpg" alt="Аяла Kids — Кіреберіс" loading="lazy" decoding="async"><figcaption>Кіреберіс</figcaption></figure><figure class="ph t rv" data-i="1"><img src="img/02.jpg" alt="Аяла Kids — Дәліз" loading="lazy" decoding="async"><figcaption>Дәліз</figcaption></figure><figure class="ph w rv" data-i="2"><img src="img/03.jpg" alt="Аяла Kids — Топ бөлмесі" loading="lazy" decoding="async"><figcaption>Топ бөлмесі</figcaption></figure><figure class="ph w rv" data-i="3"><img src="img/04.jpg" alt="Аяла Kids — Ұйқы бөлмесі" loading="lazy" decoding="async"><figcaption>Ұйқы бөлмесі</figcaption></figure><figure class="ph w rv" data-i="4"><img src="img/05.jpg" alt="Аяла Kids — Сабақ бөлмесі" loading="lazy" decoding="async"><figcaption>Сабақ бөлмесі</figcaption></figure><figure class="ph w rv" data-i="5"><img src="img/06.jpg" alt="Аяла Kids — Сабақ бөлмесі" loading="lazy" decoding="async"><figcaption>Сабақ бөлмесі</figcaption></figure><figure class="ph w rv" data-i="6"><img src="img/07.jpg" alt="Аяла Kids — Ас бөлмесі" loading="lazy" decoding="async"><figcaption>Ас бөлмесі</figcaption></figure><figure class="ph w rv" data-i="7"><img src="img/08.jpg" alt="Аяла Kids — Дамытушы ойындар" loading="lazy" decoding="async"><figcaption>Дамытушы ойындар</figcaption></figure><figure class="ph t rv" data-i="8"><img src="img/09.jpg" alt="Аяла Kids — Ойыншықтар мен құралдар" loading="lazy" decoding="async"><figcaption>Ойыншықтар мен құралдар</figcaption></figure><figure class="ph t rv" data-i="9"><img src="img/10.jpg" alt="Аяла Kids — Мамандықтар баспалдағы" loading="lazy" decoding="async"><figcaption>Мамандықтар баспалдағы</figcaption></figure><figure class="ph w rv" data-i="10"><img src="img/11.jpg" alt="Аяла Kids — Өз ас үйіміз" loading="lazy" decoding="async"><figcaption>Өз ас үйіміз</figcaption></figure><figure class="ph w rv" data-i="11"><img src="img/12.jpg" alt="Аяла Kids — Медициналық кабинет" loading="lazy" decoding="async"><figcaption>Медициналық кабинет</figcaption></figure></div>
+    <div class="gal" data-stagger><figure class="ph t rv" data-i="0"><img src="img/01.jpg" alt="Аяла Kids — Кіреберіс" loading="lazy" decoding="async"><figcaption>Кіреберіс</figcaption></figure><figure class="ph w rv" data-i="2"><img src="img/03.jpg" alt="Аяла Kids — Топ бөлмесі" loading="lazy" decoding="async"><figcaption>Топ бөлмесі</figcaption></figure><figure class="ph w rv" data-i="3"><img src="img/04.jpg" alt="Аяла Kids — Ұйқы бөлмесі" loading="lazy" decoding="async"><figcaption>Ұйқы бөлмесі</figcaption></figure><figure class="ph w rv" data-i="4"><img src="img/05.jpg" alt="Аяла Kids — Сабақ бөлмесі" loading="lazy" decoding="async"><figcaption>Сабақ бөлмесі</figcaption></figure><figure class="ph w rv" data-i="5"><img src="img/06.jpg" alt="Аяла Kids — Сабақ бөлмесі" loading="lazy" decoding="async"><figcaption>Сабақ бөлмесі</figcaption></figure><figure class="ph w rv" data-i="6"><img src="img/07.jpg" alt="Аяла Kids — Ас бөлмесі" loading="lazy" decoding="async"><figcaption>Ас бөлмесі</figcaption></figure><figure class="ph w rv" data-i="7"><img src="img/08.jpg" alt="Аяла Kids — Дамытушы ойындар" loading="lazy" decoding="async"><figcaption>Дамытушы ойындар</figcaption></figure><figure class="ph t rv" data-i="8"><img src="img/09.jpg" alt="Аяла Kids — Ойыншықтар мен құралдар" loading="lazy" decoding="async"><figcaption>Ойыншықтар мен құралдар</figcaption></figure><figure class="ph t rv" data-i="9"><img src="img/10.jpg" alt="Аяла Kids — Мамандықтар баспалдағы" loading="lazy" decoding="async"><figcaption>Мамандықтар баспалдағы</figcaption></figure><figure class="ph w rv" data-i="10"><img src="img/11.jpg" alt="Аяла Kids — Өз ас үйіміз" loading="lazy" decoding="async"><figcaption>Өз ас үйіміз</figcaption></figure><figure class="ph w rv" data-i="11"><img src="img/12.jpg" alt="Аяла Kids — Медициналық кабинет" loading="lazy" decoding="async"><figcaption>Медициналық кабинет</figcaption></figure></div>
   </div>
 </section>
 <div class="lb" id="lb" aria-hidden="true"><button class="lb-x" aria-label="Жабу">×</button><button class="lb-p" aria-label="Алдыңғы">‹</button><img alt=""><button class="lb-n" aria-label="Келесі">›</button><p class="lb-c"></p></div>
