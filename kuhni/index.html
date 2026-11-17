@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LINIA — кухни на заказ в Алматы</title>
+<meta name="description" content="Кухни на заказ в Алматы. Бесплатный замер и 3D-проект, своё производство, монтаж за один день, гарантия 5 лет.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* graphite showroom lit by warm brass; the kitchen itself is the hero */
+  --bg:#0d0e0f; --panel:#151718; --panel2:#1b1d1f; --line:rgba(237,232,225,.09);
+  --ink:#ede8e1; --mute:#9b968e; --brass:#c9a36a; --brass2:#e6c896;
+  --display:"Cormorant Garamond","Times New Roman",serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  /* kitchen materials (changed by the configurator) */
+  --facc:#2b2c2e; --faci:none; --topc:#ece9e4;
+  --topi:linear-gradient(118deg,transparent 38%,rgba(110,100,92,.35) 39.5%,transparent 41%),linear-gradient(64deg,transparent 62%,rgba(110,100,92,.22) 63%,transparent 64.5%);
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;letter-spacing:-.01em;text-wrap:balance}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass);font-weight:600;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--brass)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 28px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s,box-shadow .3s;will-change:transform}
+.btn-gold{background:linear-gradient(135deg,var(--brass2),var(--brass) 55%,#a8834c);color:#16120c;box-shadow:0 10px 40px -10px rgba(201,163,106,.55)}
+.btn-gold:hover{box-shadow:0 14px 50px -8px rgba(201,163,106,.75)}
+.btn-ghost{border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{background:rgba(255,255,255,.07)}
+.btn svg{width:20px;height:20px}
+
+/* header */
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+header.solid{background:rgba(13,14,15,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:26px;letter-spacing:.32em;font-weight:600}
+.logo i{display:block;width:28px;height:28px;border:1px solid var(--brass);position:relative;transform:rotate(45deg)}
+.logo i::after{content:"";position:absolute;inset:6px;background:var(--brass)}
+.links{display:flex;gap:34px;font-size:14px;color:var(--mute)}
+.links a{transition:color .3s}.links a:hover{color:var(--ink)}
+.nav .btn{height:44px;padding:0 20px;font-size:14px}
+@media(max-width:900px){.links{display:none}.nav .btn span{display:none}.nav .btn{width:44px;padding:0}}
+
+/* hero */
+.hero{position:relative;padding:130px 0 40px;overflow:hidden}
+.glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(201,163,106,.16),transparent 60%);left:var(--mx,60%);top:var(--my,40%);transform:translate(-50%,-50%);pointer-events:none;transition:left .8s ease-out,top .8s ease-out}
+.hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:20px;align-items:center;position:relative}
+.hero h1{font-size:clamp(44px,5.2vw,76px);margin:22px 0 24px}
+.hero h1 em{font-style:italic;color:var(--brass2)}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln>span{display:block;animation:rise 1.1s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.12s}.hero h1 .ln:nth-child(3)>span{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.lead{color:var(--mute);font-size:18px;max-width:46ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.stage{position:relative;height:560px;cursor:grab;touch-action:pan-y}
+.stage:active{cursor:grabbing}
+.hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-size:12px;color:var(--mute);letter-spacing:.08em;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.hint svg{width:18px;height:18px;animation:sway 2.4s ease-in-out infinite}
+@keyframes sway{50%{transform:translateX(6px)}}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:50px}
+.fact{padding:26px 0 0;display:flex;flex-direction:column;gap:4px}
+.fact b{font-family:var(--display);font-size:40px;font-weight:500;line-height:1;color:var(--ink)}
+.fact span{font-size:13px;color:var(--mute)}
+@media(max-width:900px){
+  .hero{padding-top:104px}
+  .hero-grid{grid-template-columns:1fr}
+  .stage{height:380px;margin-top:6px}
+  .facts{grid-template-columns:1fr 1fr;row-gap:22px}
+}
+
+/* 3D engine */
+.scene{position:absolute;inset:0;perspective:1600px;perspective-origin:50% 35%;overflow:hidden}
+.stage .scene,.mini .scene{-webkit-mask-image:radial-gradient(ellipse 72% 72% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 72% 72% at 50% 50%,#000 55%,transparent 100%)}
+.world{position:absolute;left:50%;top:58%;transform-style:preserve-3d;will-change:transform}
+.world *{transform-style:preserve-3d}
+.bx{position:absolute;left:0;top:0;transition:opacity .5s}
+.fc{position:absolute;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc::after{content:"";position:absolute;inset:0;pointer-events:none}
+.f-right::after,.f-left::after{background:rgba(0,0,0,.30)}
+.f-back::after{background:rgba(0,0,0,.42)}
+.f-top::after{background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,0))}
+.f-bottom::after{background:rgba(0,0,0,.6)}
+/* materials */
+.m-fac{background-color:var(--facc);background-image:var(--faci);transition:background-color .7s}
+.m-fac.door{background-image:linear-gradient(to bottom,rgba(0,0,0,.55) 0 4px,rgba(255,255,255,.07) 4px 5px,transparent 5px),repeating-linear-gradient(90deg,transparent 0 58px,rgba(0,0,0,.38) 58px 60px),var(--faci)}
+.m-fac.upd{background-image:linear-gradient(to top,rgba(0,0,0,.5) 0 3px,transparent 3px),repeating-linear-gradient(90deg,transparent 0 58px,rgba(0,0,0,.38) 58px 60px),var(--faci)}
+.m-fac.drw{background-image:linear-gradient(to bottom,rgba(0,0,0,.55) 0 4px,transparent 4px),linear-gradient(to bottom,transparent 49%,rgba(0,0,0,.45) 49% 51%,transparent 51%),repeating-linear-gradient(90deg,transparent 0 58px,rgba(0,0,0,.38) 58px 60px),var(--faci)}
+.m-top{background-color:var(--topc);background-image:var(--topi);transition:background-color .7s}
+.m-plinth{background:#0a0a0a}
+.m-oak{background-color:#8a6340;background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.08) 0 2px,transparent 2px 7px,rgba(255,255,255,.05) 7px 8px,transparent 8px 13px)}
+.m-dark{background:#151516}
+.m-steel{background:linear-gradient(135deg,#9a9a9a,#d6d6d6 45%,#8c8c8c)}
+.m-glass{background:linear-gradient(160deg,#25272a,#0c0d0e)}
+.m-shade{background:#c9a36a}
+.wallb{position:absolute;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:radial-gradient(ellipse 60% 75% at 50% 100%,#202224 0%,rgba(24,26,28,.6) 45%,rgba(13,14,15,0) 75%)}
+.floor{position:absolute;background:radial-gradient(ellipse at center,#1f2022 0%,#151617 45%,rgba(13,14,15,0) 72%),repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,transparent 1px 60px);}
+.led{position:absolute;background:var(--brass2);box-shadow:0 0 18px 6px rgba(230,200,150,.55),0 0 60px 20px rgba(230,200,150,.18)}
+.pool{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(230,200,150,.28),transparent 65%)}
+.globe{position:absolute;border-radius:50%;background:radial-gradient(circle at 50% 55%,#fff6e4 0%,#f1d39f 28%,rgba(230,200,150,.55) 52%,rgba(230,200,150,0) 72%)}
+.wire{position:absolute;background:rgba(237,232,225,.35)}
+.oven{position:absolute;left:8px;right:8px;background:linear-gradient(160deg,#2a2c2f,#0b0b0c);border:1px solid rgba(255,255,255,.08)}
+.oven::before{content:"";position:absolute;left:10%;right:10%;top:10px;height:2px;background:#888}
+.hob{position:absolute;background:#0b0b0c;border-radius:2px}
+.hob i{position:absolute;width:20px;height:20px;border-radius:50%;border:1px solid rgba(255,255,255,.18)}
+.sink{position:absolute;background:linear-gradient(135deg,#6c6c6c,#b4b4b4);border-radius:4px;box-shadow:inset 0 0 0 3px #8a8a8a}
+
+/* marquee */
+.marq{border-block:1px solid var(--line);overflow:hidden;padding:22px 0;margin-top:30px}
+.marq-in{display:flex;gap:56px;width:max-content;animation:mq 38s linear infinite;font-family:var(--display);font-size:30px;font-style:italic;color:var(--mute)}
+.marq-in span{display:flex;align-items:center;gap:56px;white-space:nowrap}
+.marq-in span::after{content:"";width:7px;height:7px;background:var(--brass);transform:rotate(45deg)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:120px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:56px;flex-wrap:wrap}
+.head h2{font-size:clamp(40px,5vw,68px);max-width:16ch;margin-top:18px}
+.head p{color:var(--mute);max-width:42ch}
+@media(max-width:700px){section{padding:80px 0}.head{margin-bottom:36px}}
+
+/* configurator */
+.cfg{display:grid;grid-template-columns:1.35fr 1fr;gap:24px}
+.cfg-stage{position:relative;min-height:600px;border-radius:28px;background:radial-gradient(ellipse at 50% 30%,#1c1e20,#111213 70%);border:1px solid var(--line);overflow:hidden;cursor:grab;touch-action:pan-y}
+.cfg-stage:active{cursor:grabbing}
+.badge{position:absolute;left:20px;top:20px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:8px;z-index:2}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:#62c48a;box-shadow:0 0 0 0 rgba(98,196,138,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(98,196,138,0)}100%{box-shadow:0 0 0 0 rgba(98,196,138,0)}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:30px;display:flex;flex-direction:column;gap:26px}
+.grp h4{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);font-weight:600;margin-bottom:12px;display:flex;justify-content:space-between}
+.grp h4 output{color:var(--ink);letter-spacing:0;text-transform:none;font-size:14px}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.seg button{border:1px solid var(--line);border-radius:14px;padding:12px 6px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:12px;color:var(--mute);transition:border-color .3s,background .3s,color .3s}
+.seg button svg{width:34px;height:34px}
+.seg button[aria-pressed="true"]{border-color:var(--brass);background:rgba(201,163,106,.08);color:var(--ink)}
+.sw{display:flex;flex-wrap:wrap;gap:10px}
+.sw button{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.15);position:relative;transition:transform .3s}
+.sw button:hover{transform:scale(1.08)}
+.sw button[aria-pressed="true"]::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid var(--brass)}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:2px;background:linear-gradient(90deg,var(--brass) var(--p,40%),var(--line) var(--p,40%));border-radius:2px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--ink);border:6px solid var(--brass);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--ink);border:6px solid var(--brass);cursor:pointer}
+.price{border-top:1px solid var(--line);padding-top:22px;display:flex;flex-direction:column;gap:6px}
+.price small{color:var(--mute);font-size:13px}
+.price b{font-family:var(--display);font-size:52px;font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
+.price .kaspi{font-size:14px;color:var(--brass2)}
+.panel .btn{width:100%}
+.note{font-size:12px;color:var(--mute)}
+@media(max-width:900px){.cfg{grid-template-columns:1fr}.cfg-stage{min-height:420px}.panel{padding:22px}}
+
+/* features */
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:28px;overflow:hidden}
+.card{background:var(--bg);padding:34px 28px 36px;display:flex;flex-direction:column;gap:14px;position:relative;transition:background .4s}
+.card:hover{background:var(--panel)}
+.ico{width:58px;height:58px;border-radius:16px;border:1px solid rgba(201,163,106,.35);display:grid;place-items:center;background:radial-gradient(circle at 30% 20%,rgba(201,163,106,.18),transparent 70%)}
+.ico svg{width:28px;height:28px;stroke:var(--brass2);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.ico svg *{stroke-dasharray:100;stroke-dashoffset:0}
+.drawn .ico svg *{animation:draw 1.8s cubic-bezier(.6,0,.2,1) both}
+@keyframes draw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+.card h3{font-size:28px}
+.card p{color:var(--mute);font-size:15px}
+@media(max-width:1000px){.feat{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.feat{grid-template-columns:1fr}}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative;padding-top:44px}
+.rail{position:absolute;top:13px;left:0;right:0;height:1px;background:var(--line)}
+.rail i{position:absolute;inset:0;background:linear-gradient(90deg,var(--brass),var(--brass2));transform-origin:left;transform:scaleX(var(--prog,1))}
+.step{position:relative}
+.step::before{content:"";position:absolute;top:-38px;left:0;width:15px;height:15px;border-radius:50%;background:var(--bg);border:1px solid var(--brass);box-shadow:0 0 0 5px var(--bg)}
+.step .n{font-family:var(--display);font-size:64px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(201,163,106,.6)}
+.step h3{font-size:28px;margin:10px 0 8px}
+.step p{color:var(--mute);font-size:15px}
+.step .t{display:inline-block;margin-top:14px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass2);border:1px solid rgba(201,163,106,.35);border-radius:999px;padding:5px 12px}
+@media(max-width:900px){.steps{grid-template-columns:1fr;padding:0 0 0 34px}.rail{top:0;bottom:0;left:7px;right:auto;width:1px;height:auto}.rail i{transform-origin:top;transform:scaleY(var(--prog,1))}.step::before{top:8px;left:-34px}}
+
+/* styles gallery */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.look{text-align:left;width:100%;display:block;font:inherit;color:inherit;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--panel);transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .4s}
+.look:hover{transform:translateY(-6px);border-color:rgba(201,163,106,.4)}
+.look .mini{position:relative;height:300px;background:radial-gradient(ellipse at 50% 35%,#1e2022,#121314 75%)}
+.look .cap{padding:22px 24px 26px;display:flex;justify-content:space-between;align-items:end;gap:12px}
+.look h3{font-size:26px}
+.look p{font-size:13px;color:var(--mute)}
+.look .try{font-size:13px;color:var(--brass2);white-space:nowrap;display:flex;align-items:center;gap:6px}
+.look .try svg{width:16px;height:16px;transition:transform .3s}
+.look:hover .try svg{transform:translateX(4px)}
+@media(max-width:900px){.gal{grid-template-columns:1fr}.look .mini{height:260px}}
+
+/* faq */
+.faq{display:grid;grid-template-columns:1fr 1.4fr;gap:60px}
+.qa{border-top:1px solid var(--line)}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:19px;font-weight:500}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary i{flex:none;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);position:relative;transition:transform .4s,border-color .4s}
+.qa summary i::before,.qa summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1px;background:var(--ink);transform:translate(-50%,-50%)}
+.qa summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .4s}
+.qa details[open] summary i{border-color:var(--brass)}
+.qa details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+.qa p{color:var(--mute);padding:0 50px 26px 0;max-width:62ch}
+@media(max-width:900px){.faq{grid-template-columns:1fr;gap:30px}.qa p{padding-right:0}}
+
+/* final */
+.final{position:relative;border-radius:32px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(140deg,#1a1b1d,#101112);padding:70px;display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center}
+.final::before{content:"";position:absolute;width:600px;height:600px;right:-200px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(201,163,106,.22),transparent 65%)}
+.final h2{font-size:clamp(40px,5vw,66px);margin:18px 0 18px}
+.final p{color:var(--mute)}
+form{display:flex;flex-direction:column;gap:12px;position:relative}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.field input,.field select{height:56px;border-radius:16px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--ink);font:inherit;padding:0 18px;transition:border-color .3s}
+.field input:focus,.field select:focus{border-color:var(--brass);outline:none}
+@media(max-width:900px){.final{grid-template-columns:1fr;padding:34px 22px;gap:30px}}
+
+footer{padding:50px 0 110px;border-top:1px solid var(--line);margin-top:120px;color:var(--mute);font-size:14px}
+.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+.foot .logo{color:var(--ink);font-size:20px}
+.foot a:hover{color:var(--ink)}
+
+.fab{position:fixed;right:18px;bottom:18px;z-index:60;width:62px;height:62px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -6px rgba(37,211,102,.55);transition:transform .3s}
+.fab:hover{transform:scale(1.06)}
+.fab svg{width:30px;height:30px;fill:#fff}
+.fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ring 2.4s infinite}
+@keyframes ring{from{transform:scale(1);opacity:.7}to{transform:scale(1.6);opacity:0}}
+
+/* reveal: visible at rest, gets a lift when it enters */
+.rv.in{animation:lift 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes lift{from{transform:translateY(34px);opacity:.25}to{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="LINIA, на главную"><i></i>LINIA</a>
+    <nav class="links" aria-label="Разделы">
+      <a href="#calc">Конструктор</a><a href="#why">Почему мы</a><a href="#steps">Как работаем</a><a href="#styles">Стили</a><a href="#faq">Вопросы</a>
+    </nav>
+    <a class="btn btn-gold wa-link" href="#" data-msg="Здравствуйте! Хочу записаться на бесплатный замер кухни.">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+      <span>Бесплатный замер</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" style="padding-bottom:20px">
+  <div class="glow" id="glow"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Кухни на заказ · Алматы</div>
+      <h1><span class="ln"><span>Кухня, которую</span></span><span class="ln"><span>вы увидите <em>до того,</em></span></span><span class="ln"><span>как её сделают</span></span></h1>
+      <p class="lead">Бесплатный замер и 3D-проект за 2 дня. Своё производство, фурнитура Blum, монтаж за один день. Цена фиксируется в договоре и не растёт.</p>
+      <div class="cta">
+        <a href="#calc" class="btn btn-gold">Рассчитать свою кухню
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#" class="btn btn-ghost wa-link" data-msg="Здравствуйте! Хочу записаться на бесплатный замер кухни.">Записаться на замер</a>
+      </div>
+    </div>
+    <div class="stage" id="heroStage" aria-label="3D-модель кухни, можно вращать">
+      <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11V5a1.5 1.5 0 0 1 3 0v5m0-1a1.5 1.5 0 0 1 3 0v2m0-1a1.5 1.5 0 0 1 3 0v4a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L4 15a1.5 1.5 0 0 1 2.4-1.8L9 15"/></svg>Потяните, чтобы повернуть</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="facts">
+      <div class="fact"><b data-count="0">0 ₸</b><span>замер и 3D-проект</span></div>
+      <div class="fact"><b data-count="21">от 21</b><span>дня на изготовление</span></div>
+      <div class="fact"><b data-count="1">1 день</b><span>на монтаж</span></div>
+      <div class="fact"><b data-count="5">5 лет</b><span>гарантии по договору</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="marq-in">
+  <span>Матовая эмаль</span><span>Шпон дуба</span><span>Кварц Calacatta</span><span>Керамика Nero</span><span>Фурнитура Blum</span><span>Профиль Gola</span><span>LED-подсветка</span>
+  <span>Матовая эмаль</span><span>Шпон дуба</span><span>Кварц Calacatta</span><span>Керамика Nero</span><span>Фурнитура Blum</span><span>Профиль Gola</span><span>LED-подсветка</span>
+</div></div>
+
+<section id="calc">
+  <div class="wrap">
+    <div class="head rv">
+      <div><div class="eyebrow">Конструктор</div><h2>Соберите кухню и узнайте цену за минуту</h2></div>
+      <p>Выберите планировку, фасады и столешницу. Кухня меняется вживую, а примерный расчёт можно сразу отправить нам в WhatsApp.</p>
+    </div>
+    <div class="cfg">
+      <div class="cfg-stage" id="cfgStage" aria-label="3D-модель вашей кухни">
+        <div class="badge">Ваша кухня · 3D</div>
+      </div>
+      <div class="panel">
+        <div class="grp">
+          <h4>Планировка</h4>
+          <div class="seg" id="layout">
+            <button type="button" data-v="line" aria-pressed="false"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="8" width="30" height="7" rx="1"/></svg>Прямая</button>
+            <button type="button" data-v="corner" aria-pressed="false"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h30v7H12v18H5z"/></svg>Угловая</button>
+            <button type="button" data-v="u" aria-pressed="false"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h30v25h-7V15H12v18H5z"/></svg>П-образная</button>
+            <button type="button" data-v="island" aria-pressed="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="6" width="30" height="7" rx="1"/><rect x="11" y="22" width="18" height="9" rx="1"/></svg>С островом</button>
+          </div>
+        </div>
+        <div class="grp">
+          <h4>Длина у стены <output id="lenOut">3,6 м</output></h4>
+          <input type="range" id="len" min="240" max="480" step="20" value="360" aria-label="Длина кухни вдоль стены">
+        </div>
+        <div class="grp">
+          <h4>Фасады <output id="facOut"></output></h4>
+          <div class="sw" id="fac"></div>
+        </div>
+        <div class="grp">
+          <h4>Столешница <output id="topOut"></output></h4>
+          <div class="sw" id="topSw"></div>
+        </div>
+        <div class="price">
+          <small>Примерная стоимость под ключ</small>
+          <b id="price">0 ₸</b>
+          <span class="kaspi" id="kaspi"></span>
+          <span class="note">Точную цену назовём после бесплатного замера и закрепим в договоре.</span>
+        </div>
+        <a href="#" class="btn btn-gold" id="sendCfg">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+          Отправить проект в WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head rv">
+      <div><div class="eyebrow">Почему мы</div><h2>Без сюрпризов в смете и сроках</h2></div>
+      <p>Главные страхи при заказе кухни: цена вырастет, сроки сорвут, а результат не совпадёт с ожиданием. Мы убрали каждый из них.</p>
+    </div>
+    <div class="feat rv">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path pathLength="100" d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path pathLength="100" d="M12 12l8.5-5M12 12v9.5M12 12 3.5 7"/></svg></div><h3>Видите кухню в 3D до оплаты</h3><p>Покажем каждый шкаф, цвет и ручку. Правим проект, пока вам не понравится.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path pathLength="100" d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path pathLength="100" d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3>Цена закреплена в договоре</h3><p>Смета после замера окончательная. Никаких «а ещё доплатите за фурнитуру».</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path pathLength="100" d="M3 21V10l5 3.5V10l5 3.5V6h8v15z"/><path pathLength="100" d="M7 17h2M12 17h2M17 17h1"/></svg></div><h3>Своё производство</h3><p>Работаем без посредников и присылаем фото и видео вашей кухни прямо из цеха.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect pathLength="100" x="3" y="6" width="18" height="13" rx="2"/><path pathLength="100" d="M3 10h18M7 15h4"/></svg></div><h3>Рассрочка Kaspi</h3><p>Кухню можно взять в рассрочку без переплаты. Оформление за 5 минут прямо на замере.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="steps" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head rv">
+      <div><div class="eyebrow">Как работаем</div><h2>Четыре шага от замера до ужина</h2></div>
+      <p>Ведём вас один менеджер от первого сообщения до последнего винта.</p>
+    </div>
+    <div class="steps" id="stepsBox">
+      <div class="rail"><i></i></div>
+      <div class="step rv"><div class="n">01</div><h3>Замер</h3><p>Приедем в удобное время, всё измерим и привезём образцы фасадов и столешниц.</p><span class="t">Бесплатно</span></div>
+      <div class="step rv"><div class="n">02</div><h3>3D-проект</h3><p>Покажем кухню в вашей квартире. Меняем всё, что хочется, до подписания договора.</p><span class="t">2 дня</span></div>
+      <div class="step rv"><div class="n">03</div><h3>Производство</h3><p>Изготавливаем в своём цеху и держим вас в курсе с фото каждого этапа.</p><span class="t">от 21 дня</span></div>
+      <div class="step rv"><div class="n">04</div><h3>Монтаж</h3><p>Собираем, подключаем технику и вывозим мусор. Остаётся только готовить.</p><span class="t">1 день</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="styles" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head rv">
+      <div><div class="eyebrow">Стили</div><h2>Три настроения, с которых начинают чаще всего</h2></div>
+      <p>Нажмите на вариант, и он откроется в конструкторе. Там его можно доработать под себя.</p>
+    </div>
+    <div class="gal">
+      <button type="button" class="look rv" data-preset="0"><div class="mini" id="mini0"></div><div class="cap"><div><h3>Графит и дуб</h3><p>Остров, кварц, LED-подсветка</p></div><span class="try">В конструктор <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></button>
+      <button type="button" class="look rv" data-preset="1"><div class="mini" id="mini1"></div><div class="cap"><div><h3>Светлая классика</h3><p>Угловая, белая эмаль, дуб</p></div><span class="try">В конструктор <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></button>
+      <button type="button" class="look rv" data-preset="2"><div class="mini" id="mini2"></div><div class="cap"><div><h3>Шалфей</h3><p>П-образная, керамика Nero</p></div><span class="try">В конструктор <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></button>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:20px">
+  <div class="wrap faq">
+    <div class="rv"><div class="eyebrow">Вопросы</div><h2 style="font-size:clamp(40px,5vw,64px);margin-top:18px">Отвечаем честно</h2></div>
+    <div class="qa">
+      <details open><summary>Сколько стоит кухня?<i></i></summary><p>Цена зависит от длины, фасадов и столешницы. Примерную сумму покажет конструктор выше. Точную назовём после бесплатного замера и закрепим в договоре.</p></details>
+      <details><summary>Сколько времени занимает изготовление?<i></i></summary><p>От 21 дня с момента подписания договора. Сложные фасады, например шпон или эмаль редкого цвета, могут занять чуть дольше. Срок прописываем в договоре.</p></details>
+      <details><summary>Можно ли в рассрочку?<i></i></summary><p>Да, через Kaspi. Оформить можно прямо на замере за несколько минут.</p></details>
+      <details><summary>Замер правда бесплатный?<i></i></summary><p>Да, замер и 3D-проект бесплатные, даже если вы потом решите не заказывать.</p></details>
+      <details><summary>Какая гарантия?<i></i></summary><p>5 лет на корпус и фасады по договору. На фурнитуру Blum действует гарантия производителя.</p></details>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:20px;padding-bottom:0">
+  <div class="wrap">
+    <div class="final rv">
+      <div><div class="eyebrow">Бесплатный замер</div><h2>Начнём с замера, остальное возьмём на себя</h2><p>Оставьте имя и район. Мы напишем в WhatsApp и согласуем удобное время.</p></div>
+      <form id="leadForm" novalidate>
+        <div class="field"><label for="fName">Имя</label><input id="fName" autocomplete="given-name" placeholder="Как к вам обращаться"></div>
+        <div class="field"><label for="fArea">Район</label>
+          <select id="fArea"><option>Бостандыкский</option><option>Медеуский</option><option>Алмалинский</option><option>Ауэзовский</option><option>Наурызбайский</option><option>Алатауский</option><option>Жетысуский</option><option>Турксибский</option></select></div>
+        <a href="#" class="btn btn-gold" id="leadBtn" style="margin-top:8px">Записаться на замер в WhatsApp</a>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#top" class="logo"><i></i>LINIA</a>
+    <span>Кухни на заказ · Алматы</span>
+    <a href="#" class="wa-link" data-msg="Здравствуйте!">+7 700 000 00 00</a>
+  </div>
+</footer>
+
+<a class="fab wa-link" href="#" data-msg="Здравствуйте! Хочу кухню на заказ." aria-label="Написать в WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
+
+<script>
+const WA="77000000000"; // номер клиента для WhatsApp
+const wa=t=>"https://wa.me/"+WA+"?text="+encodeURIComponent(t);
+document.querySelectorAll(".wa-link").forEach(a=>{a.href=wa(a.dataset.msg);a.target="_blank";a.rel="noopener"});
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- materials ---------- */
+const OAK="repeating-linear-gradient(90deg,rgba(0,0,0,.09) 0 2px,transparent 2px 7px,rgba(255,255,255,.06) 7px 8px,transparent 8px 13px)";
+const FAC=[
+ {n:"Графит, эмаль",c:"#2b2c2e",i:"none",r:260000},
+ {n:"Белая эмаль",c:"#e6e2db",i:"none",r:260000},
+ {n:"Шалфей, эмаль",c:"#7f8f7c",i:"none",r:280000},
+ {n:"Кашемир, эмаль",c:"#c4b39d",i:"none",r:280000},
+ {n:"Шпон дуба",c:"#94693f",i:OAK,r:420000}];
+const TOP=[
+ {n:"Кварц Calacatta",c:"#ece9e4",i:"linear-gradient(118deg,transparent 38%,rgba(110,100,92,.35) 39.5%,transparent 41%),linear-gradient(64deg,transparent 62%,rgba(110,100,92,.22) 63%,transparent 64.5%)",r:120000},
+ {n:"Керамика Nero",c:"#1b1b1d",i:"linear-gradient(118deg,transparent 38%,rgba(201,163,106,.45) 39%,transparent 40.5%),linear-gradient(64deg,transparent 64%,rgba(255,255,255,.12) 65%,transparent 66%)",r:160000},
+ {n:"Дуб массив",c:"#a2774b",i:OAK,r:70000},
+ {n:"Бетон",c:"#8b8985",i:"radial-gradient(rgba(0,0,0,.12) 1px,transparent 1.5px) 0 0/9px 9px",r:60000}];
+function applyMat(el,f,t){
+  el.style.setProperty("--facc",FAC[f].c);el.style.setProperty("--faci",FAC[f].i);
+  el.style.setProperty("--topc",TOP[t].c);el.style.setProperty("--topi",TOP[t].i);
+}
+
+/* ---------- tiny CSS-3D engine ---------- */
+function face(w,h,tr,cls,extra){const d=document.createElement("div");d.className="fc "+cls;d.style.cssText=`width:${w}px;height:${h}px;left:${-w/2}px;top:${-h/2}px;transform:${tr}`;if(extra)d.innerHTML=extra;return d}
+// x,z = centre on floor plan (cm), y = bottom height, w along x, d along z, h up
+function box(p,{x,y,z,w,h,d,m="m-fac",fm,fa="front",extra,ex}){
+  const b=document.createElement("div");b.className="bx";
+  b.style.transform=`translate3d(${x}px,${-(y+h/2)}px,${z}px)`;
+  const S={front:[w,h,`translateZ(${d/2}px)`],back:[w,h,`rotateY(180deg) translateZ(${d/2}px)`],
+    right:[d,h,`rotateY(90deg) translateZ(${w/2}px)`],left:[d,h,`rotateY(-90deg) translateZ(${w/2}px)`],
+    top:[w,d,`rotateX(90deg) translateZ(${h/2}px)`],bottom:[w,d,`rotateX(-90deg) translateZ(${h/2}px)`]};
+  for(const k in S){
+    if(ex&&ex.includes(k))continue;
+    const isF=k===fa;
+    b.appendChild(face(S[k][0],S[k][1],S[k][2],`f-${k} ${isF&&fm?fm:m}`,isF?extra:""));
+  }
+  p.appendChild(b);return b;
+}
+function plane(p,cls,w,h,tr,css=""){const d=document.createElement("div");d.className=cls;d.style.cssText=`width:${w}px;height:${h}px;left:${-w/2}px;top:${-h/2}px;transform:${tr};${css}`;p.appendChild(d);return d}
+
+function buildKitchen(world,layout,L){
+  world.innerHTML="";
+  const ZW=-160, half=L/2;
+  const leftX=-half, rightX=half;
+  // floor + walls
+  plane(world,"floor",1400,1100,"translate3d(0,0,40px) rotateX(90deg)");
+  plane(world,"wallb",L+460,300,`translate3d(0,-150px,${ZW}px)`);
+  if(layout==="corner"||layout==="u") plane(world,"wallb",420,300,`translate3d(${leftX}px,-150px,${ZW+210}px) rotateY(90deg)`);
+  if(layout==="u") plane(world,"wallb",420,300,`translate3d(${rightX}px,-150px,${ZW+210}px) rotateY(-90deg)`);
+
+  const tall = layout!=="u";
+  const runEnd = tall? rightX-60 : rightX;
+  const bw=runEnd-leftX, bx=(leftX+runEnd)/2;
+  // back run
+  box(world,{x:bx,y:0,z:ZW+30-3,w:bw,h:10,d:54,m:"m-plinth",ex:["bottom","back"]});
+  box(world,{x:bx,y:10,z:ZW+30,w:bw,h:72,d:60,fm:"m-fac drw",ex:["bottom","back"]});
+  box(world,{x:bx,y:82,z:ZW+31,w:bw+2,h:4,d:62,m:"m-top",ex:["bottom","back"]});
+  // hob + sink on back run
+  plane(world,"hob",76,46,`translate3d(${bx+bw*0.22}px,-86.5px,${ZW+31}px) rotateX(90deg)`).innerHTML='<i style="left:8px;top:4px"></i><i style="left:46px;top:4px"></i><i style="left:8px;top:22px"></i><i style="left:46px;top:22px"></i>';
+  if(layout==="line"||layout==="u") plane(world,"sink",70,40,`translate3d(${bx-bw*0.25}px,-86.6px,${ZW+31}px) rotateX(90deg)`);
+  // uppers + LED
+  const uw = layout==="island"? bw : bw;
+  box(world,{x:bx,y:150,z:ZW+17.5,w:uw,h:72,d:35,fm:"m-fac upd",ex:["back"]});
+  plane(world,"led",uw-10,1.5,`translate3d(${bx}px,-149px,${ZW+34}px) rotateX(90deg)`);
+  // tall column with oven
+  if(tall) box(world,{x:rightX-30,y:0,z:ZW+31,w:60,h:222,d:62,fm:"m-fac door",ex:["bottom","back"],extra:'<div class="oven" style="top:96px;height:58px"></div><div class="oven" style="top:160px;height:40px"></div>'});
+  // side runs
+  const sideLen=180, sz=ZW+60+sideLen/2;
+  if(layout==="corner"||layout==="u"){
+    box(world,{x:leftX+30,y:10,z:sz,w:60,h:72,d:sideLen,fa:"right",fm:"m-fac door",ex:["bottom","left","back"]});
+    box(world,{x:leftX+27,y:0,z:sz,w:54,h:10,d:sideLen,m:"m-plinth",ex:["bottom","left","back"]});
+    box(world,{x:leftX+31,y:82,z:sz+1,w:62,h:4,d:sideLen+2,m:"m-top",ex:["bottom","left","back"]});
+    if(layout==="corner") plane(world,"sink",40,70,`translate3d(${leftX+31}px,-86.6px,${sz}px) rotateX(90deg)`);
+  }
+  if(layout==="u"){
+    box(world,{x:rightX-30,y:10,z:sz,w:60,h:72,d:sideLen,fa:"left",fm:"m-fac door",ex:["bottom","right","back"]});
+    box(world,{x:rightX-27,y:0,z:sz,w:54,h:10,d:sideLen,m:"m-plinth",ex:["bottom","right","back"]});
+    box(world,{x:rightX-31,y:82,z:sz+1,w:62,h:4,d:sideLen+2,m:"m-top",ex:["bottom","right","back"]});
+  }
+  if(layout==="island"){
+    const iz=40, iw=Math.min(240,L-80);
+    box(world,{x:0,y:0,z:iz,w:iw-10,h:86,d:90,fa:"front",fm:"m-oak",m:"m-fac",ex:["bottom"]});
+    box(world,{x:0,y:86,z:iz,w:iw+10,h:5,d:104,m:"m-top",ex:["bottom"]});
+    box(world,{x:-(iw/2+2),y:0,z:iz,w:5,h:86,d:104,m:"m-top",ex:["bottom"]});
+    box(world,{x:(iw/2+2),y:0,z:iz,w:5,h:86,d:104,m:"m-top",ex:["bottom"]});
+    plane(world,"sink",60,36,`translate3d(${-iw*0.18}px,-91.6px,${iz-10}px) rotateX(90deg)`);
+    // stools
+    [-70,0,70].forEach(sx=>{
+      box(world,{x:sx,y:66,z:iz+86,w:40,h:5,d:38,m:"m-oak",ex:["bottom"]});
+      box(world,{x:sx,y:0,z:iz+86,w:3,h:66,d:3,m:"m-dark"});
+      box(world,{x:sx,y:0,z:iz+86,w:30,h:2,d:30,m:"m-dark",ex:["bottom"]});
+    });
+    // pendants
+    [-60,60].forEach(px=>{
+      plane(world,"wire",1,80,`translate3d(${px}px,-265px,${iz}px)`);
+      plane(world,"globe",30,30,`translate3d(${px}px,-210px,${iz}px)`);
+      plane(world,"globe",30,30,`translate3d(${px}px,-210px,${iz}px) rotateY(90deg)`);
+      plane(world,"globe",30,30,`translate3d(${px}px,-210px,${iz}px) rotateY(45deg)`);
+      plane(world,"globe",30,30,`translate3d(${px}px,-210px,${iz}px) rotateY(-45deg)`);
+      plane(world,"pool",150,110,`translate3d(${px}px,-92px,${iz}px) rotateX(90deg)`);
+    });
+  }
+}
+
+function makeViewer(stage,opts){
+  const sc=document.createElement("div");sc.className="scene";
+  const w=document.createElement("div");w.className="world";sc.appendChild(w);stage.prepend(sc);
+  let ang=opts.ang??-24, tilt=opts.tilt??-20, drag=false, sx=0, sa=0, idle=0, t0=performance.now(), base=ang;
+  const st={w,layout:opts.layout,L:opts.L,fit:1};
+  function fit(){const W=stage.clientWidth,H=stage.clientHeight;st.fit=Math.min(W/((st.L+(st.layout==="u"?120:260))*1.12),H/430)*(opts.zoom||1)}
+  function render(){w.style.transform=`translateY(${opts.dy||0}px) scale(${st.fit}) rotateX(${tilt}deg) rotateY(${ang}deg)`}
+  st.rebuild=()=>{buildKitchen(w,st.layout,st.L);fit();render()};
+  stage.addEventListener("pointerdown",e=>{drag=true;sx=e.clientX;sa=ang;stage.setPointerCapture(e.pointerId)});
+  stage.addEventListener("pointermove",e=>{if(!drag)return;ang=Math.max(-70,Math.min(70,sa+(e.clientX-sx)*0.35));base=ang;idle=performance.now();render()});
+  const up=()=>{drag=false};stage.addEventListener("pointerup",up);stage.addEventListener("pointercancel",up);
+  addEventListener("resize",()=>{fit();render()});
+  st.tick=now=>{if(drag||reduce||!opts.sway)return;if(now-idle<2500)return;ang=base+Math.sin((now-t0)/2600)*opts.sway;render()};
+  st.rebuild();return st;
+}
+
+/* hero kitchen */
+const heroStage=document.getElementById("heroStage");
+applyMat(heroStage,0,0);
+const hero=makeViewer(heroStage,{layout:"island",L:400,ang:-26,sway:16,zoom:1.05,dy:20});
+
+/* configurator */
+const S={layout:"island",L:360,f:0,t:0};
+const cfgStage=document.getElementById("cfgStage");
+const cfg=makeViewer(cfgStage,{layout:S.layout,L:S.L,ang:-22,sway:10,zoom:1,dy:40});
+const fmt=n=>Math.round(n).toLocaleString("ru-RU").replace(/,/g," ")+" ₸";
+const meters=()=>S.L/100+({line:0,corner:1.8,u:3.6,island:2.4})[S.layout];
+let shown=0,anim;
+function tweenPrice(to){cancelAnimationFrame(anim);const from=shown,st=performance.now();
+  const step=n=>{const k=Math.min(1,(n-st)/700),e=1-Math.pow(1-k,3);shown=from+(to-from)*e;document.getElementById("price").textContent="≈ "+fmt(Math.round(shown/1000)*1000);if(k<1)anim=requestAnimationFrame(step)};anim=requestAnimationFrame(step)}
+const LN={line:"прямая",corner:"угловая",u:"П-образная",island:"с островом"};
+function update(rebuild){
+  applyMat(cfgStage,S.f,S.t);
+  if(rebuild){cfg.layout=S.layout;cfg.L=S.L;cfg.rebuild()}
+  const total=meters()*(FAC[S.f].r+TOP[S.t].r);
+  tweenPrice(total);
+  document.getElementById("kaspi").textContent="или от "+fmt(Math.round(total/12/1000)*1000)+" в месяц в рассрочку Kaspi на 12 мес.";
+  document.getElementById("lenOut").textContent=(S.L/100).toFixed(1).replace(".",",")+" м";
+  document.getElementById("facOut").textContent=FAC[S.f].n;document.getElementById("topOut").textContent=TOP[S.t].n;
+  const r=document.getElementById("len");r.value=S.L;r.style.setProperty("--p",((S.L-240)/240*100)+"%");
+  document.querySelectorAll("#layout button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===S.layout));
+  document.querySelectorAll("#fac button").forEach((b,i)=>b.setAttribute("aria-pressed",i===S.f));
+  document.querySelectorAll("#topSw button").forEach((b,i)=>b.setAttribute("aria-pressed",i===S.t));
+  const msg=`Здравствуйте! Собрал кухню на сайте:\n• Планировка: ${LN[S.layout]}, ${(S.L/100).toFixed(1).replace(".",",")} м вдоль стены\n• Фасады: ${FAC[S.f].n}\n• Столешница: ${TOP[S.t].n}\nПримерный расчёт: ${fmt(Math.round(total/1000)*1000)}.\nКогда можно сделать замер?`;
+  document.getElementById("sendCfg").href=wa(msg);
+}
+const mkSw=(id,arr,key)=>{const box=document.getElementById(id);arr.forEach((m,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",m.n);b.title=m.n;b.style.backgroundColor=m.c;b.style.backgroundImage=m.i;b.onclick=()=>{S[key]=i;update(false)};box.appendChild(b)})};
+mkSw("fac",FAC,"f");mkSw("topSw",TOP,"t");
+document.querySelectorAll("#layout button").forEach(b=>b.onclick=()=>{S.layout=b.dataset.v;update(true)});
+document.getElementById("len").addEventListener("input",e=>{S.L=+e.target.value;update(true)});
+document.getElementById("sendCfg").target="_blank";
+update(false);
+
+/* style presets */
+const PRE=[{layout:"island",L:380,f:0,t:0},{layout:"corner",L:340,f:1,t:2},{layout:"u",L:320,f:2,t:1}];
+const minis=PRE.map((p,i)=>{const st=document.getElementById("mini"+i);applyMat(st,p.f,p.t);return makeViewer(st,{layout:p.layout,L:p.L,ang:-28,sway:8,zoom:0.95,dy:46})});
+document.querySelectorAll(".look").forEach(b=>b.onclick=()=>{Object.assign(S,PRE[+b.dataset.preset]);update(true);document.getElementById("calc").scrollIntoView({behavior:reduce?"auto":"smooth"})});
+
+/* lead form */
+const leadBtn=document.getElementById("leadBtn");
+const setLead=()=>{const n=document.getElementById("fName").value.trim();leadBtn.href=wa(`Здравствуйте!${n?" Меня зовут "+n+".":""} Хочу записаться на бесплатный замер кухни. Район: ${document.getElementById("fArea").value}.`)};
+leadBtn.target="_blank";["input","change"].forEach(ev=>document.getElementById("leadForm").addEventListener(ev,setLead));setLead();
+document.getElementById("leadForm").addEventListener("submit",e=>e.preventDefault());
+
+/* loop */
+function loop(n){hero.tick(n);cfg.tick(n);minis.forEach(m=>m.tick(n));requestAnimationFrame(loop)}requestAnimationFrame(loop);
+
+/* header, glow, reveal, rail, magnetic buttons */
+const hdr=document.getElementById("hdr");
+addEventListener("scroll",()=>hdr.classList.toggle("solid",scrollY>20),{passive:true});
+const glow=document.getElementById("glow");
+addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;glow.style.setProperty("--mx",e.clientX+"px");glow.style.setProperty("--my",(e.clientY+scrollY)+"px")},{passive:true});
+if("IntersectionObserver" in window && !reduce){
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in","drawn");io.unobserve(en.target)}}),{threshold:.15});
+  document.querySelectorAll(".rv").forEach(el=>{const r=el.getBoundingClientRect();if(r.top>innerHeight)io.observe(el)});
+  const rail=document.querySelector(".rail i"),sb=document.getElementById("stepsBox");
+  const rp=()=>{const r=sb.getBoundingClientRect();const p=Math.min(1,Math.max(0,(innerHeight*0.8-r.top)/(r.height+innerHeight*0.3)));rail.style.setProperty("--prog",p)};
+  if(sb.getBoundingClientRect().top>innerHeight){addEventListener("scroll",rp,{passive:true});rp()}
+}
+document.querySelectorAll(".btn").forEach(b=>{
+  b.addEventListener("pointermove",e=>{if(e.pointerType!=="mouse"||reduce)return;const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*0.15}px,${(e.clientY-r.top-r.height/2)*0.25}px)`});
+  b.addEventListener("pointerleave",()=>b.style.transform="");
+});
+</script>
+</body>
+</html>
