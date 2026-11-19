@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VELLUM — натяжные потолки в Алматы</title>
+<meta name="description" content="Натяжные потолки в Алматы: парящие, световые линии, звёздное небо. Бесплатный замер, монтаж за 1 день без пыли, расчёт цены онлайн.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0d;--bg2:#121215;--card:#16161a;--line:rgba(255,255,255,.08);
+  --tx:#f3efe7;--mu:#9a958c;--gold:#d9b779;--gold2:#f4dfb0;
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Manrope",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --rw:min(560px,74vw);--rd:min(520px,70vw);--rh:min(300px,42vw);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:var(--sans);font-size:16px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1180px,92vw);margin:0 auto}
+.serif{font-family:var(--serif);font-weight:500}
+.gold{color:var(--gold)}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+
+/* grain */
+body:before{content:"";position:fixed;inset:-50%;z-index:100;pointer-events:none;opacity:.05;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:gr 1s steps(4) infinite}
+@keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,backdrop-filter .4s}
+nav.s{background:rgba(11,11,13,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.32em;font-size:15px}
+.logo i{width:26px;height:26px;border:1.5px solid var(--gold);border-radius:50%;position:relative;display:block}
+.logo i:after{content:"";position:absolute;left:4px;right:4px;top:50%;height:1.5px;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.nl{display:flex;gap:32px;font-size:14px;color:var(--mu)}
+.nl a:hover{color:var(--tx)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:100px;font-weight:600;font-size:15px;transition:transform .3s,box-shadow .3s,background .3s;white-space:nowrap}
+.btn-g{background:linear-gradient(135deg,var(--gold2),var(--gold) 55%,#b38f52);color:#17120a;box-shadow:0 10px 40px -10px rgba(217,183,121,.55)}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 18px 50px -10px rgba(217,183,121,.75)}
+.btn-o{border:1px solid rgba(255,255,255,.18)}
+.btn-o:hover{background:rgba(255,255,255,.06)}
+.btn svg{width:18px;height:18px}
+@media(max-width:860px){.nl{display:none}nav .btn{padding:10px 16px;font-size:13px}}
+
+/* hero */
+.hero{min-height:100vh;min-height:100svh;position:relative;display:flex;flex-direction:column;justify-content:center;padding:110px 0 40px;overflow:hidden}
+.hero:before{content:"";position:absolute;left:50%;top:38%;width:1100px;height:700px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,var(--amb,rgba(217,183,121,.16)),transparent);transition:background 1s;pointer-events:none}
+.hgrid{display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:30px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(44px,6.4vw,92px);line-height:.98;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--gold)}
+.lead{color:var(--mu);font-size:clamp(16px,1.3vw,18px);max-width:460px;margin:24px 0 34px}
+.hbtns{display:flex;gap:12px;flex-wrap:wrap}
+.hstats{display:flex;gap:34px;margin-top:46px}
+.hstats b{display:block;font-family:var(--serif);font-size:38px;font-weight:500;line-height:1;color:var(--tx)}
+.hstats span{font-size:12px;color:var(--mu);letter-spacing:.06em}
+.reveal-h>*{opacity:0;transform:translateY(30px);animation:up 1.1s cubic-bezier(.2,.8,.2,1) forwards}
+.reveal-h>*:nth-child(2){animation-delay:.15s}.reveal-h>*:nth-child(3){animation-delay:.3s}.reveal-h>*:nth-child(4){animation-delay:.45s}.reveal-h>*:nth-child(5){animation-delay:.6s}
+@keyframes up{to{opacity:1;transform:none}}
+
+/* 3D stage */
+.stage{position:relative;height:min(520px,78vw);perspective:calc(var(--rw)*1.8);perspective-origin:50% 75%;touch-action:pan-y;cursor:grab;-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 98%);mask-image:linear-gradient(180deg,#000 72%,transparent 98%);user-select:none;-webkit-user-select:none}
+.stage:active{cursor:grabbing}
+.room{position:absolute;left:50%;top:57%;width:0;height:0;transform-style:preserve-3d;transform:translateZ(calc(var(--rw)*-.22)) rotateX(9deg) rotateY(var(--ry,-22deg));transition:transform .08s linear}
+.room.intro{animation:roomIn 2.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes roomIn{from{transform:translateZ(-700px) rotateX(-40deg) rotateY(-90deg);opacity:0}to{transform:translateZ(calc(var(--rw)*-.22)) rotateX(9deg) rotateY(-22deg);opacity:1}}
+.f{position:absolute;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.back{width:var(--rw);height:var(--rh);left:calc(var(--rw)/-2);top:calc(var(--rh)/-2);transform:translateZ(calc(var(--rd)/-2));
+ background:linear-gradient(180deg,var(--wall1,#d8d1c6),var(--wall2,#bdb4a6))}
+.lw,.rw2{width:var(--rd);height:var(--rh);left:calc(var(--rd)/-2);top:calc(var(--rh)/-2);background:linear-gradient(180deg,var(--wall1,#d8d1c6),var(--wall2,#b3aa9c))}
+.lw{transform:rotateY(90deg) translateZ(calc(var(--rw)/-2));filter:brightness(.88)}
+.rw2{transform:rotateY(-90deg) translateZ(calc(var(--rw)/-2));filter:brightness(.8)}
+.floor{width:var(--rw);height:var(--rd);left:calc(var(--rw)/-2);top:calc(var(--rd)/-2);transform:rotateX(90deg) translateZ(calc(var(--rh)/-2));
+ background:repeating-linear-gradient(90deg,#5b4535 0 46px,#4f3b2d 46px 47px,#634a39 47px 93px,#4d392b 93px 94px);}
+.floor:after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 40%,var(--floorglow,rgba(255,236,200,.18)),transparent 70%),linear-gradient(0deg,rgba(0,0,0,.35),transparent)}
+.ceil{width:var(--rw);height:var(--rd);left:calc(var(--rw)/-2);top:calc(var(--rd)/-2);transform:rotateX(-90deg) translateZ(calc(var(--rh)/-2));overflow:hidden;background:#f2efe9}
+/* window light on back wall */
+.win{position:absolute;right:12%;top:18%;width:24%;height:52%;background:linear-gradient(160deg,rgba(255,250,235,.9),rgba(255,236,200,.35));box-shadow:0 0 60px rgba(255,236,200,.35);border:3px solid rgba(255,255,255,.55)}
+.win:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:rgba(255,255,255,.6)}
+.art{position:absolute;left:24%;top:24%;width:20%;height:30%;background:linear-gradient(135deg,#2a2622,#4a3d30);box-shadow:0 10px 24px rgba(0,0,0,.25);border:4px solid #e8e1d4}
+.art:after{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--gold2),var(--gold) 50%,#7a5d2e)}
+/* sofa (3D box) */
+.sofa{position:absolute;transform-style:preserve-3d;transform:translateZ(calc(var(--rd)/-2 + 70px*var(--k,1))) translateY(calc(var(--rh)/2)) scale3d(var(--k,1),var(--k,1),var(--k,1))}
+.sofa .s{position:absolute;background:#2d2b29}
+.sofa .sf{width:240px;height:46px;left:-120px;top:-46px;transform:translateZ(55px);background:linear-gradient(#3a3734,#262422)}
+.sofa .st{width:240px;height:110px;left:-120px;top:-55px;transform:rotateX(90deg) translateZ(46px);background:#34312e}
+.sofa .sb{width:240px;height:80px;left:-120px;top:-126px;transform:translateZ(-50px);background:linear-gradient(#3d3a36,#2b2826)}
+.rug{position:absolute;width:62%;height:44%;left:19%;top:44%;background:radial-gradient(ellipse,#cbbfae 0 55%,#b9ab97 56% 60%,#cbbfae 61%);border-radius:6px;opacity:.85}
+.lampf{position:absolute;transform-style:preserve-3d;transform:translateX(calc(var(--rw)/-2 + 60px)) translateZ(calc(var(--rd)/-2 + 60px)) translateY(calc(var(--rh)/2)) scale3d(var(--k,1),var(--k,1),var(--k,1))}
+.lampf .pole{position:absolute;width:3px;height:150px;left:-1px;top:-150px;background:#1d1b19}
+.lampf .shade{position:absolute;width:44px;height:30px;left:-22px;top:-176px;background:linear-gradient(#efe4cf,#d8c7a6);border-radius:4px 4px 10px 10px;box-shadow:0 20px 50px rgba(255,220,160,.5)}
+
+/* ceiling variants */
+.cv{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.room[data-c="matte"] .cv.matte,.room[data-c="gloss"] .cv.gloss,.room[data-c="stars"] .cv.stars,.room[data-c="lines"] .cv.lines,.room[data-c="float"] .cv.float,.room[data-c="satin"] .cv.satin{opacity:1}
+.cv.matte{background:radial-gradient(70% 70% at 50% 50%,#fbfaf7,#e7e2d9)}
+.cv.matte i{position:absolute;width:14px;height:14px;border-radius:50%;background:#fffdf6;box-shadow:0 0 0 3px #d9d2c4,0 0 26px 8px rgba(255,240,200,.85)}
+.cv.satin{background:linear-gradient(115deg,#efe9df,#fffaf0 40%,#e6ddcf 60%,#f7f1e6)}
+.cv.satin:after{content:"";position:absolute;inset:-50%;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.7) 50%,transparent 60%);animation:sheen 6s ease-in-out infinite}
+.cv.gloss{background:linear-gradient(180deg,#1b1a19,#2c2925 45%,#141312)}
+.cv.gloss:before{content:"";position:absolute;inset:0;background:
+ linear-gradient(0deg,rgba(255,236,200,.0),rgba(255,236,200,.12)),
+ radial-gradient(30% 22% at 72% 70%,rgba(255,248,230,.55),transparent 70%),
+ repeating-linear-gradient(90deg,rgba(99,74,57,.5) 0 46px,rgba(79,59,45,.5) 46px 93px);opacity:.55;transform:scaleY(-1)}
+.cv.gloss:after{content:"";position:absolute;inset:-50%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.28) 50%,transparent 58%);animation:sheen 5s ease-in-out infinite}
+@keyframes sheen{0%,100%{transform:translateX(-30%)}50%{transform:translateX(30%)}}
+.cv.stars{background:radial-gradient(60% 50% at 30% 30%,rgba(90,70,160,.55),transparent 70%),radial-gradient(50% 50% at 75% 70%,rgba(40,90,150,.5),transparent 70%),#05060d}
+.cv.stars b{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;box-shadow:0 0 6px 1px #fff;animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.cv.stars s{position:absolute;width:90px;height:1.5px;background:linear-gradient(90deg,transparent,#fff);transform:rotate(-25deg);opacity:0;animation:shoot 7s linear infinite}
+@keyframes shoot{0%{opacity:0;transform:translate(0,0) rotate(-25deg)}3%{opacity:1}9%{opacity:0;transform:translate(-220px,100px) rotate(-25deg)}100%{opacity:0}}
+.cv.lines{background:#f1eee8}
+.cv.lines u{position:absolute;background:#fff;box-shadow:0 0 6px 1px #fff,0 0 22px 6px rgba(255,244,214,.95),0 0 60px 14px rgba(255,236,200,.45);animation:pl 3.2s ease-in-out infinite}
+@keyframes pl{0%,100%{filter:brightness(1)}50%{filter:brightness(1.25)}}
+.cv.float{background:radial-gradient(80% 80% at 50% 50%,#f5f2ec,#e3ddd2)}
+.cv.float:before{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 5px #fff,inset 0 0 22px 10px rgba(255,236,190,.95),inset 0 0 70px 18px rgba(255,214,150,.5);animation:pl 3s ease-in-out infinite}
+
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px;position:relative;z-index:2}
+.chip{padding:10px 16px;border-radius:100px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:13px;color:var(--mu);transition:.35s}
+.chip:hover{color:var(--tx);border-color:rgba(255,255,255,.2)}
+.chip.on{background:var(--tx);color:#111;border-color:var(--tx)}
+.hint{text-align:center;font-size:12px;color:var(--mu);margin-top:12px;letter-spacing:.06em}
+.hint svg{width:14px;height:14px;vertical-align:-2px;margin-right:6px}
+.cname{text-align:center;pointer-events:none;margin-bottom:4px}
+.cname b{display:block;font-family:var(--serif);font-size:28px;font-weight:500;transition:opacity .4s}
+.cname span{font-size:13px;color:var(--gold)}
+@media(max-width:960px){
+ .hgrid{grid-template-columns:1fr}
+ .hero{padding-top:96px}
+ .htext{text-align:center}.lead{margin-left:auto;margin-right:auto}.hbtns,.hstats{justify-content:center}
+ .hstats{display:none}
+ .hero .lead{margin:18px auto 26px}
+ .stage{height:78vw;margin-top:0}
+ .cname b{font-size:22px}
+}
+
+/* marquee */
+.mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:22px 0;background:var(--bg2)}
+.mq div{display:flex;gap:56px;width:max-content;animation:mq 34s linear infinite}
+.mq span{font-family:var(--serif);font-size:28px;font-style:italic;color:var(--mu);white-space:nowrap;display:flex;align-items:center;gap:56px}
+.mq span:after{content:"✦";font-style:normal;font-size:14px;color:var(--gold)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:clamp(80px,11vw,150px) 0}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:56px;flex-wrap:wrap}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(38px,5vw,68px);line-height:1.02;max-width:760px;margin-top:14px}
+h2 em{font-style:italic;color:var(--gold)}
+.sh p{color:var(--mu);max-width:360px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* types */
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tc{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .5s,border-color .5s;cursor:pointer}
+.tc:hover{transform:translateY(-6px);border-color:rgba(217,183,121,.35)}
+.tv{height:210px;position:relative;overflow:hidden;perspective:500px}
+.tv .cv{opacity:1;inset:-45% -30% -2%;transform:perspective(600px) rotateX(24deg);transform-origin:50% 100%;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.tc:hover .tv .cv{transform:perspective(600px) rotateX(16deg) scale(1.06)}
+.tv:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--card) 2%,transparent 45%)}
+.tb{padding:22px 24px 26px}
+.tb h3{font-family:var(--serif);font-size:30px;font-weight:500;line-height:1.1}
+.tb p{color:var(--mu);font-size:14px;margin:8px 0 16px;min-height:44px}
+.tb .pr{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:14px;font-size:14px}
+.tb .pr b{font-size:18px}
+.tb .pr span{color:var(--gold);font-size:13px}
+@media(max-width:960px){.types{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.types{grid-template-columns:1fr}.tv{height:170px}}
+
+/* calc */
+.calc{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:clamp(22px,3.2vw,40px)}
+.fl{margin-bottom:30px}
+.fl label{display:flex;justify-content:space-between;font-size:14px;color:var(--mu);margin-bottom:14px}
+.fl label b{color:var(--tx);font-size:16px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--gold) var(--p,30%),rgba(255,255,255,.1) var(--p,30%));outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--tx);border:6px solid var(--gold);box-shadow:0 0 0 6px rgba(217,183,121,.15);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--tx);border:6px solid var(--gold);cursor:pointer}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg button{padding:13px 8px;border-radius:14px;border:1px solid var(--line);font-size:13px;color:var(--mu);transition:.3s;line-height:1.25}
+.seg button small{display:block;font-size:11px;opacity:.7;margin-top:3px}
+.seg button.on{border-color:var(--gold);color:var(--tx);background:rgba(217,183,121,.08)}
+.step{display:flex;align-items:center;gap:14px}
+.step button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);font-size:20px}
+.step button:hover{border-color:var(--gold)}
+.step b{min-width:34px;text-align:center;font-size:20px}
+.tg{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font-size:15px}
+.sw{width:50px;height:28px;border-radius:30px;background:rgba(255,255,255,.12);position:relative;transition:.3s;flex-shrink:0}
+.sw:after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.3s}
+.sw.on{background:var(--gold)}.sw.on:after{left:25px}
+.res{position:sticky;top:96px;align-self:start;background:radial-gradient(120% 80% at 100% 0%,rgba(217,183,121,.18),transparent 60%),var(--card)}
+.res .eyebrow{display:block;margin-bottom:12px}
+.sum{font-family:var(--serif);font-size:clamp(52px,6vw,80px);line-height:1;font-weight:500}
+.sum small{font-size:.45em;color:var(--mu)}
+.rl{list-style:none;margin:28px 0;border-top:1px solid var(--line)}
+.rl li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--mu)}
+.rl li b{color:var(--tx);font-weight:600}
+.res .btn{width:100%;justify-content:center}
+.note{font-size:12px;color:var(--mu);margin-top:14px;text-align:center}
+@media(max-width:960px){.calc{grid-template-columns:1fr}.res{position:relative;top:0}}
+
+/* process */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
+.pc{padding:30px 26px;border-radius:22px;background:var(--card);border:1px solid var(--line);position:relative;overflow:hidden}
+.pc .n{position:absolute;right:18px;top:6px;font-family:var(--serif);font-size:90px;line-height:1;color:rgba(255,255,255,.04)}
+.ic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:rgba(217,183,121,.1);border:1px solid rgba(217,183,121,.25);margin-bottom:26px}
+.ic svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ic svg .dr{stroke-dasharray:120;stroke-dashoffset:120;transition:stroke-dashoffset 1.8s ease .3s}
+.in .ic svg .dr{stroke-dashoffset:0}
+.pc h3{font-size:19px;font-weight:600;margin-bottom:8px}
+.pc p{color:var(--mu);font-size:14px}
+@media(max-width:960px){.proc{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.proc{grid-template-columns:1fr}}
+
+/* fears */
+.fears{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fr{padding:32px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.025),transparent)}
+.fr .q{font-family:var(--serif);font-size:28px;font-style:italic;color:var(--mu);line-height:1.15;margin-bottom:16px;text-decoration:line-through;text-decoration-color:rgba(217,183,121,.6);text-decoration-thickness:1px}
+.fr p{font-size:15px}
+.fr p b{color:var(--gold);font-weight:600}
+@media(max-width:760px){.fears{grid-template-columns:1fr}}
+
+/* big quote band */
+.band{position:relative;overflow:hidden;text-align:center;padding:clamp(90px,12vw,160px) 0}
+.band canvas{position:absolute;inset:0;width:100%;height:100%}
+.band .wrap{position:relative}
+.band h2{margin:16px auto 0;max-width:900px}
+
+/* faq */
+.faq{max-width:860px}
+.qa{border-bottom:1px solid var(--line)}
+.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left;padding:26px 0;font-size:19px;font-weight:500}
+.qa button i{width:34px;height:34px;flex-shrink:0;border-radius:50%;border:1px solid var(--line);position:relative;transition:.4s}
+.qa button i:before,.qa button i:after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--tx);transform:translate(-50%,-50%);transition:.4s}
+.qa button i:after{transform:translate(-50%,-50%) rotate(90deg)}
+.qa.op button i{background:var(--gold);border-color:var(--gold)}
+.qa.op button i:before,.qa.op button i:after{background:#111}
+.qa.op button i:after{transform:translate(-50%,-50%) rotate(0)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .5s ease;color:var(--mu)}
+.qa .a p{padding:0 50px 26px 0}
+
+/* cta */
+.cta{background:var(--card);border:1px solid var(--line);border-radius:32px;padding:clamp(30px,6vw,80px);display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.cta:before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(217,183,121,.25),transparent)}
+.form{display:grid;gap:12px;position:relative}
+.form input{width:100%;padding:18px 20px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--tx);font:inherit;outline:none;transition:border-color .3s}
+.form input:focus{border-color:var(--gold)}
+.form .btn{justify-content:center;padding:18px}
+@media(max-width:860px){.cta{grid-template-columns:1fr}}
+
+footer{padding:50px 0 110px;border-top:1px solid var(--line);color:var(--mu);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:62px;height:62px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -6px rgba(37,211,102,.6)}
+.wa:before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ring 2.2s ease-out infinite}
+@keyframes ring{to{transform:scale(1.6);opacity:0}}
+.wa svg{width:30px;height:30px;fill:#fff}
+.glow{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(closest-side,rgba(217,183,121,.07),transparent);transform:translate(-50%,-50%);left:-999px;top:-999px}
+@media(hover:none){.glow{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.reveal-h>*{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="glow" id="glow"></div>
+
+<nav id="nav"><div class="wrap">
+  <a href="#" class="logo"><i></i>VELLUM</a>
+  <div class="nl"><a href="#types">Потолки</a><a href="#calc">Расчёт цены</a><a href="#process">Как работаем</a><a href="#faq">Вопросы</a></div>
+  <a href="#calc" class="btn btn-g">Рассчитать цену</a>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap hgrid">
+    <div class="htext reveal-h">
+      <div class="eyebrow">Натяжные потолки · Алматы</div>
+      <h1>Потолок, на&nbsp;который <em>хочется смотреть</em></h1>
+      <p class="lead">Парящие, световые линии, звёздное небо. Монтаж за один день без пыли. Цену видите сразу, она не меняется после замера.</p>
+      <div class="hbtns">
+        <a href="#calc" class="btn btn-g">Рассчитать за 30 секунд
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#" class="btn btn-o js-wa" data-t="Здравствуйте! Хочу бесплатный замер потолка.">Бесплатный замер</a>
+      </div>
+      <div class="hstats">
+        <div><b data-n="1200">0</b><span>потолков установлено</span></div>
+        <div><b data-n="15">0</b><span>лет гарантии</span></div>
+        <div><b>1</b><span>день на монтаж</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cname"><b id="cn">Световые линии</b><span id="cp">от 9 000 ₸ / м²</span></div>
+      <div class="stage" id="stage">
+        <div class="room intro" id="room" data-c="lines">
+          <div class="f floor"><div class="rug"></div></div>
+          <div class="f back"><div class="win"></div><div class="art"></div></div>
+          <div class="f lw"></div>
+          <div class="f rw2"></div>
+          <div class="f ceil">
+            <div class="cv matte" id="cvm"></div>
+            <div class="cv satin"></div>
+            <div class="cv gloss"></div>
+            <div class="cv stars" id="cvs"></div>
+            <div class="cv lines" id="cvl"></div>
+            <div class="cv float"></div>
+          </div>
+          <div class="sofa"><div class="s sb"></div><div class="s st"></div><div class="s sf"></div></div>
+          <div class="lampf"><div class="pole"></div><div class="shade"></div></div>
+        </div>
+      </div>
+      <div class="chips" id="chips">
+        <button class="chip" data-c="matte">Матовый</button>
+        <button class="chip" data-c="satin">Сатин</button>
+        <button class="chip" data-c="gloss">Глянец</button>
+        <button class="chip on" data-c="lines">Световые линии</button>
+        <button class="chip" data-c="float">Парящий</button>
+        <button class="chip" data-c="stars">Звёздное небо</button>
+      </div>
+      <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12h8M4 12l3-3M4 12l3 3M20 12l-3-3M20 12l-3 3"/></svg>Покрутите комнату и смените потолок</div>
+    </div>
+  </div>
+</header>
+
+<div class="mq"><div>
+  <span>Без пыли и запаха</span><span>Монтаж за 1 день</span><span>Гарантия 15 лет</span><span>Цена фиксируется в договоре</span><span>Бесплатный замер</span><span>Рассрочка</span>
+  <span>Без пыли и запаха</span><span>Монтаж за 1 день</span><span>Гарантия 15 лет</span><span>Цена фиксируется в договоре</span><span>Бесплатный замер</span><span>Рассрочка</span>
+</div></div>
+
+<section id="types">
+  <div class="wrap">
+    <div class="sh rv">
+      <div><div class="eyebrow">Коллекция</div><h2>Шесть потолков. <em>Один</em> из них ваш</h2></div>
+      <p>Нажмите на карточку, и комната наверху сразу покажет этот потолок.</p>
+    </div>
+    <div class="types" id="tgrid"></div>
+  </div>
+</section>
+
+<section id="calc" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sh rv">
+      <div><div class="eyebrow">Расчёт онлайн</div><h2>Узнайте цену <em>до</em> замерщика</h2></div>
+      <p>Двигайте ползунки, и сумма считается сразу. Готовый расчёт уходит нам в WhatsApp одной кнопкой.</p>
+    </div>
+    <div class="calc">
+      <div class="panel rv">
+        <div class="fl"><label>Площадь потолка <b><span id="av">18</span> м²</b></label>
+          <input type="range" id="area" min="5" max="150" value="18"></div>
+        <div class="fl"><label>Тип потолка</label><div class="seg" id="seg"></div></div>
+        <div class="fl"><label>Светильники</label>
+          <div class="step"><button id="lm">−</button><b id="lv">6</b><button id="lp">+</button><span style="color:var(--mu);font-size:13px">по 3 500 ₸</span></div></div>
+        <div class="tg">Скрытый карниз под шторы <div class="sw" data-k="cor" data-p="12000"></div></div>
+        <div class="tg">Демонтаж старого потолка <div class="sw" data-k="dem" data-p="1000"></div></div>
+      </div>
+      <div class="panel res rv">
+        <span class="eyebrow">Примерная стоимость</span>
+        <div class="sum"><span id="sum">0</span> <small>₸</small></div>
+        <ul class="rl">
+          <li>Потолок <b id="r1">—</b></li>
+          <li>Светильники <b id="r2">—</b></li>
+          <li>Дополнительно <b id="r3">—</b></li>
+          <li>Срок монтажа <b id="r4">—</b></li>
+        </ul>
+        <a href="#" class="btn btn-g" id="send">
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2 1.3 2.3 1.4.3.2.5.1.6 0l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2Z"/></svg>
+          Отправить расчёт в WhatsApp</a>
+        <div class="note">Точную сумму назовёт замерщик и зафиксирует её в договоре</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="sh rv">
+      <div><div class="eyebrow">Как работаем</div><h2>От звонка до готового потолка <em>за&nbsp;48&nbsp;часов</em></h2></div>
+    </div>
+    <div class="proc">
+      <div class="pc rv"><span class="n">01</span><div class="ic"><svg viewBox="0 0 24 24"><path class="dr" d="M3 17 17 3l4 4L7 21H3v-4Z"/><path class="dr" d="M13 7l4 4M10 10l2 2M7 13l2 2"/></svg></div><h3>Бесплатный замер</h3><p>Приезжаем в удобное время с образцами полотен и светильников.</p></div>
+      <div class="pc rv"><span class="n">02</span><div class="ic"><svg viewBox="0 0 24 24"><path class="dr" d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path class="dr" d="M3 7l9 5 9-5M12 12v10"/></svg></div><h3>Проект и цена</h3><p>Показываем, как будет выглядеть потолок, и фиксируем цену в договоре.</p></div>
+      <div class="pc rv"><span class="n">03</span><div class="ic"><svg viewBox="0 0 24 24"><path class="dr" d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg></div><h3>Монтаж за 1 день</h3><p>Застилаем мебель и пол, работаем без пыли. Убираем за собой.</p></div>
+      <div class="pc rv"><span class="n">04</span><div class="ic"><svg viewBox="0 0 24 24"><path class="dr" d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5l-8-3Z"/><path class="dr" d="m8.5 12 2.5 2.5 4.5-5"/></svg></div><h3>Гарантия 15 лет</h3><p>Письменная гарантия на полотно и монтаж. Если что-то случится, приедем.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sh rv">
+      <div><div class="eyebrow">Честно о страхах</div><h2>Чего боятся <em>все</em>, кто заказывает потолок</h2></div>
+    </div>
+    <div class="fears">
+      <div class="fr rv"><div class="q">«После замера цена вырастет»</div><p>Сумма из замера идёт в договор и <b>не меняется</b>. Сколько договорились, столько и платите.</p></div>
+      <div class="fr rv"><div class="q">«Будет пыль и грязь на всю квартиру»</div><p>Мебель и пол накрываем плёнкой, полотно натягиваем без шлифовки и штукатурки. <b>После нас чисто.</b></p></div>
+      <div class="fr rv"><div class="q">«Затопят соседи, и всё пропадёт»</div><p>Полотно задерживает воду сверху. Приезжаем, <b>сливаем воду и натягиваем обратно</b>, ремонт не страдает.</p></div>
+      <div class="fr rv"><div class="q">«Будет химический запах»</div><p>Работаем с сертифицированными полотнами. <b>Покажем сертификаты</b> на замере.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <canvas id="sky"></canvas>
+  <div class="wrap rv">
+    <div class="eyebrow">Звёздное небо</div>
+    <h2>Засыпайте <em>под звёздами</em>, не выходя из спальни</h2>
+    <div style="margin-top:34px"><a href="#" class="btn btn-g js-wa" data-t="Здравствуйте! Интересует потолок «Звёздное небо».">Хочу такой потолок</a></div>
+  </div>
+</div>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sh rv"><div><div class="eyebrow">Вопросы</div><h2>Коротко <em>о главном</em></h2></div></div>
+    <div class="faq" id="faqw"></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta rv">
+      <div>
+        <div class="eyebrow">Бесплатный замер</div>
+        <h2 style="font-size:clamp(36px,4.4vw,58px)">Приедем, замерим и назовём <em>точную</em> цену</h2>
+        <p style="color:var(--mu);margin-top:18px;max-width:420px">Оставьте имя и номер, и мы напишем в WhatsApp в течение 15 минут.</p>
+      </div>
+      <form class="form" id="form">
+        <input id="fn" placeholder="Ваше имя" required>
+        <input id="fp" placeholder="Номер телефона" type="tel" required>
+        <input id="fa" placeholder="Район или адрес (необязательно)">
+        <button class="btn btn-g" type="submit">Записаться на замер</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <div><a href="#" class="logo"><i></i>VELLUM</a><div style="margin-top:12px">Натяжные потолки в Алматы</div></div>
+  <div>+7 700 000 00 00<br>Алматы · ежедневно 9:00–21:00</div>
+</div></footer>
+
+<a href="#" class="wa js-wa" data-t="Здравствуйте! Хочу узнать про натяжные потолки." aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2 1.3 2.3 1.4.3.2.5.1.6 0l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2Z"/></svg></a>
+
+<script>
+const WA='77000000000';
+const wa=t=>'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
+const fmt=n=>Math.round(n).toLocaleString('ru-RU').replace(/[,\s]/g,' ');
+
+const T={
+ matte:{n:'Матовый',p:3500,d:'Классика: ровный, как идеально окрашенный потолок. Подходит в любой интерьер.',pv:'radial-gradient(70% 70% at 50% 50%,#fbfaf7,#e2ddd3)'},
+ satin:{n:'Сатин',p:4000,d:'Мягкий перламутровый блеск. Дорого выглядит при дневном свете.',pv:'linear-gradient(115deg,#efe9df,#fffaf0 40%,#e2d8c8 60%,#f7f1e6)'},
+ gloss:{n:'Глянец',p:4000,d:'Зеркальный эффект визуально поднимает потолок и расширяет комнату.',pv:'linear-gradient(180deg,#1b1a19,#3a352f 50%,#141312)'},
+ lines:{n:'Световые линии',p:9000,d:'Свет встроен прямо в потолок. Люстры больше не нужны.',pv:'linear-gradient(90deg,transparent 30%,#fff 30.5%,#fff 31.5%,transparent 32%,transparent 68%,#fff 68.5%,#fff 69.5%,transparent 70%),#efebe4'},
+ float:{n:'Парящий',p:7000,d:'Подсветка по периметру. Потолок будто висит в воздухе.',pv:'radial-gradient(80% 80% at 50% 50%,#f5f2ec,#e3ddd2)'},
+ stars:{n:'Звёздное небо',p:12000,d:'Сотни мерцающих звёзд и падающие кометы. Для спальни и детской.',pv:'radial-gradient(60% 50% at 30% 30%,rgba(90,70,160,.7),transparent 70%),radial-gradient(50% 50% at 75% 70%,rgba(40,90,150,.6),transparent 70%),#05060d'}
+};
+const AMB={matte:'rgba(255,240,210,.14)',satin:'rgba(255,236,205,.16)',gloss:'rgba(217,183,121,.16)',lines:'rgba(255,246,220,.2)',float:'rgba(255,214,150,.2)',stars:'rgba(110,90,200,.22)'};
+
+/* build ceiling decor */
+(function(){
+ const s=document.getElementById('cvs');let h='';
+ for(let i=0;i<120;i++){const z=Math.random()<.15?3:2;h+=`<b style="left:${(Math.random()*100).toFixed(1)}%;top:${(Math.random()*100).toFixed(1)}%;width:${z}px;height:${z}px;animation-delay:${(Math.random()*3).toFixed(2)}s;animation-duration:${(2+Math.random()*3).toFixed(2)}s"></b>`}
+ h+='<s style="left:80%;top:20%"></s><s style="left:60%;top:60%;animation-delay:3.5s"></s>';s.innerHTML=h;
+ const l=document.getElementById('cvl');
+ l.innerHTML='<u style="left:16%;top:8%;width:3px;height:84%"></u><u style="left:84%;top:8%;width:3px;height:84%"></u><u style="left:16%;top:8%;width:68%;height:3px"></u><u style="left:16%;top:92%;width:68%;height:3px"></u><u style="left:38%;top:30%;width:3px;height:40%;transform:rotate(35deg)"></u><u style="left:60%;top:30%;width:3px;height:40%;transform:rotate(35deg)"></u>';
+ const m=document.getElementById('cvm');let mh='';
+ [[25,25],[50,25],[75,25],[25,75],[50,75],[75,75]].forEach(p=>mh+=`<i style="left:calc(${p[0]}% - 7px);top:calc(${p[1]}% - 7px)"></i>`);m.innerHTML=mh;
+})();
+
+/* ceiling switching */
+const room=document.getElementById('room'),cn=document.getElementById('cn'),cp=document.getElementById('cp');
+function setC(c,scroll){
+ room.dataset.c=c;
+ document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x.dataset.c===c));
+ cn.style.opacity=0;setTimeout(()=>{cn.textContent=T[c].n;cp.textContent='от '+fmt(T[c].p)+' ₸ / м²';cn.style.opacity=1},200);
+ document.querySelector('.hero').style.setProperty('--amb',AMB[c]);
+ room.style.setProperty('--floorglow',c==='stars'?'rgba(120,100,220,.18)':'rgba(255,236,200,.18)');
+ if(c==='stars'){room.style.setProperty('--wall1','#8c8798');room.style.setProperty('--wall2','#5d5868')}
+ else if(c==='gloss'){room.style.setProperty('--wall1','#cfc6b8');room.style.setProperty('--wall2','#a99e8d')}
+ else{room.style.removeProperty('--wall1');room.style.removeProperty('--wall2')}
+ if(scroll)document.querySelector('.hero').scrollIntoView({behavior:'smooth'});
+ stopAuto();
+}
+document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>setC(b.dataset.c));
+
+function sk(){const w=Math.min(560,innerWidth*.74);document.documentElement.style.setProperty('--k',(w/560).toFixed(3))}sk();addEventListener('resize',sk);
+/* drag rotate + auto orbit */
+let ry=-22,dragging=false,sx=0,sr=0,auto=true,t0=performance.now(),autoT;
+const stage=document.getElementById('stage');
+setTimeout(()=>{room.classList.remove('intro');room.style.setProperty('--ry',ry+'deg')},2450);
+function loop(t){if(auto&&!dragging&&!room.classList.contains('intro')){ry=-22+Math.sin((t-t0)/2600)*18;room.style.setProperty('--ry',ry+'deg')}requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+function stopAuto(){auto=false;clearTimeout(autoT);autoT=setTimeout(()=>{auto=true;t0=performance.now()-Math.asin(Math.max(-1,Math.min(1,(ry+22)/18)))*2600},6000)}
+stage.addEventListener('pointerdown',e=>{if(room.classList.contains('intro'))return;dragging=true;sx=e.clientX;sr=ry;stopAuto()});
+addEventListener('pointermove',e=>{if(!dragging)return;ry=Math.max(-60,Math.min(20,sr+(e.clientX-sx)*.25));room.style.setProperty('--ry',ry+'deg')});
+addEventListener('pointerup',()=>dragging=false);addEventListener('pointercancel',()=>dragging=false);
+
+/* types grid */
+const tg=document.getElementById('tgrid');
+tg.innerHTML=Object.entries(T).map(([k,v])=>`<div class="tc rv" data-c="${k}"><div class="tv">${document.querySelector('.ceil .cv.'+k).outerHTML}</div><div class="tb"><h3>${v.n}</h3><p>${v.d}</p><div class="pr"><b>от ${fmt(v.p)} ₸/м²</b><span>Показать в комнате ↑</span></div></div></div>`).join('');
+tg.querySelectorAll('.tc').forEach(c=>c.onclick=()=>setC(c.dataset.c,true));
+
+/* calculator */
+const seg=document.getElementById('seg');let ct='matte',lamps=6,area=18;const opt={cor:false,dem:false};
+seg.innerHTML=Object.entries(T).map(([k,v])=>`<button data-c="${k}" class="${k===ct?'on':''}">${v.n}<small>${fmt(v.p)} ₸/м²</small></button>`).join('');
+seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{ct=b.dataset.c;seg.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));calc()});
+const ar=document.getElementById('area');
+ar.oninput=()=>{area=+ar.value;calc()};
+document.getElementById('lm').onclick=()=>{lamps=Math.max(0,lamps-1);calc()};
+document.getElementById('lp').onclick=()=>{lamps=Math.min(40,lamps+1);calc()};
+document.querySelectorAll('.sw').forEach(s=>s.onclick=()=>{s.classList.toggle('on');opt[s.dataset.k]=s.classList.contains('on');calc()});
+let shown=0,anim;
+function calc(){
+ document.getElementById('av').textContent=area;document.getElementById('lv').textContent=lamps;
+ ar.style.setProperty('--p',((area-5)/(145)*100)+'%');
+ const base=area*T[ct].p,l=lamps*3500,ex=(opt.cor?Math.round(Math.sqrt(area))*12000:0)+(opt.dem?area*1000:0);
+ const total=base+l+ex;
+ document.getElementById('r1').textContent=fmt(base)+' ₸';
+ document.getElementById('r2').textContent=fmt(l)+' ₸';
+ document.getElementById('r3').textContent=ex?fmt(ex)+' ₸':'—';
+ document.getElementById('r4').textContent=area<=60?'1 день':'2 дня';
+ const from=shown,st=performance.now();cancelAnimationFrame(anim);
+ (function f(t){const k=Math.min(1,(t-st)/600),e=1-Math.pow(1-k,3);shown=from+(total-from)*e;document.getElementById('sum').textContent=fmt(shown);if(k<1)anim=requestAnimationFrame(f)})(st);
+ document.getElementById('send').href=wa(`Здравствуйте! Рассчитал на сайте:\n• ${T[ct].n}, ${area} м²\n• Светильники: ${lamps}`+(opt.cor?'\n• Скрытый карниз':'')+(opt.dem?'\n• Демонтаж старого потолка':'')+`\nИтого примерно ${fmt(total)} ₸.\nХочу бесплатный замер.`);
+}
+calc();
+
+/* wa links */
+document.querySelectorAll('.js-wa').forEach(a=>a.href=wa(a.dataset.t));
+document.getElementById('form').onsubmit=e=>{e.preventDefault();
+ const t=`Здравствуйте! Запись на бесплатный замер.\nИмя: ${fn.value}\nТелефон: ${fp.value}`+(fa.value?`\nАдрес: ${fa.value}`:'');
+ location.href=wa(t)};
+
+/* faq */
+const F=[['Сколько длится монтаж?','Обычная квартира — один день. Сложные потолки со световыми линиями — до двух дней.'],
+['Нужно ли выносить мебель?','Нет. Мы сами сдвигаем и накрываем мебель, после монтажа ставим всё на место.'],
+['Можно ли в рассрочку?','Да, есть рассрочка без переплаты. Условия расскажем на замере.'],
+['Что будет, если затопят соседи?','Полотно задерживает воду. Приезжаем, аккуратно сливаем её и натягиваем потолок обратно.'],
+['Замер правда бесплатный?','Да, замер и расчёт бесплатные, даже если вы потом решите не заказывать.']];
+document.getElementById('faqw').innerHTML=F.map(q=>`<div class="qa rv"><button>${q[0]}<i></i></button><div class="a"><p>${q[1]}</p></div></div>`).join('');
+document.querySelectorAll('.qa button').forEach(b=>b.onclick=()=>{const q=b.parentElement,a=q.querySelector('.a'),o=q.classList.toggle('op');a.style.maxHeight=o?a.scrollHeight+'px':0});
+
+/* reveal + counters */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+document.querySelectorAll('[data-n]').forEach(el=>{const n=+el.dataset.n,st=performance.now()+900;
+ (function f(t){const k=Math.max(0,Math.min(1,(t-st)/1800)),e=1-Math.pow(1-k,3);el.textContent=fmt(n*e)+(n>100?'+':'');if(k<1)requestAnimationFrame(f)})(st)});
+
+/* nav + glow */
+const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>40),{passive:true});
+const gl=document.getElementById('glow');addEventListener('pointermove',e=>{gl.style.left=e.clientX+'px';gl.style.top=e.clientY+'px'},{passive:true});
+
+/* starry band canvas */
+(function(){const c=document.getElementById('sky'),x=c.getContext('2d');let w,h,S=[],M=[];
+ function rs(){w=c.width=c.offsetWidth*devicePixelRatio;h=c.height=c.offsetHeight*devicePixelRatio;S=[];for(let i=0;i<Math.min(260,w*h/9000);i++)S.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.4*devicePixelRatio+.3,p:Math.random()*6.28,s:.5+Math.random()*1.5})}
+ rs();addEventListener('resize',rs);
+ function d(t){x.clearRect(0,0,w,h);const g=x.createRadialGradient(w*.3,h*.4,0,w*.3,h*.4,w*.6);g.addColorStop(0,'rgba(80,60,150,.35)');g.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=g;x.fillRect(0,0,w,h);
+  S.forEach(s=>{const a=.35+.65*Math.abs(Math.sin(s.p+t/1000*s.s));x.globalAlpha=a;x.fillStyle='#fff';x.beginPath();x.arc(s.x,s.y,s.r,0,6.28);x.fill()});
+  if(Math.random()<.008)M.push({x:Math.random()*w,y:Math.random()*h*.4,l:0});
+  M=M.filter(m=>{m.l+=1;const k=m.l/50;x.globalAlpha=1-k;x.strokeStyle='#fff';x.lineWidth=1.5*devicePixelRatio;x.beginPath();x.moveTo(m.x-m.l*6,m.y+m.l*3);x.lineTo(m.x-m.l*6+60,m.y+m.l*3-30);x.stroke();return k<1});
+  x.globalAlpha=1;requestAnimationFrame(d)}
+ requestAnimationFrame(d)})();
+</script>
+</body>
+</html>
