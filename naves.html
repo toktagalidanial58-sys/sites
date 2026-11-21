@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Шатыр — навесы для частных домов в Алматы</title>
+<meta name="description" content="Навесы под ключ в Алматы: арочные, односкатные, двускатные. Свой цех, порошковая покраска, монтаж за 1–2 дня. Расчёт цены онлайн, замер бесплатно.">
+<meta name="theme-color" content="#2C3236">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF1F2; --paper-2:#E2E8EB; --ink:#2C3236; --ink-2:#4F595F; --steel:#7E888E;
+  --bronze:#A86F2F; --bronze-d:#8A5A23; --sky:#CAD8E1; --line:rgba(44,50,54,.14);
+  --display:"Unbounded",system-ui,sans-serif; --text:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gut:max(24px, calc((100vw - 1240px) / 2));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img,svg{display:block}
+:focus-visible{outline:2px solid var(--bronze);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1240px, 100% - 48px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;
+  font:500 16px/1 var(--text);text-decoration:none;white-space:nowrap;transition:background-color .2s,color .2s,box-shadow .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn--bronze{background:var(--bronze);color:#fff}
+.btn--bronze:hover{background:var(--bronze-d)}
+.btn--glass{background:rgba(255,255,255,.6);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(44,50,54,.12);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.btn--glass:hover{background:rgba(255,255,255,.85)}
+.btn--line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn--line:hover{background:var(--ink);color:var(--paper)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;gap:32px;height:76px;padding:0 var(--gut);transition:background-color .3s,box-shadow .3s}
+.nav.is-solid{background:rgba(238,241,242,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:500 22px/1 var(--display);letter-spacing:-.03em}
+.logo svg{width:34px;height:20px}
+.nav__links{display:flex;gap:28px;margin-left:auto;list-style:none}
+.nav__links a{text-decoration:none;font-size:15px;color:var(--ink-2)}
+.nav__links a:hover{color:var(--ink)}
+.nav .btn{height:44px;padding:0 20px;font-size:15px}
+@media (max-width:900px){.nav__links{display:none}.nav .btn{margin-left:auto}}
+
+/* hero */
+.hero{position:relative;height:100svh;min-height:660px;overflow:hidden;background:linear-gradient(#a9c0d1,#e4eaed 62%,#c9cfc8 62.2%)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:radial-gradient(120% 70% at 0% 100%, rgba(238,241,242,.92) 0%, rgba(238,241,242,.6) 34%, rgba(238,241,242,0) 62%)}
+.hero__copy{position:absolute;left:var(--gut);bottom:clamp(40px,8vh,96px);z-index:2;max-width:600px}
+.hero h1{font:300 clamp(40px,5.5vw,86px)/1 var(--display);letter-spacing:-.045em;max-width:9.5em}
+.hero__lead{margin-top:24px;font-size:18px;line-height:1.55;max-width:31em;color:var(--ink-2)}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+.sun{position:absolute;right:var(--gut);bottom:clamp(40px,8vh,96px);z-index:2;width:292px;padding:18px 20px 18px;border-radius:22px;
+  background:rgba(238,241,242,.62);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 20px 50px -30px rgba(30,40,50,.5)}
+.sun__top{display:flex;justify-content:space-between;align-items:baseline}
+.sun__title{font-size:14px;color:var(--ink-2)}
+.sun__time{font:400 26px/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.sun svg{width:100%;height:auto;margin-top:6px;overflow:visible;touch-action:none;cursor:grab}
+.sun svg:active{cursor:grabbing}
+.sun__knob{outline:none}
+.sun__knob:focus-visible .sun__ring{stroke:var(--bronze);stroke-width:3}
+.sun__ends{display:flex;justify-content:space-between;font-size:12px;color:var(--steel);margin-top:-2px}
+.sun__shade{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-2)}
+.sun__shade b{font:400 18px/1 var(--display);color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.sun__hint{font-size:13px;color:var(--steel);margin-top:8px}
+
+@media (max-width:760px){
+  .hero{min-height:720px}
+  .hero::after{background:linear-gradient(to top, rgba(238,241,242,.96) 0%, rgba(238,241,242,.75) 36%, rgba(238,241,242,0) 58%)}
+  .hero__copy{left:20px;right:20px;bottom:28px}
+  .hero__lead{font-size:16px;margin-top:16px}
+  .hero__cta{margin-top:22px}
+  .hero__cta .btn{flex:1 1 auto}
+  .sun{left:20px;right:20px;top:88px;bottom:auto;width:auto;display:grid;grid-template-columns:132px 1fr;column-gap:16px;align-items:center;padding:12px 16px}
+  .sun__top{grid-column:2;grid-row:1;flex-direction:column;align-items:flex-start;gap:4px}
+  .sun svg{grid-column:1;grid-row:1 / span 3;margin:0}
+  .sun__ends{display:none}
+  .sun__shade{grid-column:2;grid-row:2;margin:6px 0 0;padding:0;border:0;flex-direction:column;align-items:flex-start;gap:2px}
+  .sun__hint{grid-column:2;grid-row:3;margin-top:4px}
+}
+
+/* sections */
+section{scroll-margin-top:76px}
+.sec{padding:clamp(80px,11vw,140px) 0}
+.h2{font:300 clamp(34px,4.4vw,60px)/1.04 var(--display);letter-spacing:-.04em;max-width:15em}
+.lead{margin-top:20px;font-size:18px;color:var(--ink-2);max-width:34em}
+
+/* calculator */
+.calc{background:var(--ink);color:var(--paper)}
+.calc .lead{color:rgba(238,241,242,.72)}
+.calc__grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(320px,1fr);gap:clamp(24px,3vw,48px);margin-top:56px;align-items:start}
+.calc__view{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/3.1;background:linear-gradient(#a9c0d1,#e4eaed 60%,#c9cfc8 60.2%);position:sticky;top:96px}
+.calc__view canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+.calc__view canvas:active{cursor:grabbing}
+.calc__tag{position:absolute;left:16px;bottom:16px;padding:8px 14px;border-radius:999px;font-size:13px;color:var(--ink);background:rgba(238,241,242,.75);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.calc__dims{position:absolute;right:16px;top:16px;padding:8px 14px;border-radius:999px;font:400 14px/1.2 var(--display);letter-spacing:-.02em;color:var(--ink);background:rgba(238,241,242,.75);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-variant-numeric:tabular-nums}
+.panel{display:flex;flex-direction:column;gap:26px}
+.fld{border:0;min-width:0}
+.fld__lab{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:rgba(238,241,242,.66);margin-bottom:10px}
+.fld__lab output{font:400 17px/1 var(--display);color:var(--paper);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:14px;background:rgba(255,255,255,.07)}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.seg span{display:block;text-align:center;padding:11px 6px;border-radius:10px;font-size:14.5px;line-height:1.2;color:rgba(238,241,242,.8);transition:background-color .2s,color .2s}
+.seg input:checked + span{background:var(--paper);color:var(--ink)}
+.seg input:focus-visible + span{outline:2px solid var(--bronze);outline-offset:2px}
+.seg input:disabled + span{opacity:.32;cursor:not-allowed}
+.seg label:hover input:not(:checked):not(:disabled) + span{background:rgba(255,255,255,.08)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:4px;background:linear-gradient(to right,var(--bronze) var(--p,50%),rgba(255,255,255,.16) var(--p,50%))}
+input[type=range]::-moz-range-track{height:4px;border-radius:4px;background:linear-gradient(to right,var(--bronze) var(--p,50%),rgba(255,255,255,.16) var(--p,50%))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-9px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 5px rgba(168,111,47,.35)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radius:50%;background:var(--paper);box-shadow:0 0 0 5px rgba(168,111,47,.35)}
+input[type=range]:focus-visible{outline:none}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 5px var(--bronze)}
+.sw{display:flex;flex-wrap:wrap;gap:10px}
+.sw label{position:relative;display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:999px;background:rgba(255,255,255,.06);font-size:13.5px;color:rgba(238,241,242,.82);cursor:pointer}
+.sw input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.sw i{width:24px;height:24px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.sw input:checked ~ i{box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--paper)}
+.sw label:has(input:checked){background:rgba(255,255,255,.14);color:var(--paper)}
+.sw input:focus-visible ~ i{box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--bronze)}
+.price{padding-top:24px;border-top:1px solid rgba(238,241,242,.16)}
+.price__row{display:flex;justify-content:space-between;font-size:14px;color:rgba(238,241,242,.66)}
+.price__row b{font-weight:500;color:var(--paper)}
+.price__sum{margin-top:14px;font:400 clamp(34px,3.4vw,46px)/1 var(--display);letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.price__note{margin-top:10px;font-size:14px;color:rgba(238,241,242,.6)}
+.price .btn{width:100%;margin-top:22px}
+@media (max-width:900px){
+  .calc__grid{grid-template-columns:1fr}
+  .calc__view{position:relative;top:0;aspect-ratio:1/1}
+}
+
+/* materials */
+.mat-wrap{margin-top:56px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.mat{width:100%;min-width:720px;border-collapse:collapse;text-align:left}
+.mat th,.mat td{padding:18px 20px 18px 0;vertical-align:top;border-bottom:1px solid var(--line);font-size:16px}
+.mat thead th{border-bottom:0;padding-bottom:22px;font-weight:400}
+.mat thead th:first-child{width:18%}
+.mat tbody th{font-weight:400;color:var(--steel);font-size:15px}
+.mat td b{font:400 20px/1.2 var(--display);letter-spacing:-.03em;font-weight:400}
+.swatch{height:150px;border-radius:16px;margin-bottom:16px}
+.swatch--poly{background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.22) 0 1px,transparent 1px 8px),
+  linear-gradient(160deg,#c48c4b 0%,#a86f2f 45%,#7d4f1d 100%)}
+.swatch--prof{background:
+  linear-gradient(180deg,rgba(255,255,255,.12),rgba(0,0,0,.18)),
+  repeating-linear-gradient(90deg,#596267 0 12px,#7a848a 12px 16px,#454c50 16px 32px,#30363a 32px 36px)}
+.swatch--tile{background:
+  repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0 2px,rgba(0,0,0,.18) 2px 6px,rgba(255,255,255,.08) 22px 28px,rgba(0,0,0,.45) 28px 30px),
+  repeating-radial-gradient(ellipse 22px 60px at 11px 50%,#7a564b 0,#5b3f37 9px,#3a2924 17px,#2a1d1a 22px),
+  #4a352f;background-size:auto,22px 100%,auto}
+.mat__name{font:400 22px/1.15 var(--display);letter-spacing:-.03em}
+
+/* process */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:64px;position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:linear-gradient(90deg,var(--ink) 0 72%,var(--steel) 72%)}
+.steps li{position:relative;padding-top:40px}
+.steps li::before{content:"";position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:var(--paper);box-shadow:inset 0 0 0 2px var(--ink)}
+.steps li:last-child::before{background:var(--bronze);box-shadow:none}
+.steps small{display:block;font-size:14px;color:var(--steel)}
+.steps h3{margin-top:6px;font:400 24px/1.15 var(--display);letter-spacing:-.03em}
+.steps p{margin-top:12px;color:var(--ink-2);max-width:22em}
+@media (max-width:900px){
+  .steps{grid-template-columns:1fr;gap:0;padding-left:36px}
+  .steps::before{left:7px;right:auto;top:8px;bottom:8px;width:2px;height:auto;background:var(--ink)}
+  .steps li{padding:0 0 36px}
+  .steps li::before{left:-36px;top:6px}
+}
+
+/* specs */
+.specs{background:var(--paper-2)}
+.specs__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(32px,6vw,96px)}
+.specs dl{border-top:1.5px solid var(--ink)}
+.specs dl div{display:grid;grid-template-columns:minmax(120px,.7fr) 1.3fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+.specs dt{color:var(--steel);font-size:15px;padding-top:2px}
+.specs dd{font-size:17px}
+@media (max-width:900px){.specs__grid{grid-template-columns:1fr}.specs dl div{grid-template-columns:1fr;gap:4px}}
+
+/* faq */
+.faq__list{margin-top:48px;border-top:1.5px solid var(--ink);max-width:880px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font:400 clamp(18px,1.8vw,22px)/1.3 var(--display);letter-spacing:-.025em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:14px;height:14px;background:
+  linear-gradient(var(--ink),var(--ink)) center/14px 1.5px no-repeat,
+  linear-gradient(var(--ink),var(--ink)) center/1.5px 14px no-repeat;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 26px;max-width:40em;color:var(--ink-2)}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper)}
+.contact__grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:end}
+.contact .h2{max-width:12em}
+.contact .lead{color:rgba(238,241,242,.72)}
+.contact__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.contact .btn--line{color:var(--paper);box-shadow:inset 0 0 0 1.5px rgba(238,241,242,.5)}
+.contact .btn--line:hover{background:var(--paper);color:var(--ink)}
+.contact address{font-style:normal;display:grid;gap:18px}
+.contact address div{padding-bottom:18px;border-bottom:1px solid rgba(238,241,242,.14)}
+.contact address span{display:block;font-size:14px;color:rgba(238,241,242,.55)}
+.contact address a,.contact address p{font:400 20px/1.35 var(--display);letter-spacing:-.025em;text-decoration:none}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:96px;padding-top:24px;border-top:1px solid rgba(238,241,242,.14);font-size:14px;color:rgba(238,241,242,.5)}
+@media (max-width:900px){.contact__grid{grid-template-columns:1fr}}
+
+.fab{display:none}
+@media (max-width:760px){
+  .fab{display:flex;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;width:58px;height:58px;border-radius:50%;align-items:center;justify-content:center;background:var(--bronze);color:#fff;box-shadow:0 14px 30px -10px rgba(60,35,10,.6);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s,transform .3s}
+  .fab.is-on{opacity:1;transform:none;pointer-events:auto}
+  .fab svg{width:26px;height:26px}
+}
+.nogl canvas{display:none}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Шатыр, на главную">
+    <svg viewBox="0 0 34 20" fill="none" aria-hidden="true"><path d="M2 18V10C2 10 9 2 17 2s15 8 15 8v8" stroke="currentColor" stroke-width="2.2"/><path d="M9 18V8M17 18V5M25 18V8" stroke="currentColor" stroke-width="1.4"/></svg>
+    шатыр
+  </a>
+  <ul class="nav__links">
+    <li><a href="#calc">Конструктор</a></li>
+    <li><a href="#roof">Кровля</a></li>
+    <li><a href="#process">Как работаем</a></li>
+    <li><a href="#contacts">Контакты</a></li>
+  </ul>
+  <a class="btn btn--bronze js-wa" href="#" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.5-.3Z"/></svg>
+    WhatsApp
+  </a>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Навесы под ключ">
+    <canvas id="heroGL" aria-label="3D-модель арочного навеса во дворе" role="img"></canvas>
+    <div class="hero__copy">
+      <h1>Тень над двором за 10 дней</h1>
+      <p class="hero__lead">Навесы для частных домов в Алматы. Свой цех, порошковая покраска, монтаж за 1–2 дня. Замер бесплатно.</p>
+      <div class="hero__cta">
+        <a class="btn btn--bronze" href="#calc">Рассчитать стоимость</a>
+        <a class="btn btn--glass js-wa" href="#" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      </div>
+    </div>
+    <div class="sun" id="sun">
+      <div class="sun__top">
+        <span class="sun__title">Где будет тень</span>
+        <span class="sun__time" id="sunTime">14:00</span>
+      </div>
+      <svg viewBox="0 0 240 128" id="sunArc" aria-hidden="false">
+        <path d="M16 116A104 96 0 0 1 224 116" fill="none" stroke="rgba(44,50,54,.22)" stroke-width="1.5" stroke-dasharray="2 5"/>
+        <path id="sunTrail" d="M16 116A104 96 0 0 1 224 116" fill="none" stroke="#A86F2F" stroke-width="2" pathLength="100" stroke-dasharray="50 100" stroke-linecap="round"/>
+        <line x1="4" y1="116" x2="236" y2="116" stroke="rgba(44,50,54,.3)" stroke-width="1"/>
+        <g class="sun__knob" id="sunKnob" tabindex="0" role="slider" aria-label="Время дня" aria-valuemin="6" aria-valuemax="20" aria-valuenow="14" aria-valuetext="14:00">
+          <circle r="22" fill="transparent"/>
+          <circle r="15" fill="rgba(242,179,61,.28)"/>
+          <circle class="sun__ring" r="9" fill="#F2B33D" stroke="#fff" stroke-width="2"/>
+        </g>
+      </svg>
+      <div class="sun__ends"><span>6:00</span><span>20:00</span></div>
+      <div class="sun__shade"><span>Тень под навесом</span><b id="shadeArea">— м²</b></div>
+      <p class="sun__hint">Двигайте солнце по дуге</p>
+    </div>
+  </section>
+
+  <section class="calc sec" id="calc">
+    <div class="wrap">
+      <h2 class="h2">Соберите навес и узнайте цену</h2>
+      <p class="lead">Меняйте форму, размеры и кровлю. Модель и цена обновляются сразу, а расчёт можно отправить мастеру в WhatsApp.</p>
+      <div class="calc__grid">
+        <div class="calc__view" id="calcView">
+          <canvas id="calcGL" aria-label="3D-модель навеса по вашим параметрам" role="img"></canvas>
+          <span class="calc__dims" id="calcDims">6 × 5 м</span>
+          <span class="calc__tag">Потяните, чтобы повернуть</span>
+        </div>
+        <form class="panel" id="calcForm" onsubmit="return false">
+          <fieldset class="fld">
+            <legend class="fld__lab">Форма</legend>
+            <div class="seg">
+              <label><input type="radio" name="type" value="arch"><span>Арочный</span></label>
+              <label><input type="radio" name="type" value="single" checked><span>Односкатный</span></label>
+              <label><input type="radio" name="type" value="gable"><span>Двускатный</span></label>
+            </div>
+          </fieldset>
+          <div class="fld">
+            <label class="fld__lab" for="inW">Ширина <output id="outW">6 м</output></label>
+            <input type="range" id="inW" name="W" min="3" max="9" step="0.5" value="6">
+          </div>
+          <div class="fld">
+            <label class="fld__lab" for="inD">Глубина <output id="outD">5 м</output></label>
+            <input type="range" id="inD" name="D" min="3" max="8" step="0.5" value="5">
+          </div>
+          <div class="fld">
+            <label class="fld__lab" for="inH">Высота стоек <output id="outH">2,8 м</output></label>
+            <input type="range" id="inH" name="H" min="2.4" max="3.6" step="0.1" value="2.8">
+          </div>
+          <fieldset class="fld">
+            <legend class="fld__lab">Кровля</legend>
+            <div class="seg">
+              <label><input type="radio" name="roof" value="poly"><span>Поликарбонат</span></label>
+              <label><input type="radio" name="roof" value="prof" checked><span>Профнастил</span></label>
+              <label><input type="radio" name="roof" value="tile"><span>Металло&shy;черепица</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="fld">
+            <legend class="fld__lab">Цвет кровли</legend>
+            <div class="sw" id="roofColors"></div>
+          </fieldset>
+          <fieldset class="fld">
+            <legend class="fld__lab">Цвет каркаса</legend>
+            <div class="sw" id="frameColors"></div>
+          </fieldset>
+          <div class="price">
+            <div class="price__row"><span>Площадь под навесом</span><b id="outArea">30 м²</b></div>
+            <div class="price__sum" id="outPrice">≈ 690 000 ₸</div>
+            <p class="price__note">Предварительно. Точную цену назовём после бесплатного замера.</p>
+            <a class="btn btn--bronze" id="sendCalc" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.5-.3Z"/></svg>
+              Отправить расчёт в WhatsApp
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="roof">
+    <div class="wrap">
+      <h2 class="h2">Чем накрыть</h2>
+      <p class="lead">Три кровли, которые ставим чаще всего. На замере покажем образцы вживую и подскажем, что лучше для вашего двора.</p>
+      <div class="mat-wrap">
+        <table class="mat">
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr">Параметр</span></th>
+              <th scope="col"><div class="swatch swatch--poly"></div><span class="mat__name">Поликарбонат</span></th>
+              <th scope="col"><div class="swatch swatch--prof"></div><span class="mat__name">Профнастил</span></th>
+              <th scope="col"><div class="swatch swatch--tile"></div><span class="mat__name">Металлочерепица</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Свет под навесом</th><td>Мягкий, пропускает часть солнца</td><td>Плотная тень</td><td>Плотная тень</td></tr>
+            <tr><th scope="row">Как выглядит</th><td>Лёгкий и современный</td><td>Строгий и практичный</td><td>Как крыша дома</td></tr>
+            <tr><th scope="row">Где ставят</th><td>Двор, терраса, бассейн</td><td>Парковка, хозяйственный двор</td><td>У дома, в одном стиле с крышей</td></tr>
+            <tr><th scope="row">Формы</th><td>Арка, односкатный, двускатный</td><td>Арка, односкатный, двускатный</td><td>Односкатный, двускатный</td></tr>
+            <tr><th scope="row">Цена за м²</th><td><b>от 19 000 ₸</b></td><td><b>от 23 000 ₸</b></td><td><b>от 27 000 ₸</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="process" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="h2">От замера до готового навеса</h2>
+      <ol class="steps">
+        <li><small>День 1</small><h3>Замер</h3><p>Приезжаем, меряем двор, смотрим, где солнце и куда будет стекать вода.</p></li>
+        <li><small>День 2</small><h3>Проект и смета</h3><p>Показываем навес в 3D и называем цену. После сметы она не меняется.</p></li>
+        <li><small>Дни 3–8</small><h3>Цех</h3><p>Режем и варим каркас на стапеле, грунтуем и красим порошком в камере.</p></li>
+        <li><small>Дни 9–10</small><h3>Монтаж</h3><p>Бетонируем стойки, собираем каркас, кроем. Уезжаем и оставляем чистый двор.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec specs" id="specs">
+    <div class="wrap specs__grid">
+      <div>
+        <h2 class="h2">Из чего собираем каркас</h2>
+        <p class="lead">То, что не видно на фото, но решает, простоит навес пять лет или двадцать.</p>
+      </div>
+      <dl>
+        <div><dt>Стойки</dt><dd>Профильная труба 80×80 мм со стенкой 3 мм</dd></div>
+        <div><dt>Фермы</dt><dd>Труба 40×40 и 40×20 мм, сварка в цеху на стапеле</dd></div>
+        <div><dt>Покраска</dt><dd>Грунт и порошковая краска с запеканием в камере</dd></div>
+        <div><dt>Фундамент</dt><dd>Каждую стойку бетонируем на глубину 1 м</dd></div>
+        <div><dt>Снег</dt><dd>Фермы считаем под снеговую нагрузку Алматы</dd></div>
+        <div><dt>Гарантия</dt><dd>3 года на каркас и сварные швы</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="sec faq" id="faq">
+    <div class="wrap">
+      <h2 class="h2">Частые вопросы</h2>
+      <div class="faq__list">
+        <details><summary>Сколько стоит замер?</summary><p>Бесплатно по Алматы и пригороду. Приезжаем в удобный для вас день, обычно в течение суток после заявки.</p></details>
+        <details><summary>Цена может вырасти после расчёта на сайте?</summary><p>Сайт считает предварительно. На замере даём точную смету, и после неё цена не меняется.</p></details>
+        <details><summary>Можно оплатить частями?</summary><p>Да. Варианты оплаты обсудим на замере и подберём удобный.</p></details>
+        <details><summary>Ставите навесы зимой?</summary><p>Да. Каркас варим в тёплом цеху, а стойки бетонируем с противоморозной добавкой.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec contact" id="contacts">
+    <div class="wrap">
+      <div class="contact__grid">
+        <div>
+          <h2 class="h2">Приедем на замер в удобный день</h2>
+          <p class="lead">Напишите в WhatsApp адрес и пару фото двора. Ответим в течение часа и договоримся о времени.</p>
+          <div class="contact__cta">
+            <a class="btn btn--bronze js-wa" href="#" target="_blank" rel="noopener">Написать в WhatsApp</a>
+            <a class="btn btn--line" href="tel:+77000000000">Позвонить</a>
+          </div>
+        </div>
+        <address>
+          <div><span>Телефон и WhatsApp</span><a href="tel:+77000000000">+7 700 000 00 00</a></div>
+          <div><span>Цех</span><p>Алматы, Алатауский район</p></div>
+          <div><span>Работаем</span><p>Ежедневно, 9:00–20:00</p></div>
+        </address>
+      </div>
+      <div class="foot"><span>© 2026 Шатыр. Навесы и металлоконструкции</span><span>Алматы и пригород</span></div>
+    </div>
+  </section>
+</main>
+
+<a class="fab js-wa" id="fab" href="#" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.5-.3Z"/></svg>
+</a>
+
+<script>
+(() => {
+'use strict';
+/* ---------- settings ---------- */
+const WA_PHONE = '77000000000';
+const WA_HELLO = 'Здравствуйте! Хочу навес, подскажите по цене и замеру.';
+const RATES = { poly: 19000, prof: 23000, tile: 27000 };
+const FORM_K = { single: 1, gable: 1.12, arch: 1.1 };
+const NAMES = { arch: 'арочный', single: 'односкатный', gable: 'двускатный', poly: 'поликарбонат', prof: 'профнастил', tile: 'металлочерепица' };
+const FRAME_COLORS = [
+  { id: '7016', name: 'Антрацит', hex: '#383E42' },
+  { id: '7024', name: 'Графит', hex: '#4A4E54' },
+  { id: '8017', name: 'Шоколад', hex: '#45322E' },
+  { id: '9003', name: 'Белый', hex: '#E6E6E1' }
+];
+const ROOF_COLORS = {
+  poly: [ { id: 'bronze', name: 'Бронза', hex: '#9A6127', a: 0.62 }, { id: 'clear', name: 'Прозрачный', hex: '#D4E4EA', a: 0.34 }, { id: 'graphite', name: 'Графит', hex: '#4A5156', a: 0.66 } ],
+  metal: [ { id: '7016', name: 'Антрацит', hex: '#383E42' }, { id: '8017', name: 'Шоколад', hex: '#45322E' }, { id: '3005', name: 'Вишня', hex: '#5E2028' }, { id: '9002', name: 'Светло-серый', hex: '#D7D7CF' } ]
+};
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const wa = t => `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(t)}`;
+document.querySelectorAll('.js-wa').forEach(a => a.href = wa(WA_HELLO));
+
+/* ---------- math ---------- */
+const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+const add = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+const mul = (a, s) => [a[0] * s, a[1] * s, a[2] * s];
+const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+const len = a => Math.hypot(a[0], a[1], a[2]);
+const nrm = a => { const l = len(a) || 1; return [a[0] / l, a[1] / l, a[2] / l]; };
+const lerp = (a, b, t) => a + (b - a) * t;
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
+const lin = h => { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255].map(c => Math.pow(c / 255, 2.2)); };
+const M4 = {
+  persp(fov, asp, n, f) { const t = 1 / Math.tan(fov / 2), m = new Float32Array(16); m[0] = t / asp; m[5] = t; m[10] = (f + n) / (n - f); m[11] = -1; m[14] = 2 * f * n / (n - f); return m; },
+  ortho(l, r, b, t, n, f) { const m = new Float32Array(16); m[0] = 2 / (r - l); m[5] = 2 / (t - b); m[10] = -2 / (f - n); m[12] = -(r + l) / (r - l); m[13] = -(t + b) / (t - b); m[14] = -(f + n) / (f - n); m[15] = 1; return m; },
+  look(e, c, up) {
+    const z = nrm(sub(e, c)), x = nrm(cross(up, z)), y = cross(z, x);
+    return new Float32Array([x[0], y[0], z[0], 0, x[1], y[1], z[1], 0, x[2], y[2], z[2], 0, -dot(x, e), -dot(y, e), -dot(z, e), 1]);
+  },
+  mul(a, b) { const o = new Float32Array(16); for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++) { let s = 0; for (let k = 0; k < 4; k++) s += a[k * 4 + r] * b[c * 4 + k]; o[c * 4 + r] = s; } return o; },
+  inv(m) {
+    const [a00, a01, a02, a03, a10, a11, a12, a13, a20, a21, a22, a23, a30, a31, a32, a33] = m;
+    const b00 = a00 * a11 - a01 * a10, b01 = a00 * a12 - a02 * a10, b02 = a00 * a13 - a03 * a10, b03 = a01 * a12 - a02 * a11,
+      b04 = a01 * a13 - a03 * a11, b05 = a02 * a13 - a03 * a12, b06 = a20 * a31 - a21 * a30, b07 = a20 * a32 - a22 * a30,
+      b08 = a20 * a33 - a23 * a30, b09 = a21 * a32 - a22 * a31, b10 = a21 * a33 - a23 * a31, b11 = a22 * a33 - a23 * a32;
+    const d = 1 / (b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06);
+    return new Float32Array([
+      (a11 * b11 - a12 * b10 + a13 * b09) * d, (a02 * b10 - a01 * b11 - a03 * b09) * d, (a31 * b05 - a32 * b04 + a33 * b03) * d, (a22 * b04 - a21 * b05 - a23 * b03) * d,
+      (a12 * b08 - a10 * b11 - a13 * b07) * d, (a00 * b11 - a02 * b08 + a03 * b07) * d, (a32 * b02 - a30 * b05 - a33 * b01) * d, (a20 * b05 - a22 * b02 + a23 * b01) * d,
+      (a10 * b10 - a11 * b08 + a13 * b06) * d, (a01 * b08 - a00 * b10 - a03 * b06) * d, (a30 * b04 - a31 * b02 + a33 * b00) * d, (a21 * b02 - a20 * b04 - a23 * b00) * d,
+      (a11 * b07 - a10 * b09 - a12 * b06) * d, (a00 * b09 - a01 * b07 + a02 * b06) * d, (a31 * b01 - a30 * b03 - a32 * b00) * d, (a20 * b03 - a21 * b01 + a22 * b00) * d]);
+  }
+};
+
+/* ---------- geometry ---------- */
+class Geo {
+  constructor() { this.p = []; this.n = []; this.u = []; this.i = []; }
+  box(a, b, s1, s2, hint) {
+    const d = sub(b, a), L = len(d); if (L < 1e-5) return this;
+    const X = mul(d, 1 / L);
+    let Y = sub(hint, mul(X, dot(hint, X)));
+    if (len(Y) < 1e-3) { const h2 = Math.abs(X[1]) < 0.9 ? [0, 1, 0] : [1, 0, 0]; Y = sub(h2, mul(X, dot(h2, X))); }
+    Y = nrm(Y); const Z = cross(X, Y);
+    const c = add(a, mul(d, 0.5)), hx = L / 2, hy = s1 / 2, hz = s2 / 2;
+    const faces = [
+      [X, mul(Y, hy), mul(Z, hz), mul(X, hx)], [mul(X, -1), mul(Z, hz), mul(Y, hy), mul(X, -hx)],
+      [Y, mul(Z, hz), mul(X, hx), mul(Y, hy)], [mul(Y, -1), mul(X, hx), mul(Z, hz), mul(Y, -hy)],
+      [Z, mul(X, hx), mul(Y, hy), mul(Z, hz)], [mul(Z, -1), mul(Y, hy), mul(X, hx), mul(Z, -hz)]
+    ];
+    for (const [n, t1, t2, off] of faces) {
+      const o = add(c, off), base = this.p.length / 3;
+      for (const [s, t] of [[-1, -1], [1, -1], [1, 1], [-1, 1]]) {
+        const v = add(o, add(mul(t1, s), mul(t2, t)));
+        this.p.push(v[0], v[1], v[2]); this.n.push(n[0], n[1], n[2]); this.u.push(v[0], v[2]);
+      }
+      this.i.push(base, base + 1, base + 2, base, base + 2, base + 3);
+    }
+    return this;
+  }
+  surface(f, nu, nv) {
+    const base = this.p.length / 3, e = 1e-4;
+    for (let j = 0; j <= nv; j++) for (let i = 0; i <= nu; i++) {
+      const u = i / nu, v = j / nv, P = f(u, v);
+      const du = sub(f(Math.min(1, u + e), v), f(Math.max(0, u - e), v));
+      const dv = sub(f(u, Math.min(1, v + e)), f(u, Math.max(0, v - e)));
+      let n = nrm(cross(du, dv)); if (n[1] < 0) n = mul(n, -1);
+      this.p.push(P[0], P[1], P[2]); this.n.push(n[0], n[1], n[2]); this.u.push(P[0], v);
+    }
+    for (let j = 0; j < nv; j++) for (let i = 0; i < nu; i++) {
+      const a = base + j * (nu + 1) + i, b = a + 1, c = a + nu + 1, d = c + 1;
+      this.i.push(a, b, d, a, d, c);
+    }
+    return this;
+  }
+}
+
+/* ---------- canopy model ---------- */
+const DEG = Math.PI / 180;
+function shape(type, H, zF) {
+  if (type === 'single') {
+    const rise = 2 * zF * Math.tan(8 * DEG);
+    const b = z => H + (zF - z) / (2 * zF) * rise;
+    return { bot: b, top: z => b(z) + 0.32 };
+  }
+  if (type === 'gable') {
+    const t = Math.tan(17 * DEG);
+    return { bot: () => H, top: z => H + 0.08 + (zF - Math.abs(z)) * t };
+  }
+  const rise = 0.34 * zF;
+  return { bot: z => H + Math.max(0, rise - 0.3) * Math.max(0, 1 - (z / zF) ** 2), top: z => H + 0.06 + rise * (1 - (z / zF) ** 2) };
+}
+function profileH(kind, x, s) {
+  if (kind === 'prof') {
+    const q = ((x % 0.2) + 0.2) % 0.2;
+    if (q < 0.05) return 0.02; if (q < 0.075) return 0.02 * (1 - (q - 0.05) / 0.025);
+    if (q < 0.175) return 0; return 0.02 * (q - 0.175) / 0.025;
+  }
+  if (kind === 'tile') {
+    const w = Math.pow(0.5 + 0.5 * Math.cos(2 * Math.PI * x / 0.35), 1.3) * 0.022;
+    const f = ((s / 0.35) % 1 + 1) % 1;
+    return w + 0.016 * (f < 0.12 ? f / 0.12 : 1 - (f - 0.12) / 0.88);
+  }
+  return 0;
+}
+function buildCanopy(cfg) {
+  const { type, W, D, H } = cfg;
+  const zF = D / 2 - 0.15, zE = zF + 0.28, xE = W / 2 + 0.22;
+  const sh = shape(type, H, zF);
+  const units = [];
+  const unit = (kind, stage, delay, geo, extra) => units.push(Object.assign({ kind, stage, delay, geo }, extra || {}));
+  const X = [1, 0, 0], Yv = [0, 1, 0];
+  // posts
+  const nPost = Math.max(2, Math.ceil(W / 3) + 1);
+  const px = i => lerp(-W / 2 + 0.12, W / 2 - 0.12, i / (nPost - 1));
+  let d = 0;
+  for (const z of [zF, -zF]) {
+    const topB = sh.bot(z) - 0.12;
+    for (let i = 0; i < nPost; i++) {
+      const g = new Geo().box([px(i), 0, z], [px(i), topB, z], 0.08, 0.08, X)
+        .box([px(i), 0, z], [px(i), 0.012, z], 0.22, 0.22, X);
+      unit('frame', 0, d, g, { grow: true }); d += 0.05;
+    }
+    unit('frame', 1, 0.55 + (z > 0 ? 0 : 0.08), new Geo().box([-W / 2 - 0.12, sh.bot(z) - 0.06, z], [W / 2 + 0.12, sh.bot(z) - 0.06, z], 0.12, 0.08, Yv), { from: [0, 2.2, 0] });
+  }
+  // trusses
+  const nT = Math.max(3, Math.round(W / 1.05) + 1);
+  const k = Math.max(4, 2 * Math.round(zF / 0.48));
+  for (let t = 0; t < nT; t++) {
+    const x = lerp(-W / 2 + 0.12, W / 2 - 0.12, t / (nT - 1));
+    const g = new Geo();
+    const B = [], T = [];
+    for (let i = 0; i <= k; i++) { const z = lerp(zF, -zF, i / k); B.push([x, sh.bot(z), z]); T.push([x, sh.top(z), z]); }
+    for (let i = 0; i < k; i++) {
+      g.box(T[i], T[i + 1], 0.05, 0.05, X).box(B[i], B[i + 1], 0.05, 0.05, X);
+      if (i % 2 === 0) g.box(B[i], T[i + 1], 0.03, 0.03, X); else g.box(T[i], B[i + 1], 0.03, 0.03, X);
+    }
+    g.box(B[0], T[0], 0.04, 0.04, X).box(B[k], T[k], 0.04, 0.04, X);
+    g.box([x, sh.top(zE), zE], T[0], 0.05, 0.05, X).box(T[k], [x, sh.top(-zE), -zE], 0.05, 0.05, X);
+    unit('frame', 2, 0.85 + t * 0.06, g, { from: [0, 2.6, 0] });
+  }
+  // purlins
+  const nP = Math.max(5, Math.round((2 * zE) / 0.55));
+  for (let j = 0; j <= nP; j++) {
+    const z = lerp(zE - 0.03, -zE + 0.03, j / nP);
+    unit('frame', 3, 1.45 + j * 0.035, new Geo().box([-xE + 0.06, sh.top(z) + 0.045, z], [xE - 0.06, sh.top(z) + 0.045, z], 0.04, 0.04, Yv), { from: [0, 1.6, 0] });
+  }
+  // roof sheets
+  const kind = cfg.roof;
+  const sheetW = kind === 'poly' ? 2.1 : 1.15;
+  const span = 2 * xE, nS = Math.ceil(span / sheetW);
+  const ry = z => sh.top(z) + 0.072;
+  const runs = type === 'gable' ? [[zE, 0], [-zE, 0]] : [[zE, -zE]];
+  const runLen = (z0, z1) => { let L = 0, p = [z0, ry(z0)]; for (let i = 1; i <= 24; i++) { const z = lerp(z0, z1, i / 24), q = [z, ry(z)]; L += Math.hypot(q[0] - p[0], q[1] - p[1]); p = q; } return L; };
+  for (let s = 0; s < nS; s++) {
+    const x0 = -xE + s * (span / nS) + 0.003, x1 = -xE + (s + 1) * (span / nS) - 0.003;
+    const g = new Geo();
+    for (const [z0, z1] of runs) {
+      const L = runLen(z0, z1);
+      const nu = kind === 'poly' ? 2 : Math.ceil((x1 - x0) / (kind === 'prof' ? 0.2 : 0.35) * 10);
+      let nv = type === 'arch' ? 40 : 1;
+      if (kind === 'tile') nv = Math.max(nv, Math.ceil(L / 0.35) * 8);
+      g.surface((u, v) => {
+        const x = lerp(x0, x1, u), z = lerp(z0, z1, v), y = ry(z);
+        const dz = 1e-3, slope = (ry(z + dz) - ry(z - dz)) / (2 * dz);
+        const n = nrm([0, 1, -slope]);
+        const h = profileH(kind, x + 10, v * L);
+        return [x, y + n[1] * h, z + n[2] * h];
+      }, nu, nv);
+    }
+    unit('roof', 4, 1.95 + s * 0.09, g, { from: [0, 1.4, 0] });
+  }
+  // trims
+  const tg = new Geo();
+  if (type === 'arch') {
+    for (const x of [-xE, xE]) for (let i = 0; i < 24; i++) {
+      const z0 = lerp(zE, -zE, i / 24), z1 = lerp(zE, -zE, (i + 1) / 24);
+      tg.box([x, ry(z0) + 0.01, z0], [x, ry(z1) + 0.01, z1], 0.1, 0.018, Yv);
+    }
+  } else {
+    const eaves = type === 'gable' ? [zE, -zE] : [zE, -zE];
+    for (const z of eaves) tg.box([-xE - 0.01, ry(z) - 0.02, z], [xE + 0.01, ry(z) - 0.02, z], 0.16, 0.018, Yv);
+    for (const x of [-xE, xE]) for (const [z0, z1] of runs) tg.box([x, ry(z0) + 0.01, z0], [x, ry(z1) + 0.01, z1], 0.14, 0.018, Yv);
+    if (type === 'gable') tg.box([-xE - 0.02, ry(0) + 0.05, 0], [xE + 0.02, ry(0) + 0.05, 0], 0.035, 0.3, Yv);
+  }
+  unit('trim', 5, 2.55, tg, { from: [0, 1, 0] });
+  // outline for shade calc
+  const outline = [];
+  for (const x of [-xE, xE]) for (let i = 0; i <= 10; i++) { const z = lerp(zE, -zE, i / 10); outline.push([x, ry(z), z]); }
+  return { units, outline };
+}
+
+/* ---------- WebGL stage ---------- */
+const VS = `#version 300 es
+layout(location=0) in vec3 aP; layout(location=1) in vec3 aN; layout(location=2) in vec2 aU;
+uniform mat4 uVP; uniform vec3 uOff; uniform float uSY;
+out vec3 vP; out vec3 vN; out vec2 vU;
+void main(){ vec3 p=aP; p.y*=uSY; p+=uOff; vP=p; vN=aN; vU=aU; gl_Position=uVP*vec4(p,1.0); }`;
+const DFS = `#version 300 es
+precision mediump float; void main(){}`;
+const FS = `#version 300 es
+precision highp float; precision highp sampler2DShadow;
+in vec3 vP; in vec3 vN; in vec2 vU; out vec4 o;
+uniform vec3 uColor,uCam,uSun,uSunC,uSkyC,uGndC,uFog,uTint;
+uniform float uRough,uMetal,uAlpha,uSkipT; uniform int uPat;
+uniform mat4 uLVP; uniform sampler2DShadow uS0,uS1;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float vnoise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
+float pcf(sampler2DShadow s,vec3 c){
+  if(c.x<0.||c.x>1.||c.y<0.||c.y>1.||c.z>1.)return 1.;
+  vec2 t=1.6/vec2(textureSize(s,0)); float a=0.;
+  for(int x=-2;x<=2;x++)for(int y=-2;y<=2;y++)a+=texture(s,vec3(c.xy+vec2(float(x),float(y))*t,c.z));
+  return a/25.;}
+vec3 aces(vec3 x){return clamp((x*(2.51*x+.03))/(x*(2.43*x+.59)+.14),0.,1.);}
+void main(){
+  vec3 N=normalize(vN); if(!gl_FrontFacing)N=-N;
+  vec3 base=uColor; float alpha=uAlpha, rough=uRough, metal=uMetal;
+  if(uPat==2){
+    vec2 q=vP.xz; vec2 a=abs(q);
+    if(a.x<14.&&a.y<11.){
+      if(a.x>13.8||a.y>10.8){ base=vec3(.6,.6,.57); }
+      else{
+        vec2 sz=vec2(.6,.3); float row=floor(q.y/sz.y);
+        vec2 g=vec2(q.x/sz.x+.5*mod(row,2.),q.y/sz.y); vec2 id=floor(g), f=fract(g);
+        float dm=min(min(f.x,1.-f.x)*sz.x,min(f.y,1.-f.y)*sz.y);
+        float w=max(fwidth(q.x)+fwidth(q.y),1e-4);
+        float gr=clamp((.0045-dm)/w+.5,0.,1.);
+        gr=mix(.07,gr,smoothstep(.09,.025,w));
+        vec3 pv=vec3(.44,.42,.39)*(.9+.18*hash(id))*(.96+.08*vnoise(q*3.));
+        base=mix(pv,vec3(.2,.2,.19),gr*.85);
+      }
+    } else {
+      float n=vnoise(q*.6)*.6+vnoise(q*2.7)*.4;
+      base=mix(vec3(.36,.34,.3),vec3(.46,.43,.38),n);
+    }
+    rough=.92; metal=0.;
+  }
+  if(uPat==1){ float f=fract(vU.x/.032); float l=smoothstep(0.,.06,f)*smoothstep(1.,.94,f); alpha=min(1.,alpha*mix(1.5,1.,l)); base*=mix(.75,1.,l); }
+  vec4 lc=uLVP*vec4(vP+N*.025,1.); vec3 c=lc.xyz/lc.w*.5+.5; c.z-=.0007;
+  float nl=max(dot(N,uSun),0.);
+  float vis=pcf(uS0,c); float tv=uSkipT>.5?1.:pcf(uS1,c);
+  vec3 sunL=uSunC*nl*vis*mix(uTint,vec3(1.),tv);
+  vec3 V=normalize(uCam-vP), Hh=normalize(uSun+V);
+  float sp=mix(8.,420.,pow(1.-rough,2.)); float spec=pow(max(dot(N,Hh),0.),sp)*(sp+8.)/30.;
+  vec3 F0=mix(vec3(.04),base,metal); float fr=pow(1.-max(dot(N,V),0.),5.); vec3 F=F0+(1.-F0)*fr;
+  vec3 amb=mix(uGndC,uSkyC,N.y*.5+.5);
+  if(uPat==2){ amb*=mix(.55,1.,vis); }
+  vec3 col=base*(1.-metal*.45)*(amb+sunL)+sunL*spec*F*(1.-rough*.7);
+  vec3 R=reflect(-V,N); vec3 env=mix(uGndC*1.1,uSkyC*1.5,smoothstep(-.15,.45,R.y));
+  col+=env*F*(1.-rough)*.4;
+  if(uPat==1){ float back=max(dot(-V,uSun),0.); col+=base*uSunC*.35*pow(back,3.)*step(dot(N,uSun)*dot(N,V),0.); }
+  float dist=length(vP-uCam); float fog=1.-exp(-pow(dist/140.,1.8));
+  col=mix(col,uFog,fog);
+  col=pow(aces(col*1.3),vec3(1./2.2));
+  o=vec4(col,alpha);
+}`;
+const SVS = `#version 300 es
+out vec2 vN; void main(){ vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2))*2.-1.; vN=p; gl_Position=vec4(p,.99999,1.); }`;
+const SFS = `#version 300 es
+precision highp float; in vec2 vN; out vec4 o;
+uniform mat4 uIVP; uniform vec3 uCam,uSun,uSunC,uZen,uHor,uFog;
+float h1(float x){return fract(sin(x*127.1)*43758.5453);}
+float n1(float x){float i=floor(x),f=fract(x);f=f*f*(3.-2.*f);return mix(h1(i),h1(i+1.),f);}
+float fbm(float x){float a=0.,b=.5;for(int i=0;i<5;i++){a+=b*n1(x);x*=2.03;b*=.5;}return a;}
+vec3 aces(vec3 x){return clamp((x*(2.51*x+.03))/(x*(2.43*x+.59)+.14),0.,1.);}
+void main(){
+  vec4 p=uIVP*vec4(vN,1.,1.); vec3 d=normalize(p.xyz/p.w-uCam);
+  float e=d.y, az=atan(d.x,-d.z);
+  vec3 col=mix(uHor,uZen,pow(clamp(e,0.,1.),.5));
+  float sd=max(dot(d,uSun),0.);
+  col+=uSunC*(pow(sd,900.)*8.+pow(sd,40.)*.10+pow(sd,6.)*.04);
+  float south=smoothstep(2.4,.5,abs(az));
+  float r1=(.02+.085*fbm(az*2.2+1.3)+.018*fbm(az*11.))*mix(.25,1.,south);
+  float r2=(.004+.026*fbm(az*5.3+7.1)+.008*fbm(az*17.))*mix(.5,1.,south);
+  float px=fwidth(e)*1.5;
+  if(e<r1+px){
+    float m=smoothstep(r1+px,r1-px,e);
+    vec3 mc=mix(uFog,vec3(.1,.17,.28),.55);
+    float snow=smoothstep(.055,.085,r1)*smoothstep(r1-.035,r1-.012,e);
+    mc=mix(mc,vec3(.86,.9,.95),snow*.85);
+    mc=mix(uFog,mc,smoothstep(0.,max(r1*.9,.01),e));
+    col=mix(col,mc,m);
+  }
+  if(e<r2+px){ float m=smoothstep(r2+px,r2-px,e); vec3 hc=mix(uFog,vec3(.1,.15,.18),.5*smoothstep(0.,r2,e)); col=mix(col,hc,m); }
+  if(e<0.) col=uFog;
+  o=vec4(pow(aces(col*1.3),vec3(1./2.2)),1.);
+}`;
+
+class Stage {
+  constructor(canvas, opt) {
+    this.c = canvas; this.opt = opt;
+    const gl = canvas.getContext('webgl2', { antialias: true, alpha: false, powerPreference: 'high-performance' });
+    if (!gl) throw new Error('no webgl2');
+    this.gl = gl;
+    this.pm = this.prog(VS, FS); this.pd = this.prog(VS, DFS); this.ps = this.prog(SVS, SFS);
+    this.U = new Map();
+    this.sm = [this.shadowFB(2048), this.shadowFB(1024)];
+    this.ground = this.upload(new Geo().surface((u, v) => [lerp(-900, 900, u), 0, lerp(-900, 900, v)], 1, 1));
+    this.units = []; this.outline = [];
+    this.yaw = opt.yaw; this.yawT = opt.yaw; this.pitch = opt.pitch; this.pitchT = opt.pitch; this.dist = opt.dist;
+    this.time = 14; this.dirty = true; this.visible = true; this.animStart = null;
+    this.emptyVAO = gl.createVertexArray();
+    this.ro = new ResizeObserver(() => this.dirty = true); this.ro.observe(canvas);
+  }
+  prog(vs, fs) {
+    const gl = this.gl, p = gl.createProgram();
+    for (const [t, s] of [[gl.VERTEX_SHADER, vs], [gl.FRAGMENT_SHADER, fs]]) {
+      const sh = gl.createShader(t); gl.shaderSource(sh, s); gl.compileShader(sh);
+      if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(sh));
+      gl.attachShader(p, sh);
+    }
+    gl.linkProgram(p); if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+    return p;
+  }
+  u(p, n) { const k = n + (p === this.pm ? 'm' : p === this.pd ? 'd' : 's'); if (!this.U.has(k)) this.U.set(k, this.gl.getUniformLocation(p, n)); return this.U.get(k); }
+  shadowFB(size) {
+    const gl = this.gl, t = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, t);
+    gl.texStorage2D(gl.TEXTURE_2D, 1, gl.DEPTH_COMPONENT24, size, size);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_COMPARE_MODE, gl.COMPARE_REF_TO_TEXTURE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_COMPARE_FUNC, gl.LEQUAL);
+    const fb = gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.TEXTURE_2D, t, 0);
+    gl.drawBuffers([gl.NONE]); gl.readBuffer(gl.NONE);
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    return { t, fb, size };
+  }
+  upload(g) {
+    const gl = this.gl, vao = gl.createVertexArray(); gl.bindVertexArray(vao);
+    const bufs = [];
+    [[g.p, 3], [g.n, 3], [g.u, 2]].forEach(([arr, n], loc) => {
+      const b = gl.createBuffer(); bufs.push(b); gl.bindBuffer(gl.ARRAY_BUFFER, b);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(arr), gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, n, gl.FLOAT, false, 0, 0);
+    });
+    const ib = gl.createBuffer(); bufs.push(ib); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ib);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint32Array(g.i), gl.STATIC_DRAW);
+    gl.bindVertexArray(null);
+    return { vao, bufs, count: g.i.length };
+  }
+  free(m) { const gl = this.gl; gl.deleteVertexArray(m.vao); m.bufs.forEach(b => gl.deleteBuffer(b)); }
+  setModel(cfg, animate) {
+    this.units.forEach(u => this.free(u.mesh));
+    const { units, outline } = buildCanopy(cfg);
+    const frame = lin(FRAME_COLORS.find(f => f.id === cfg.frame).hex);
+    const rc = (cfg.roof === 'poly' ? ROOF_COLORS.poly : ROOF_COLORS.metal).find(r => r.id === cfg.roofColor);
+    const roofC = lin(rc.hex);
+    const poly = cfg.roof === 'poly';
+    const mats = {
+      frame: { color: frame, rough: 0.5, metal: 0.35, alpha: 1, pat: 0 },
+      roof: poly ? { color: roofC, rough: 0.12, metal: 0, alpha: rc.a, pat: 1, trans: true } : { color: roofC, rough: cfg.roof === 'tile' ? 0.38 : 0.55, metal: 0.3, alpha: 1, pat: 0 },
+      trim: poly ? { color: frame, rough: 0.5, metal: 0.35, alpha: 1, pat: 0 } : { color: roofC, rough: 0.4, metal: 0.5, alpha: 1, pat: 0 }
+    };
+    if (poly) { const m = Math.max(...roofC); this.tint = roofC.map(c => lerp(0.45, c / m, 0.85) * (1 - rc.a * 0.7)); }
+    else this.tint = [1, 1, 1];
+    this.units = units.map(u => Object.assign(u, { mesh: this.upload(u.geo), mat: mats[u.kind] }));
+    units.forEach(u => delete u.geo);
+    this.outline = outline;
+    this.animStart = animate && !reduced ? null : -1e9;
+    this.dirty = true;
+  }
+  sun() {
+    const t = this.time, ph = (t - 6) / 14 * Math.PI;
+    const E = Math.max(0.05, 1.08 * Math.sin(ph));
+    const dir = nrm([Math.cos(ph) * Math.cos(E), Math.sin(E), -Math.sin(ph) * Math.cos(E)]);
+    const k = smooth(0.05, 0.62, Math.sin(E));
+    const col = [1.0, lerp(0.55, 0.93, k), lerp(0.3, 0.84, k)].map(c => c * lerp(2.4, 3.6, k));
+    return { dir, k, col };
+  }
+  shadeArea() {
+    const { dir } = this.sun(); if (dir[1] < 0.08) return null;
+    const pts = this.outline.map(p => [p[0] - dir[0] * p[1] / dir[1], p[2] - dir[2] * p[1] / dir[1]]);
+    pts.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+    const lo = [], up = [];
+    for (const p of pts) { while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); }
+    for (let i = pts.length - 1; i >= 0; i--) { const p = pts[i]; while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop(); up.push(p); }
+    const h = lo.slice(0, -1).concat(up.slice(0, -1));
+    let A = 0; for (let i = 0; i < h.length; i++) { const a = h[i], b = h[(i + 1) % h.length]; A += a[0] * b[1] - b[0] * a[1]; }
+    return Math.abs(A) / 2;
+  }
+  busy(now) {
+    if (this.animStart === null) return true;
+    if (now - this.animStart < 3600) return true;
+    return Math.abs(this.yaw - this.yawT) > 1e-4 || Math.abs(this.pitch - this.pitchT) > 1e-4;
+  }
+  render(now) {
+    const gl = this.gl, c = this.c;
+    const dpr = Math.min(devicePixelRatio || 1, this.opt.maxDpr || 2);
+    const w = Math.round(c.clientWidth * dpr), h = Math.round(c.clientHeight * dpr);
+    if (!w || !h) return;
+    if (c.width !== w || c.height !== h) { c.width = w; c.height = h; }
+    if (this.animStart === null) this.animStart = now;
+    this.yaw += (this.yawT - this.yaw) * 0.12; this.pitch += (this.pitchT - this.pitch) * 0.12;
+    const asp = w / h, lay = this.opt.layout(asp);
+    const right = [Math.cos(this.yaw), 0, -Math.sin(this.yaw)];
+    const target = sub(lay.target, mul(right, lay.shift));
+    const dist = lay.dist;
+    const eye = add(target, [dist * Math.cos(this.pitch) * Math.sin(this.yaw), dist * Math.sin(this.pitch), dist * Math.cos(this.pitch) * Math.cos(this.yaw)]);
+    const V = M4.look(eye, target, [0, 1, 0]), P = M4.persp(lay.fov * DEG, asp, 0.1, 2000), VP = M4.mul(P, V);
+    const s = this.sun();
+    const center = [0, 1.5, 0];
+    const LV = M4.look(add(center, mul(s.dir, 40)), center, Math.abs(s.dir[1]) > 0.98 ? [0, 0, 1] : [0, 1, 0]);
+    const LVP = M4.mul(M4.ortho(-7.5, 7.5, -7.5, 7.5, 5, 80), LV);
+    const t = (now - this.animStart) / 1000;
+    const st = this.units.map(u => {
+      const p = clamp((t - u.delay) / 0.75, 0, 1), e = 1 - Math.pow(1 - p, 3);
+      return { sy: u.grow ? Math.max(e, 1e-4) : 1, off: u.from ? mul(u.from, 1 - e) : [0, 0, 0], show: p > 0 };
+    });
+    // shadow passes
+    gl.enable(gl.DEPTH_TEST); gl.disable(gl.CULL_FACE); gl.disable(gl.BLEND); gl.depthMask(true);
+    gl.useProgram(this.pd);
+    gl.uniformMatrix4fv(this.u(this.pd, 'uVP'), false, LVP);
+    gl.enable(gl.POLYGON_OFFSET_FILL); gl.polygonOffset(1.5, 3);
+    for (let pass = 0; pass < 2; pass++) {
+      const sm = this.sm[pass];
+      gl.bindFramebuffer(gl.FRAMEBUFFER, sm.fb); gl.viewport(0, 0, sm.size, sm.size); gl.clear(gl.DEPTH_BUFFER_BIT);
+      this.units.forEach((u, i) => {
+        if (!st[i].show || !!u.mat.trans !== (pass === 1)) return;
+        gl.uniform3fv(this.u(this.pd, 'uOff'), st[i].off); gl.uniform1f(this.u(this.pd, 'uSY'), st[i].sy);
+        gl.bindVertexArray(u.mesh.vao); gl.drawElements(gl.TRIANGLES, u.mesh.count, gl.UNSIGNED_INT, 0);
+      });
+    }
+    gl.disable(gl.POLYGON_OFFSET_FILL);
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null); gl.viewport(0, 0, w, h);
+    gl.clearColor(0.8, 0.85, 0.88, 1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    // sky colours
+    const k = s.k;
+    const zen = [lerp(0.12, 0.06, k), lerp(0.18, 0.19, k), lerp(0.36, 0.52, k)];
+    const hor = [lerp(0.92, 0.6, k), lerp(0.64, 0.7, k), lerp(0.44, 0.8, k)];
+    const fog = hor;
+    // sky
+    gl.depthMask(false); gl.useProgram(this.ps);
+    gl.uniformMatrix4fv(this.u(this.ps, 'uIVP'), false, M4.inv(VP));
+    gl.uniform3fv(this.u(this.ps, 'uCam'), eye); gl.uniform3fv(this.u(this.ps, 'uSun'), s.dir); gl.uniform3fv(this.u(this.ps, 'uSunC'), s.col);
+    gl.uniform3fv(this.u(this.ps, 'uZen'), zen); gl.uniform3fv(this.u(this.ps, 'uHor'), hor); gl.uniform3fv(this.u(this.ps, 'uFog'), fog);
+    gl.bindVertexArray(this.emptyVAO); gl.drawArrays(gl.TRIANGLES, 0, 3);
+    gl.depthMask(true);
+    // meshes
+    const pm = this.pm; gl.useProgram(pm);
+    gl.uniformMatrix4fv(this.u(pm, 'uVP'), false, VP); gl.uniformMatrix4fv(this.u(pm, 'uLVP'), false, LVP);
+    gl.uniform3fv(this.u(pm, 'uCam'), eye); gl.uniform3fv(this.u(pm, 'uSun'), s.dir); gl.uniform3fv(this.u(pm, 'uSunC'), s.col);
+    gl.uniform3fv(this.u(pm, 'uSkyC'), mul([0.3, 0.42, 0.6], lerp(0.45, 0.8, k)));
+    gl.uniform3fv(this.u(pm, 'uGndC'), mul([0.3, 0.27, 0.22], lerp(0.35, 0.5, k)));
+    gl.uniform3fv(this.u(pm, 'uFog'), fog); gl.uniform3fv(this.u(pm, 'uTint'), this.tint || [1, 1, 1]);
+    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, this.sm[0].t); gl.uniform1i(this.u(pm, 'uS0'), 0);
+    gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, this.sm[1].t); gl.uniform1i(this.u(pm, 'uS1'), 1);
+    const draw = (mesh, m, off, sy) => {
+      gl.uniform3fv(this.u(pm, 'uColor'), m.color); gl.uniform1f(this.u(pm, 'uRough'), m.rough); gl.uniform1f(this.u(pm, 'uMetal'), m.metal);
+      gl.uniform1f(this.u(pm, 'uAlpha'), m.alpha); gl.uniform1i(this.u(pm, 'uPat'), m.pat); gl.uniform1f(this.u(pm, 'uSkipT'), m.trans ? 1 : 0);
+      gl.uniform3fv(this.u(pm, 'uOff'), off); gl.uniform1f(this.u(pm, 'uSY'), sy);
+      gl.bindVertexArray(mesh.vao); gl.drawElements(gl.TRIANGLES, mesh.count, gl.UNSIGNED_INT, 0);
+    };
+    draw(this.ground, { color: [0.3, 0.3, 0.3], rough: 0.9, metal: 0, alpha: 1, pat: 2 }, [0, 0, 0], 1);
+    this.units.forEach((u, i) => { if (st[i].show && !u.mat.trans) draw(u.mesh, u.mat, st[i].off, st[i].sy); });
+    gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA); gl.depthMask(false);
+    this.units.forEach((u, i) => { if (st[i].show && u.mat.trans) draw(u.mesh, u.mat, st[i].off, st[i].sy); });
+    gl.depthMask(true); gl.disable(gl.BLEND);
+    gl.bindVertexArray(null);
+  }
+}
+
+/* ---------- boot ---------- */
+const stages = [];
+function make(canvas, opt) {
+  try { const s = new Stage(canvas, opt); stages.push(s); new IntersectionObserver(es => es.forEach(e => { s.visible = e.isIntersecting; if (s.visible) s.dirty = true; }), { rootMargin: '100px' }).observe(canvas); return s; }
+  catch (e) { console.warn(e); canvas.parentElement.classList.add('nogl'); return null; }
+}
+const loop = now => {
+  for (const s of stages) if (s.visible && (s.dirty || s.busy(now))) { s.render(now); s.dirty = false; }
+  requestAnimationFrame(loop);
+};
+
+/* hero */
+const heroCfg = { type: 'arch', W: 7, D: 6, H: 2.7, roof: 'poly', roofColor: 'bronze', frame: '7016' };
+const hero = make(document.getElementById('heroGL'), {
+  yaw: 0.52, pitch: 0.17, dist: 13, maxDpr: 2,
+  layout: a => a > 1.15 ? { target: [0, 1.5, 0], shift: Math.min(5, 0.9 + 1.6 * a), dist: 18.5, fov: 34 } : { target: [0, -0.4, 0], shift: 0, dist: 33, fov: 44 }
+});
+const sunTime = document.getElementById('sunTime'), shadeOut = document.getElementById('shadeArea');
+const knob = document.getElementById('sunKnob'), trail = document.getElementById('sunTrail'), arc = document.getElementById('sunArc');
+const fmt = t => `${Math.floor(t)}:${String(Math.round((t % 1) * 60)).padStart(2, '0')}`;
+function setTime(t) {
+  t = clamp(Math.round(t * 4) / 4, 6, 20);
+  const p = (t - 6) / 14, th = Math.PI * (1 - p);
+  knob.setAttribute('transform', `translate(${120 + 104 * Math.cos(th)} ${116 - 96 * Math.sin(th)})`);
+  trail.setAttribute('stroke-dasharray', `${p * 100} 100`);
+  sunTime.textContent = fmt(t);
+  knob.setAttribute('aria-valuenow', t); knob.setAttribute('aria-valuetext', fmt(t));
+  if (hero) { hero.time = t; hero.dirty = true; const a = hero.shadeArea(); shadeOut.textContent = a ? `${Math.round(a)} м²` : 'солнце село'; }
+}
+if (hero) hero.setModel(heroCfg, true);
+setTime(14);
+let dragging = false;
+const fromPointer = e => {
+  const r = arc.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * 240, y = (e.clientY - r.top) / r.height * 128;
+  const th = clamp(Math.atan2(116 - y, x - 120), 0, Math.PI);
+  setTime(6 + 14 * (1 - th / Math.PI));
+};
+arc.addEventListener('pointerdown', e => { dragging = true; arc.setPointerCapture(e.pointerId); fromPointer(e); });
+arc.addEventListener('pointermove', e => dragging && fromPointer(e));
+arc.addEventListener('pointerup', () => dragging = false);
+knob.addEventListener('keydown', e => {
+  const t = hero ? hero.time : 14, k = e.key;
+  if (k === 'ArrowRight' || k === 'ArrowUp') { setTime(t + 0.25); e.preventDefault(); }
+  if (k === 'ArrowLeft' || k === 'ArrowDown') { setTime(t - 0.25); e.preventDefault(); }
+  if (k === 'Home') setTime(6); if (k === 'End') setTime(20);
+});
+if (hero && matchMedia('(pointer:fine)').matches && !reduced) {
+  document.querySelector('.hero').addEventListener('pointermove', e => {
+    if (dragging) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    hero.yawT = 0.52 + ((e.clientX - r.left) / r.width - 0.5) * 0.12;
+    hero.pitchT = 0.17 + ((e.clientY - r.top) / r.height - 0.5) * 0.04;
+  });
+}
+
+/* configurator */
+const form = document.getElementById('calcForm');
+const cfg = { type: 'single', W: 6, D: 5, H: 2.8, roof: 'prof', roofColor: '7016', frame: '7016' };
+const calc = make(document.getElementById('calcGL'), {
+  yaw: 0.62, pitch: 0.22, dist: 14, maxDpr: 2,
+  layout: () => ({ target: [0, 1.45, 0], shift: 0, dist: 7 + Math.max(cfg.W, cfg.D) * 1.25, fov: 38 })
+});
+if (calc) calc.time = 15;
+function swatches(el, name, list, cur) {
+  el.innerHTML = list.map(c => `<label><input type="radio" name="${name}" value="${c.id}" ${c.id === cur ? 'checked' : ''}><i style="background:${c.hex}"></i>${c.name}</label>`).join('');
+}
+swatches(document.getElementById('frameColors'), 'frame', FRAME_COLORS, cfg.frame);
+function roofSwatches() {
+  const list = cfg.roof === 'poly' ? ROOF_COLORS.poly : ROOF_COLORS.metal;
+  if (!list.some(c => c.id === cfg.roofColor)) cfg.roofColor = list[0].id;
+  swatches(document.getElementById('roofColors'), 'roofColor', list, cfg.roofColor);
+}
+roofSwatches();
+const num = v => String(v).replace('.', ',');
+const money = n => n.toLocaleString('ru-RU').replace(/ |,/g, ' ');
+function update(rebuildSw) {
+  const tileInput = form.querySelector('input[name=roof][value=tile]');
+  tileInput.disabled = cfg.type === 'arch';
+  if (cfg.type === 'arch' && cfg.roof === 'tile') { cfg.roof = 'prof'; form.querySelector('input[name=roof][value=prof]').checked = true; rebuildSw = true; }
+  if (rebuildSw) roofSwatches();
+  for (const [id, key, unit] of [['W', 'W', ' м'], ['D', 'D', ' м'], ['H', 'H', ' м']]) {
+    const inp = document.getElementById('in' + id);
+    document.getElementById('out' + id).textContent = num(cfg[key]) + unit;
+    inp.style.setProperty('--p', ((cfg[key] - inp.min) / (inp.max - inp.min) * 100) + '%');
+  }
+  const area = cfg.W * cfg.D;
+  let price = area * RATES[cfg.roof] * FORM_K[cfg.type];
+  if (cfg.H > 3) price *= 1.06;
+  price = Math.max(250000, Math.round(price / 5000) * 5000);
+  document.getElementById('outArea').textContent = `${num(Math.round(area * 10) / 10)} м²`;
+  document.getElementById('outPrice').textContent = `≈ ${money(price)} ₸`;
+  document.getElementById('calcDims').textContent = `${num(cfg.W)} × ${num(cfg.D)} м`;
+  const rc = (cfg.roof === 'poly' ? ROOF_COLORS.poly : ROOF_COLORS.metal).find(c => c.id === cfg.roofColor);
+  const fc = FRAME_COLORS.find(c => c.id === cfg.frame);
+  const msg = `Здравствуйте! Посчитал навес на сайте:\n• форма: ${NAMES[cfg.type]}\n• размер: ${num(cfg.W)} × ${num(cfg.D)} м, высота ${num(cfg.H)} м\n• кровля: ${NAMES[cfg.roof]}, ${rc.name.toLowerCase()}\n• каркас: ${fc.name.toLowerCase()}\nПредварительно ≈ ${money(price)} ₸. Когда можно сделать замер?`;
+  document.getElementById('sendCalc').href = wa(msg);
+  if (calc) calc.setModel(cfg, false);
+}
+form.addEventListener('input', e => {
+  const t = e.target;
+  if (t.name === 'type' || t.name === 'roof' || t.name === 'roofColor' || t.name === 'frame') cfg[t.name] = t.value;
+  else if (t.name) cfg[t.name] = parseFloat(t.value);
+  update(t.name === 'roof');
+});
+update(false);
+if (calc) {
+  let drag = null;
+  const cv = document.getElementById('calcGL');
+  cv.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, yaw: calc.yawT, pitch: calc.pitchT, type: e.pointerType }; cv.setPointerCapture(e.pointerId); });
+  cv.addEventListener('pointermove', e => {
+    if (!drag) return;
+    calc.yawT = drag.yaw - (e.clientX - drag.x) * 0.008;
+    if (drag.type === 'mouse') calc.pitchT = clamp(drag.pitch + (e.clientY - drag.y) * 0.004, 0.05, 0.8);
+  });
+  const end = () => drag = null; cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
+}
+
+/* chrome */
+const nav = document.getElementById('nav'), fab = document.getElementById('fab');
+const onScroll = () => { const y = scrollY; nav.classList.toggle('is-solid', y > 40); fab.classList.toggle('is-on', y > innerHeight * 0.7); };
+addEventListener('scroll', onScroll, { passive: true }); onScroll();
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
