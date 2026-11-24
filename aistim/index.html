@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AIS-TIM — ворота, навесы, террасы, фасады и кубические потолки в Алматы</title>
+<meta name="description" content="AIS-TIM: ворота, навесы, террасы, фасады из линейных панелей и металлокассет, кубические потолки. Собственное производство и монтаж под ключ в Алматы с 2017 года. Более 1 000 объектов.">
+<meta name="theme-color" content="#0f1011">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AIS-TIM — воплоти мечту в железе">
+<meta property="og:description" content="Ворота, навесы, террасы, фасады и кубические потолки под ключ. Алматы, с 2017 года, более 1 000 объектов.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonts/geologica.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/manrope.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top" aria-label="AIS-TIM, на главную">
+      <img src="img/logo-sm.webp" width="40" height="40" alt="">
+      <span>AIS<b>-</b>TIM</span>
+    </a>
+    <nav class="nav__links" aria-label="Разделы">
+      <a href="#directions">Направления</a>
+      <a href="#showroom">3D</a>
+      <a href="#works">Работы</a>
+      <a href="#process">Как работаем</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="btn btn--gold nav__cta js-wa" data-msg="Здравствуйте! Хочу рассчитать стоимость." href="#">Рассчитать стоимость</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO + 3D -->
+<section class="hero" id="showroom">
+  <div class="hero__grain" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow reveal">Алматы · с 2017 года · своё производство</p>
+      <h1 class="hero__title">
+        <span class="line"><span>Воплоти мечту</span></span>
+        <span class="line"><span class="metal">в железе</span></span>
+      </h1>
+      <p class="hero__lead reveal">Ворота, навесы, террасы, фасады и кубические потолки под ключ. Делаем на своём производстве по размерам вашего объекта и сами монтируем.</p>
+      <div class="hero__ctas reveal">
+        <a class="btn btn--gold js-wa" data-msg="Здравствуйте! Хочу рассчитать стоимость." href="#">Рассчитать стоимость</a>
+        <a class="btn btn--ghost" href="#works">Смотреть работы</a>
+      </div>
+      <dl class="stats reveal">
+        <div><dt><span class="js-count" data-to="1000">1 000</span>+</dt><dd>реализованных объектов</dd></div>
+        <div><dt><span class="js-years">9</span> лет</dt><dd>работаем с 2017 года</dd></div>
+        <div><dt>Под ключ</dt><dd>изготовление и монтаж</dd></div>
+      </dl>
+    </div>
+
+    <div class="stage">
+      <div class="stage__view">
+        <canvas id="scene" aria-label="3D-модель изделия AIS-TIM, потяните, чтобы повернуть"></canvas>
+        <div class="stage__fallback" hidden><img alt=""></div>
+        <div class="stage__hint"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Потяните, чтобы повернуть</div>
+        <div class="stage__badge">3D</div>
+      </div>
+      <div class="stage__tabs" role="tablist" aria-label="Выберите изделие">
+        <button role="tab" aria-selected="true" data-model="gates">Ворота</button>
+        <button role="tab" aria-selected="false" data-model="canopy">Навесы и террасы</button>
+        <button role="tab" aria-selected="false" data-model="ceiling">Кубический потолок</button>
+        <button role="tab" aria-selected="false" data-model="facade">Фасады</button>
+      </div>
+      <div class="stage__info" aria-live="polite">
+        <div>
+          <p class="stage__name" id="stName">Ворота</p>
+          <p class="stage__desc" id="stDesc"></p>
+        </div>
+        <p class="stage__price"><small>от</small> <span id="stPrice"></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span>Ворота</span><i></i><span>Навесы</span><i></i><span>Террасы</span><i></i><span>Фасады</span><i></i><span>Кубические потолки</span><i></i><span>Заборы</span><i></i><span>Металлоконструкции</span><i></i>
+    <span>Ворота</span><i></i><span>Навесы</span><i></i><span>Террасы</span><i></i><span>Фасады</span><i></i><span>Кубические потолки</span><i></i><span>Заборы</span><i></i><span>Металлоконструкции</span><i></i>
+  </div>
+</div>
+
+<!-- DIRECTIONS -->
+<section class="sec" id="directions">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow reveal">Направления и цены</p>
+      <h2 class="h2 reveal">Пять направлений, одно производство</h2>
+      <p class="lead reveal">Цены стартовые. Точную стоимость считаем под ваш объект: по размерам, материалу и сложности.</p>
+    </div>
+    <div class="bento">
+      <a class="card card--xl reveal js-wa" data-msg="Здравствуйте! Интересуют ворота, хочу узнать стоимость." href="#">
+        <img src="img/vorota-1.webp" alt="Распашные ворота AIS-TIM с декоративной решёткой и калиткой" loading="lazy" width="1195" height="896">
+        <div class="card__body">
+          <span class="chip">от 500 000 ₸</span>
+          <h3>Ворота</h3>
+          <p>Распашные ворота с калиткой, декоративной решёткой и автоматикой. Рисунок и цвет под ваш дом.</p>
+          <span class="card__go">Рассчитать <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span>
+        </div>
+      </a>
+      <a class="card reveal js-wa" data-msg="Здравствуйте! Интересует навес, хочу узнать стоимость." href="#">
+        <img src="img/naves-1.webp" alt="Навес для машин с кровлей из металлочерепицы" loading="lazy" width="1280" height="960">
+        <div class="card__body">
+          <span class="chip">от 15 000 ₸/м²</span>
+          <h3>Навесы</h3>
+          <p>Для машины, двора и входа. Кровля из израильского поликарбоната или металлочерепицы.</p>
+          <span class="card__go">Рассчитать <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span>
+        </div>
+      </a>
+      <a class="card reveal js-wa" data-msg="Здравствуйте! Интересует терраса, хочу узнать стоимость." href="#">
+        <img src="img/terrasa-1.webp" alt="Терраса с настилом, ограждением и навесом из поликарбоната" loading="lazy" width="1280" height="960">
+        <div class="card__body">
+          <span class="chip">от 20 000 ₸/м²</span>
+          <h3>Террасы</h3>
+          <p>Настил, ограждение и навес. Готовое место для отдыха у дома.</p>
+          <span class="card__go">Рассчитать <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span>
+        </div>
+      </a>
+      <a class="card reveal js-wa" data-msg="Здравствуйте! Интересует фасад, хочу узнать стоимость." href="#">
+        <img src="img/fasad-2.webp" alt="Фасад из металлокассет и линейных панелей" loading="lazy" width="1200" height="1600">
+        <div class="card__body">
+          <span class="chip">от 10 000 ₸/м²</span>
+          <h3>Фасады</h3>
+          <p>Линейные панели и металлокассеты для частных домов и коммерческих зданий.</p>
+          <span class="card__go">Рассчитать <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span>
+        </div>
+      </a>
+      <a class="card reveal js-wa" data-msg="Здравствуйте! Интересует кубический потолок, хочу узнать стоимость." href="#">
+        <img src="img/potolok-1.webp" alt="Кубический реечный потолок под дерево со встроенной подсветкой" loading="lazy" width="1023" height="1170">
+        <div class="card__body">
+          <span class="chip">от 10 000 ₸/м²</span>
+          <h3>Кубические потолки</h3>
+          <p>Реечные потолки из кубического профиля под дерево или графит, со встроенной подсветкой.</p>
+          <span class="card__go">Рассчитать <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span>
+        </div>
+      </a>
+    </div>
+    <p class="note reveal">Цены ориентировочные. Окончательную стоимость рассчитываем индивидуально.</p>
+  </div>
+</section>
+
+<!-- POLYCARBONATE -->
+<section class="sec sec--poly">
+  <div class="wrap poly">
+    <figure class="poly__img reveal-clip">
+      <img src="img/terrasa-1.webp" alt="Терраса AIS-TIM под кровлей из израильского поликарбоната" loading="lazy" width="1280" height="960">
+      <figcaption>Терраса с кровлей из поликарбоната</figcaption>
+    </figure>
+    <div class="poly__copy">
+      <p class="eyebrow reveal">Материал</p>
+      <h2 class="h2 reveal">Поликарбонат <span class="gold">из Израиля</span></h2>
+      <p class="lead reveal">Навесы и террасы мы кроем израильским поликарбонатом. Цвет и толщину листа подберём под ваш навес и подскажем, чем отличаются варианты.</p>
+      <div class="flag reveal" aria-hidden="true">
+        <span>Made in</span><b>Israel</b>
+      </div>
+      <a class="btn btn--ghost reveal js-wa" data-msg="Здравствуйте! Хочу навес из израильского поликарбоната, подскажите по цене." href="#">Спросить про поликарбонат</a>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="sec" id="works">
+  <div class="wrap">
+    <div class="sec__head sec__head--row">
+      <div>
+        <p class="eyebrow reveal">Портфолио</p>
+        <h2 class="h2 reveal">Наши объекты</h2>
+      </div>
+      <div class="filters reveal" role="tablist" aria-label="Фильтр работ">
+        <button aria-selected="true" data-f="all">Все</button>
+        <button aria-selected="false" data-f="vorota">Ворота</button>
+        <button aria-selected="false" data-f="naves">Навесы и террасы</button>
+        <button aria-selected="false" data-f="fasad">Фасады</button>
+        <button aria-selected="false" data-f="potolok">Потолки</button>
+      </div>
+    </div>
+    <div class="works" id="worksGrid"></div>
+    <div class="works__more reveal">
+      <p>Больше объектов и видео с монтажа в наших соцсетях</p>
+      <div class="works__social">
+        <a class="btn btn--ghost js-ig" href="#" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn btn--ghost js-tt" href="#" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA SERVICES -->
+<section class="sec sec--dark2">
+  <div class="wrap extra">
+    <div>
+      <p class="eyebrow reveal">Также делаем</p>
+      <h2 class="h2 reveal">Любой металл для дома и бизнеса</h2>
+      <p class="lead reveal">Не нашли нужное? Напишите, что хотите сделать, и мы скажем, возьмёмся ли и сколько это будет стоить.</p>
+    </div>
+    <ul class="extra__list">
+      <li class="reveal"><span>01</span>Заборы и ограждения</li>
+      <li class="reveal"><span>02</span>Калитки</li>
+      <li class="reveal"><span>03</span>Перила и лестничные ограждения</li>
+      <li class="reveal"><span>04</span>Металлокассеты</li>
+      <li class="reveal"><span>05</span>Линейные панели</li>
+      <li class="reveal"><span>06</span>Металлические конструкции</li>
+      <li class="reveal"><span>07</span>Автоматизация ворот</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow reveal">Как работаем</p>
+      <h2 class="h2 reveal">От заявки до монтажа</h2>
+    </div>
+    <ol class="steps">
+      <li class="reveal"><b>01</b><h3>Заявка</h3><p>Пишете в WhatsApp или звоните. Можно сразу прислать фото места и пример, что нравится.</p></li>
+      <li class="reveal"><b>02</b><h3>Замер и расчёт</h3><p>Выезжаем на объект, снимаем размеры и считаем точную стоимость.</p></li>
+      <li class="reveal"><b>03</b><h3>Производство</h3><p>Изготавливаем конструкцию на собственном производстве по вашим размерам.</p></li>
+      <li class="reveal"><b>04</b><h3>Монтаж под ключ</h3><p>Привозим и устанавливаем. Вы принимаете готовый результат.</p></li>
+    </ol>
+    <div class="process__line" aria-hidden="true"><span></span></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta__bg" aria-hidden="true"><img src="img/vorota-1.webp" alt="" loading="lazy"></div>
+  <div class="wrap cta__in">
+    <img class="cta__logo reveal" src="img/logo.webp" alt="Логотип AIS-TIM" width="220" height="222" loading="lazy">
+    <h2 class="h2 reveal">Расскажите, что хотите построить</h2>
+    <p class="lead reveal">Пришлите фото места и пожелания в WhatsApp, и мы рассчитаем стоимость.</p>
+    <div class="hero__ctas reveal">
+      <a class="btn btn--gold js-wa" data-msg="Здравствуйте! Хочу рассчитать стоимость." href="#">Написать в WhatsApp</a>
+      <a class="btn btn--ghost js-tel" href="#">Позвонить</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section class="sec" id="contacts">
+  <div class="wrap contacts">
+    <div class="contacts__info">
+      <p class="eyebrow reveal">Контакты</p>
+      <h2 class="h2 reveal">Приезжайте в офис</h2>
+      <dl class="clist">
+        <div class="reveal"><dt>Адрес</dt><dd>Алматы, пр. Райымбека, 348/4<br>БЦ «Аспара», 3 этаж, кабинет 304</dd></div>
+        <div class="reveal"><dt>Телефон</dt><dd><a class="js-tel js-tel-text" href="#"></a></dd></div>
+        <div class="reveal"><dt>График</dt><dd>Ежедневно, 10:00–18:00</dd></div>
+      </dl>
+      <div class="clinks reveal">
+        <a class="btn btn--gold js-wa" data-msg="Здравствуйте!" href="#">WhatsApp</a>
+        <a class="btn btn--ghost js-ig" href="#" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn btn--ghost js-tt" href="#" target="_blank" rel="noopener">TikTok</a>
+        <a class="btn btn--ghost js-2gis" href="#" target="_blank" rel="noopener">2GIS</a>
+      </div>
+    </div>
+    <div class="map reveal-clip">
+      <iframe title="AIS-TIM на карте" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=43.255349,76.864162&z=16&output=embed"></iframe>
+      <a class="map__pin js-2gis" href="#" target="_blank" rel="noopener">Открыть в 2GIS</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <a class="brand" href="#top"><img src="img/logo-sm.webp" width="32" height="32" alt=""><span>AIS<b>-</b>TIM</span></a>
+    <p>Воплоти мечту в железе</p>
+    <p>© <span class="js-year">2026</span> AIS-TIM, Алматы</p>
+  </div>
+</footer>
+
+<a class="fab js-wa" data-msg="Здравствуйте! Хочу рассчитать стоимость." href="#" aria-label="Написать в WhatsApp">
+  <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>
+</a>
+
+<div class="lb" id="lb" hidden>
+  <button class="lb__x" aria-label="Закрыть">×</button>
+  <button class="lb__nav lb__prev" aria-label="Предыдущее фото">‹</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lb__nav lb__next" aria-label="Следующее фото">›</button>
+</div>
+
+<script type="importmap">{ "imports": { "three": "./js/three.module.min.js" } }</script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
