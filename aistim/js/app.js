@@ -12,13 +12,13 @@ const MODELS = {
   gates:   { name: 'Ворота', price: '500 000 ₸', desc: 'Распашные ворота с калиткой, решёткой и автоматикой.', img: 'img/vorota-1.webp' },
   canopy:  { name: 'Навесы и террасы', price: '15 000 ₸/м²', desc: 'Каркас из металла, кровля из израильского поликарбоната.', img: 'img/terrasa-1.webp' },
   ceiling: { name: 'Кубический потолок', price: '10 000 ₸/м²', desc: 'Рейки кубического профиля со встроенной подсветкой.', img: 'img/potolok-1.webp' },
-  facade:  { name: 'Фасады', price: '10 000 ₸/м²', desc: 'Металлокассеты и линейные панели.', img: 'img/fasad-2.webp' }
+  facade:  { name: 'Фасады', price: '10 000 ₸/м²', desc: 'Металлокассеты и линеарные панели.', img: 'img/fasad-2.webp' }
 };
 
 const WORKS = [
   { src: 'img/vorota-1.webp', f: 'vorota', t: 'Распашные ворота с калиткой', w: 1195, h: 896 },
   { src: 'img/terrasa-1.webp', f: 'naves', t: 'Терраса с навесом из поликарбоната', w: 1280, h: 960 },
-  { src: 'img/fasad-2.webp', f: 'fasad', t: 'Фасад: металлокассеты и линейные панели', w: 1200, h: 1600 },
+  { src: 'img/fasad-2.webp', f: 'fasad', t: 'Фасад: металлокассеты и линеарные панели', w: 1200, h: 1600 },
   { src: 'img/potolok-1.webp', f: 'potolok', t: 'Кубический потолок под дерево с подсветкой', w: 1023, h: 1170 },
   { src: 'img/naves-1.webp', f: 'naves', t: 'Навес для машин, металлочерепица', w: 1280, h: 960 },
   { src: 'img/fasad-1.webp', f: 'fasad', t: 'Фасад частного дома', w: 1200, h: 1600 },
