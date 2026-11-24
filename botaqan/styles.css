@@ -180,7 +180,7 @@ body.blocks-ready .hero__hint{opacity:1}
 .sec--sun{background:linear-gradient(180deg,var(--cream),#FFE7C2)}
 .holi{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,70px);align-items:center}
 .holi__img{max-width:520px;border-radius:var(--r);overflow:hidden;background:#fff;padding:10px;box-shadow:0 24px 50px -24px rgba(196,106,0,.5);transform:rotate(-1.5deg)}
-.holi__img img{width:100%;border-radius:22px}
+.holi__img img{width:100%;height:auto;border-radius:22px}
 @media (max-width:900px){.holi{grid-template-columns:1fr}}
 
 /* prices */
