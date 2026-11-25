@@ -143,3 +143,13 @@ if (webgl()) {
   });
 } else fb();
 function fb() { cv.hidden = true; $('.hero__fallback').hidden = false; $('.hero__hint').hidden = true; }
+
+/* video */
+(() => {
+  const v = document.getElementById('bVideo'), b = document.getElementById('bPlay');
+  if (!v || !b) return;
+  const fr = v.parentElement;
+  b.addEventListener('click', () => { v.controls = true; v.play(); });
+  v.addEventListener('play', () => fr.classList.add('playing'));
+  v.addEventListener('ended', () => { fr.classList.remove('playing'); v.controls = false; v.load(); });
+})();

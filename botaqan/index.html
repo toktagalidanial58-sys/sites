@@ -13,7 +13,7 @@
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="preload" href="fonts/rubik.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="fonts/onest.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
 
@@ -150,6 +150,24 @@
   </div>
 </section>
 
+<!-- VIDEO -->
+<section class="sec sec--ink" id="video">
+  <div class="wrap vid">
+    <div class="vid__copy">
+      <p class="kicker rv">Бейне</p>
+      <h2 class="h2 rv">Мерекелеріміз осылай өтеді</h2>
+      <p class="lead rv">Ойын, эстафета, күлкі мен қуаныш — «Ботақан» балабақшасындағы жазғы мерекеден көрініс.</p>
+      <a class="btn btn--orange btn--lg rv js-wa" data-msg="Сәлеметсіз бе! Сынақ күніне жазылғым келеді." href="#" style="margin-top:28px">Сынақ күніне жазылу</a>
+    </div>
+    <div class="vid__frame rv-clip">
+      <video id="bVideo" src="video/bayram.mp4" poster="img/video-poster.webp" preload="none" playsinline width="720" height="1280"></video>
+      <button class="vid__play" id="bPlay" type="button" aria-label="Бейнені қосу">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- PRICES -->
 <section class="sec" id="prices">
   <div class="wrap">
@@ -160,13 +178,13 @@
     <div class="prices">
       <div class="price rv" style="--c:#FF6F9C">
         <span class="price__age">1,5 – 2 жас</span>
-        <p class="price__sum"><b>60 000</b> ₸<small>/ айына</small></p>
+        <p class="price__sum"><b>40 000</b> ₸<small>/ айына</small></p>
         <ul><li>Таза қазақ тілді топ</li><li>5 мезгіл тамақ</li><li>7:30-дан 18:00-ге дейін</li></ul>
         <a class="btn btn--dark js-wa" data-msg="Сәлеметсіз бе! Балам 1,5–2 жаста. Орын бар ма?" href="#">Орын бар ма?</a>
       </div>
       <div class="price price--main rv" style="--c:#FF9A1F">
         <span class="price__age">2 – 6 жас</span>
-        <p class="price__sum"><b>50 000</b> ₸<small>/ айына</small></p>
+        <p class="price__sum"><b>30 000</b> ₸<small>/ айына</small></p>
         <ul><li>Таза қазақ тілді топ</li><li>5 мезгіл тамақ</li><li>Мектепке дайындық</li></ul>
         <a class="btn btn--orange js-wa" data-msg="Сәлеметсіз бе! Балам 2–6 жаста. Орын бар ма?" href="#">Орын бар ма?</a>
       </div>
@@ -286,6 +304,6 @@
 </div>
 
 <script type="importmap">{ "imports": { "three": "./js/three.module.min.js" } }</script>
-<script type="module" src="js/app.js?v=3"></script>
+<script type="module" src="js/app.js?v=4"></script>
 </body>
 </html>
