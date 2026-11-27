@@ -104,8 +104,13 @@ img{display:block;max-width:100%}
 .row p{color:var(--mute);font-size:15px}
 
 .collab{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,2vw,24px)}
-.cb{position:relative;border:1px solid var(--line);border-radius:22px;padding:clamp(24px,4vw,44px);min-height:clamp(220px,30vw,340px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;background:var(--bg2);transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.1,1),border-color .5s}
-.cb::before{content:"";position:absolute;inset:0;background:radial-gradient(500px circle at var(--mx,50%) var(--my,0%),rgba(185,211,255,.14),transparent 45%);pointer-events:none}
+.cb{position:relative;border:1px solid var(--line);border-radius:22px;padding:clamp(22px,3.5vw,40px);aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--bg2);transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.1,1),border-color .5s}
+.cb::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(500px circle at var(--mx,50%) var(--my,0%),rgba(185,211,255,.14),transparent 45%);pointer-events:none}
+.cb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.2s cubic-bezier(.2,.7,.1,1)}
+.cb.in img{transform:scale(1)}
+.cb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,7,9,0) 45%,rgba(6,7,9,.9) 100%)}
+.cbt{position:relative;z-index:2;display:flex;flex-direction:column;gap:8px}
+.cbt .lbl{color:rgba(241,242,244,.75)}
 .cb b{font-family:Syne,sans-serif;font-weight:800;font-size:clamp(30px,4.6vw,58px);line-height:1}
 .cb:hover{border-color:rgba(185,211,255,.4)}
 
@@ -175,13 +180,13 @@ footer{padding:26px var(--pad);display:flex;justify-content:space-between;gap:12
 </div></div>
 
 <section class="reel" id="reel"><div class="stick">
- <div class="hd wrap"><span class="lbl">Кадры</span><h2 class="d">Свет, машины, люди</h2></div>
+ <div class="hd wrap"><span class="lbl">Знакомьтесь</span><h2 class="d">Это я</h2></div>
  <div class="stage" id="stage">
   <div class="card"><img src="img/night.webp" alt="Ночная съёмка" style="object-position:28% 66%"></div>
   <div class="card"><img src="img/studio.webp" alt="Студийный кадр" style="object-position:32% 60%"></div>
   <div class="card"><img src="img/blue.webp" alt="Съёмка в синий час" style="object-position:30% 68%"></div>
  </div>
- <div class="cap wrap"><span class="t" id="capT">Ночь и свет фар</span><div class="dots" id="dots"><i class="on"></i><i></i><i></i></div></div>
+ <div class="cap wrap"><span class="t" id="capT">На ночной съёмке</span><div class="dots" id="dots"><i class="on"></i><i></i><i></i></div></div>
 </div></section>
 
 <div class="mq" aria-hidden="true"><div id="mq"></div></div>
@@ -194,8 +199,8 @@ footer{padding:26px var(--pad);display:flex;justify-content:space-between;gap:12
 <section class="sec wrap" style="padding-block-start:0">
  <div class="sh"><h2 class="d rv">Работал с</h2></div>
  <div class="collab">
-  <div class="cb rv"><span class="lbl">Певица</span><b>Индира Елемес</b></div>
-  <div class="cb rv"><span class="lbl">Боец Nomad</span><b>Васиф Аббасов</b></div>
+  <div class="cb rv"><img src="img/indira.webp" alt="Индира Елемес" style="object-position:50% 25%"><div class="cbt"><span class="lbl">Певица</span><b>Индира Елемес</b></div></div>
+  <div class="cb rv"><img src="img/vasif.webp" alt="Васиф Аббасов" style="object-position:55% 30%"><div class="cbt"><span class="lbl">Боец Nomad</span><b>Васиф Аббасов</b></div></div>
  </div>
 </section>
 
@@ -300,7 +305,7 @@ cio.observe(document.querySelector('.nums'));
 
 /* 3D-карусель */
 const stage=document.getElementById('stage'),cards=[...stage.querySelectorAll('.card')],reel=document.getElementById('reel');
-const CAPS=['Ночь и свет фар','Студия','Синий час'],capT=document.getElementById('capT'),dots=[...document.querySelectorAll('#dots i')];
+const CAPS=['На ночной съёмке','В студии','Синий час'],capT=document.getElementById('capT'),dots=[...document.querySelectorAll('#dots i')];
 let front=0;
 function layout(rot){const cw=Math.min(stage.clientWidth*.62,stage.clientHeight*.7,380);stage.style.setProperty('--cw',cw+'px');
  const R=cw*.95,n=cards.length;let best=-2,bi=0;
